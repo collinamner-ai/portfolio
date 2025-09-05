@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleek Portfolio Showcase</title>
+    <!-- Use Google Fonts for a modern, sleek typeface -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Load Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d0d0d;
+            color: #e5e5e5;
+            overflow-x: hidden;
+        }
+
+        .project-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Custom scrollbar for a sleek look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4a4a4a;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 py-4 px-8 md:px-16 bg-[#0d0d0d] bg-opacity-70 backdrop-blur-md">
+        <nav class="flex justify-between items-center max-w-7xl mx-auto">
+            <a href="#" class="text-2xl font-bold text-white">Your Name</a>
+            <div class="space-x-8 hidden md:flex">
+                <a href="#work" class="text-white hover:text-gray-400 transition-colors duration-200">Work</a>
+                <a href="#about" class="text-white hover:text-gray-400 transition-colors duration-200">About</a>
+                <a href="#contact" class="text-white hover:text-gray-400 transition-colors duration-200">Contact</a>
+            </div>
+            <!-- Mobile Menu Icon (optional) -->
+            <div class="md:hidden">
+                <button class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="py-16 md:py-24 max-w-7xl mx-auto px-8 md:px-16">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex flex-col justify-center items-center text-center -mt-16">
+            <h1 class="text-4xl md:text-7xl font-bold mb-4">
+                Creating <span class="text-gray-400">Innovative</span> Brand Experiences
+            </h1>
+            <p class="text-lg md:text-xl text-gray-500 max-w-2xl mb-8">
+                A design portfolio focused on crafting distinct brand identities, strategic packaging, and compelling visual stories.
+            </p>
+            <a href="#work" class="bg-white text-black py-3 px-8 rounded-full font-medium transition-all duration-300 hover:bg-gray-300">
+                View My Work
+            </a>
+        </section>
+
+        <!-- Work Section -->
+        <section id="work" class="py-16">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-16">Selected Works</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+
+                <!-- Project Card 1: Adlens Rx -->
+                <div class="project-card rounded-xl overflow-hidden bg-[#1a1a1a] p-4 cursor-pointer">
+                    <img src="https://www.googleusercontent.com/image_generation_content/uploaded:portfolio__Page__Page_1.jpg-13a13db7-9e6e-4ffb-801f-6f8d1e88fde9" alt="Adlens Rx Branding" class="w-full h-auto rounded-lg mb-4">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2">Adlens Rx - Branding</h3>
+                        <p class="text-gray-400">A comprehensive brand identity and packaging design for a new line of eyewear.</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 2: VR ProOptics -->
+                <div class="project-card rounded-xl overflow-hidden bg-[#1a1a1a] p-4 cursor-pointer">
+                    <img src="https://www.googleusercontent.com/image_generation_content/uploaded:portfolio__Page__Page_3.jpg-763d5387-41ba-49b7-8edb-0b54b595d051" alt="VR ProOptics Visual Identity" class="w-full h-auto rounded-lg mb-4">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2">VR ProOptics - Visual Identity</h3>
+                        <p class="text-gray-400">Creating a futuristic and professional visual identity for a new virtual reality optics brand.</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 3: Corporate Brochure -->
+                <div class="project-card rounded-xl overflow-hidden bg-[#1a1a1a] p-4 cursor-pointer">
+                    <img src="https://www.googleusercontent.com/image_generation_content/uploaded:portfolio__Page_2.jpg-dced0a31-500d-4b12-95e5-0a0c0eecdd2d" alt="Corporate Brochure Design" class="w-full h-auto rounded-lg mb-4">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2">Corporate Brochure Design</h3>
+                        <p class="text-gray-400">Designing a clean and informative brochure to communicate key brand values and product information.</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 4: Innovative Packaging -->
+                <div class="project-card rounded-xl overflow-hidden bg-[#1a1a1a] p-4 cursor-pointer">
+                    <img src="https://www.googleusercontent.com/image_generation_content/uploaded:portfolio__Page_4.jpg-959c3ec9-a167-4b0b-8d54-8ee77e59504b" alt="Innovative Product Packaging" class="w-full h-auto rounded-lg mb-4">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2">Innovative Packaging</h3>
+                        <p class="text-gray-400">Exploring structural and graphic design to create unique and engaging packaging solutions.</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 5: Brand Collateral -->
+                <div class="project-card rounded-xl overflow-hidden bg-[#1a1a1a] p-4 cursor-pointer">
+                    <img src="https://www.googleusercontent.com/image_generation_content/uploaded:portfolio__Page_5.jpg-2e43cfb0-3da3-4edd-8ef0-3dfa5b8d56a3" alt="Brand Collateral Showcase" class="w-full h-auto rounded-lg mb-4">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2">Brand Collateral Showcase</h3>
+                        <p class="text-gray-400">A look at the full range of branded materials, from stationery to promotional items.</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 6: Visual Storytelling -->
+                <div class="project-card rounded-xl overflow-hidden bg-[#1a1a1a] p-4 cursor-pointer">
+                    <img src="https://www.googleusercontent.com/image_generation_content/uploaded:portfolio__Page_6.jpg-23fbb218-1c77-4e0f-bb5e-a21acf84c9af" alt="Visual Storytelling" class="w-full h-auto rounded-lg mb-4">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2">Visual Storytelling</h3>
+                        <p class="text-gray-400">Highlighting the process of creating cohesive visual narratives for products and services.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 text-center max-w-3xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold mb-8">About Me</h2>
+            <p class="text-lg md:text-xl text-gray-400 leading-relaxed mb-6">
+                I am a passionate brand designer with a keen eye for detail and a love for creating beautiful, functional, and memorable experiences. With a focus on brand identity and packaging, I strive to solve complex design challenges with creative and strategic solutions.
+            </p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 text-center max-w-2xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold mb-8">Let's Connect</h2>
+            <p class="text-lg text-gray-400 mb-8">
+                Have a project in mind or just want to say hello? Feel free to reach out.
+            </p>
+            <a href="mailto:your.email@example.com" class="bg-gray-700 text-white py-3 px-8 rounded-full font-medium transition-all duration-300 hover:bg-gray-600">
+                Email Me
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-8 text-gray-500 text-sm">
+        &copy; 2024 Your Name. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
