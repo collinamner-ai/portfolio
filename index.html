@@ -12,72 +12,66 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header class="site-header">
-        <div class="nav-container">
-            <div class="logo-lockup">
-                <a href="#" class="logo" id="nav-logo">Collin Amner</a>
-                <span class="logo-role">Senior Designer</span>
-            </div>
-            <nav class="main-nav">
-                <a href="#work">Index</a>
-                <a href="#about">Profile</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </div>
+    
+    <header class="mobile-header">
+        <div class="logo">Collin Amner</div>
     </header>
 
-    <main>
-        <section class="hero">
-            <div class="hero-inner">
-                <h1 class="hero-title" id="hero-title"></h1>
-                <p class="hero-support" id="hero-support"></p>
-                <div class="hero-stats" id="hero-stats"></div>
+    <main class="agency-layout">
+        
+        <section class="content-column">
+            
+            <div class="sticky-top">
+                <h1 class="logo">Collin Amner.</h1>
+                <p class="role-title">Senior Designer & Brand Lead</p>
+                <nav class="minimal-nav">
+                    <a href="#work">Index</a>
+                    <a href="#profile">Profile</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
+
+            <div id="work" class="archive-list" id="project-list-container">
+                </div>
+
+            <div id="profile" class="profile-block">
+                <h2>Profile</h2>
+                <p id="about-text" class="lead-text"></p>
+                
+                <h3 style="margin-top: 3rem; margin-bottom: 1rem;">Specialisms</h3>
+                <ul class="capability-list" id="services-list"></ul>
+            </div>
+
+            <div id="contact" class="contact-block">
+                <h2 class="massive-text">Let's Talk.</h2>
+                <p id="contact-cta"></p>
+                <div class="contact-actions" id="contact-links"></div>
+                
+                <footer class="minimal-footer">
+                    <p>&copy; <span id="current-year"></span> Collin Amner.</p>
+                    <span id="footer-socials"></span>
+                </footer>
+            </div>
+
+        </section>
+
+        <section class="preview-column">
+            <div class="preview-sticky-container">
+                <img id="hover-preview-img" src="" alt="Project Preview">
+                <div class="preview-overlay">
+                    <span id="preview-category" class="preview-meta"></span>
+                    <span class="preview-instruction">Click to view gallery</span>
+                </div>
             </div>
         </section>
 
-        <section id="work" class="section archive-section">
-            <div class="archive-header">
-                <h2 class="section-title">Selected Archive &mdash; 2003–Present</h2>
-                <div class="filters" id="project-filters">
-                    <button class="filter-btn active" data-filter="All">All</button>
-                    </div>
-            </div>
-            <div class="project-grid" id="project-grid">
-                </div>
-        </section>
-
-        <section id="about" class="section profile-section">
-            <div class="profile-grid">
-                <div class="profile-text">
-                    <h2 class="section-title">Profile</h2>
-                    <p id="about-text" class="lead-text"></p>
-                </div>
-                <div class="profile-services">
-                    <h2 class="section-title">Capabilities</h2>
-                    <ul class="service-list" id="services-list"></ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section contact-section">
-            <h2 class="massive-cta">Let's Talk.</h2>
-            <p id="contact-cta" class="contact-support"></p>
-            <div class="contact-links" id="contact-links"></div>
-        </section>
     </main>
 
-    <footer class="site-footer">
-        <p>&copy; <span id="current-year"></span> Collin Amner.</p>
-        <div class="footer-links">
-            <span id="footer-socials"></span>
-        </div>
-    </footer>
-
     <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true">
-        <button class="lightbox-close" aria-label="Close">Close ✕</button>
+        <button class="lightbox-close" aria-label="Close">✕ Close</button>
         <div class="lightbox-nav">
-            <button class="lightbox-prev" aria-label="Previous">Prev</button>
-            <button class="lightbox-next" aria-label="Next">Next</button>
+            <button class="lightbox-prev" aria-label="Previous">← Prev</button>
+            <button class="lightbox-next" aria-label="Next">Next →</button>
         </div>
         <div class="lightbox-content">
             <img id="lightbox-img" src="" alt="Project view">
