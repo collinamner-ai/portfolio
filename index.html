@@ -1,15 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collin Amner | Senior Designer</title>
-    <meta name="description" content="Portfolio of Collin Amner, Senior Designer specialising in Branding, Packaging & Digital.">
     
-    <meta property="og:title" content="Collin Amner | Senior Designer">
-    <meta property="og:description" content="Over 20 years’ experience across brand identity, packaging, print-ready artwork, and digital design.">
-    <meta property="og:type" content="website">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -18,86 +13,76 @@
 </head>
 <body>
     <header class="site-header">
-        <div class="container nav-container">
-            <a href="#" class="logo" id="nav-logo">Collin Amner</a>
-            <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+        <div class="nav-container">
+            <div class="logo-lockup">
+                <a href="#" class="logo" id="nav-logo">Collin Amner</a>
+                <span class="logo-role">Senior Designer</span>
+            </div>
             <nav class="main-nav">
-                <a href="#work">Work</a>
-                <a href="#about">About</a>
-                <a href="#services">Services</a>
+                <a href="#work">Index</a>
+                <a href="#about">Profile</a>
                 <a href="#contact">Contact</a>
-                <button id="theme-toggle" aria-label="Toggle Dark/Light Mode">🌓</button>
             </nav>
         </div>
     </header>
 
     <main>
-        <section class="hero container pt-header">
-            <p class="hero-role" id="hero-role"></p>
-            <h1 class="hero-title" id="hero-title"></h1>
-            <p class="hero-support" id="hero-support"></p>
-            <div class="hero-actions">
-                <a href="#work" class="btn btn-primary">View Work</a>
-                <a href="#contact" class="btn btn-secondary">Contact Me</a>
+        <section class="hero">
+            <div class="hero-inner">
+                <h1 class="hero-title" id="hero-title"></h1>
+                <p class="hero-support" id="hero-support"></p>
+                <div class="hero-stats" id="hero-stats"></div>
             </div>
-            <div class="hero-stats grid-4" id="hero-stats"></div>
         </section>
 
-        <div class="skills-marquee">
-            <div class="marquee-content" id="skills-track"></div>
-        </div>
-
-        <section id="work" class="container section">
-            <div class="section-header">
-                <h2 class="section-title">Selected Work</h2>
+        <section id="work" class="section archive-section">
+            <div class="archive-header">
+                <h2 class="section-title">Selected Archive &mdash; 2003–Present</h2>
                 <div class="filters" id="project-filters">
                     <button class="filter-btn active" data-filter="All">All</button>
                     </div>
             </div>
-            <div class="project-grid grid-2" id="project-grid">
+            <div class="project-grid" id="project-grid">
                 </div>
         </section>
 
-        <section id="about" class="container section">
-            <div class="grid-2 gap-lg">
-                <div class="about-content">
-                    <h2 class="section-title" id="about-title">About</h2>
+        <section id="about" class="section profile-section">
+            <div class="profile-grid">
+                <div class="profile-text">
+                    <h2 class="section-title">Profile</h2>
                     <p id="about-text" class="lead-text"></p>
                 </div>
-                <div class="services-content">
-                    <h2 class="section-title">Specialisms</h2>
+                <div class="profile-services">
+                    <h2 class="section-title">Capabilities</h2>
                     <ul class="service-list" id="services-list"></ul>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="container section">
-            <div class="contact-box">
-                <h2 class="section-title">Let's Collaborate</h2>
-                <p id="contact-cta" class="lead-text"></p>
-                <div class="contact-links" id="contact-links"></div>
-            </div>
+        <section id="contact" class="section contact-section">
+            <h2 class="massive-cta">Let's Talk.</h2>
+            <p id="contact-cta" class="contact-support"></p>
+            <div class="contact-links" id="contact-links"></div>
         </section>
     </main>
 
-    <footer class="site-footer container">
-        <div class="footer-content">
-            <p>&copy; <span id="current-year"></span> Collin Amner. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="admin.html" class="admin-link">Admin</a>
-                <span id="footer-socials"></span>
-            </div>
+    <footer class="site-footer">
+        <p>&copy; <span id="current-year"></span> Collin Amner.</p>
+        <div class="footer-links">
+            <span id="footer-socials"></span>
         </div>
     </footer>
 
     <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true">
-        <button class="lightbox-close" aria-label="Close lightbox">✕</button>
-        <button class="lightbox-prev" aria-label="Previous image">←</button>
+        <button class="lightbox-close" aria-label="Close">Close ✕</button>
+        <div class="lightbox-nav">
+            <button class="lightbox-prev" aria-label="Previous">Prev</button>
+            <button class="lightbox-next" aria-label="Next">Next</button>
+        </div>
         <div class="lightbox-content">
             <img id="lightbox-img" src="" alt="Project view">
             <div class="lightbox-caption" id="lightbox-caption"></div>
         </div>
-        <button class="lightbox-next" aria-label="Next image">→</button>
     </div>
 
     <script src="js/content.js"></script>
