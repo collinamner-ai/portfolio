@@ -1,58 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex">
-    <title>Portfolio Content Editor | Collin Amner</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Editor</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    body{padding:24px}.editor{width:min(100%,980px);margin:auto}.editor-card{background:#fff;border-radius:22px;padding:22px;margin:0 0 16px;box-shadow:var(--shadow)}
+    label{display:block;font-weight:800;margin:0 0 8px}input,textarea{width:100%;border:1px solid var(--line);border-radius:14px;padding:12px;font:inherit}textarea{min-height:100px}.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.editor-actions{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}.editor button{border:0;border-radius:999px;background:#111;color:#fff;padding:12px 16px;font-weight:800;cursor:pointer}.project-editor{border-top:1px solid var(--line);padding-top:18px;margin-top:18px}@media(max-width:700px){.editor-grid{grid-template-columns:1fr}}
+  </style>
 </head>
-<body class="admin-body">
-    <div class="admin-shell">
-        <aside class="admin-sidebar">
-            <a class="brand-mark" href="index.html" target="_blank" rel="noopener">
-                <span class="brand-symbol">CA</span>
-                <span>
-                    <strong>Portfolio Editor</strong>
-                    <small>Static content tool</small>
-                </span>
-            </a>
-            <p style="margin-top: 1.5rem;">Edit the portfolio content, save a local draft, then export a new <strong>content.js</strong> file.</p>
-            <nav class="admin-nav" aria-label="Editor sections">
-                <a href="#sec-hero">Hero</a>
-                <a href="#sec-profile">Profile</a>
-                <a href="#sec-projects">Projects</a>
-                <a href="#sec-contact">Contact</a>
-                <a href="index.html" target="_blank" rel="noopener">View site ↗</a>
-            </nav>
-        </aside>
-
-        <main class="admin-main">
-            <div class="admin-topbar">
-                <div>
-                    <p class="eyebrow">Admin</p>
-                    <h1 style="font-size: clamp(2.2rem, 5vw, 4rem); margin-bottom: 0;">Edit portfolio content</h1>
-                </div>
-                <div class="admin-actions">
-                    <button id="btn-save-draft" class="btn btn-secondary" type="button">Save draft</button>
-                    <button id="btn-clear-draft" class="btn btn-secondary" type="button">Clear draft</button>
-                    <button id="btn-export" class="btn btn-primary" type="button">Export content.js</button>
-                </div>
-            </div>
-
-            <div class="admin-notice">
-                <strong>Note:</strong> This is a static-site editor, not a secure CMS. It works in your browser and exports a replacement <code>js/content.js</code> file for GitHub Pages or any static host.
-            </div>
-
-            <form id="admin-form" autocomplete="off"></form>
-            <p id="admin-output" class="admin-output" role="status" aria-live="polite"></p>
-        </main>
-    </div>
-
-    <script src="js/content.js"></script>
-    <script src="js/admin.js"></script>
+<body>
+  <main class="editor">
+    <h1>Portfolio Editor</h1>
+    <p>This is intentionally minimal. Edit work titles/images, then export <strong>content.js</strong> and replace <strong>js/content.js</strong>.</p>
+    <div class="editor-actions"><button id="save-draft">Save Draft</button><button id="export-content">Export content.js</button><a class="contact-button" href="index.html">View Site</a></div>
+    <form id="editor-form"></form>
+  </main>
+  <script src="js/content.js"></script>
+  <script src="js/admin.js"></script>
 </body>
 </html>
