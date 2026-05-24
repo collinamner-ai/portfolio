@@ -2,78 +2,61 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = window.PORTFOLIO_CONTENT;
     if (!data) return console.error("Content not found. Ensure js/content.js is loaded.");
 
-    // Header & Titles
+    // --- Populate Basic Data ---
     document.title = data.site.title;
-    document.getElementById('nav-logo').textContent = data.hero.name;
+    document.getElementById('about-text').textContent = data.about.text;
+    document.getElementById('services-list').innerHTML = data.services.map(s => `<li>${s}</li>`).join('');
+    document.getElementById('contact-cta').textContent = data.contact.ctaText;
+    document.getElementById('contact-links').innerHTML = `<a href="mailto:${data.contact.email}" class="btn-primary">Email Me</a>`;
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    document.getElementById('footer-socials').innerHTML = data.socials.map(s => 
+        `<a href="${s.url}" target="_blank" rel="noopener" style="margin-left: 1.5rem;">${s.platform}</a>`
+    ).join('');
+
+    // --- Build the Massive Project List ---
+    const listContainer = document.querySelector('.archive-list');
+    const previewImg = document.getElementById('hover-preview-img');
+    const previewCategory = document.getElementById('preview-category');
     
-    // Hero
-    document.getElementById('hero-title').innerHTML = data.hero.headline;
-    document.getElementById('hero-support').textContent = data.hero.supportText;
-    
-    document.getElementById('hero-stats').innerHTML = data.stats.map(s => `
-        <div class="stat-item">
-            <span class="stat-value">${s.value}</span>
-            <span class="stat-label">${s.label}</span>
+    // Set initial preview image to the first project
+    if (data.projects.length > 0) {
+        previewImg.src = data.projects[0].images[0];
+        previewImg.classList.add('active');
+        previewCategory.textContent = data.projects[0].category;
+        previewCategory.style.opacity = 1;
+    }
+
+    listContainer.innerHTML = data.projects.map((p, index) => `
+        <div class="list-item" data-index="${index}">
+            <h3 class="list-title">${p.title}</h3>
+            <div class="list-meta">${p.category}</div>
+            <img src="${p.images[0]}" class="mobile-inline-img" alt="${p.title}">
         </div>
     `).join('');
 
-    // Profile & Services
-    document.getElementById('about-text').textContent = data.about.text;
-    document.getElementById('services-list').innerHTML = data.services.map(s => `<li>${s}</li>`).join('');
-
-    // Contact & Footer
-    document.getElementById('contact-cta').textContent = data.contact.ctaText;
-    document.getElementById('contact-links').innerHTML = `
-        <a href="mailto:${data.contact.email}" class="btn-primary">Email Me</a>
-    `;
-    
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-    document.getElementById('footer-socials').innerHTML = data.socials.map(s => 
-        `<a href="${s.url}" target="_blank" rel="noopener">${s.platform}</a>`
-    ).join('');
-
-    // Projects & Filters
-    const projectGrid = document.getElementById('project-grid');
-    const filterContainer = document.getElementById('project-filters');
-    const categories = ['All', ...new Set(data.projects.map(p => p.category))];
-    
-    categories.slice(1).forEach(cat => {
-        const btn = document.createElement('button');
-        btn.className = 'filter-btn';
-        btn.dataset.filter = cat;
-        btn.textContent = cat;
-        filterContainer.appendChild(btn);
-    });
-
-    function renderProjects(filter = 'All') {
-        const filtered = filter === 'All' ? data.projects : data.projects.filter(p => p.category === filter);
-        projectGrid.innerHTML = filtered.map((p, index) => `
-            <div class="project-card" data-index="${data.projects.indexOf(p)}" role="button" tabindex="0">
-                <div class="project-img-wrapper">
-                    <img src="${p.images[0]}" alt="${p.title}" loading="lazy">
-                </div>
-                <div class="project-meta">${p.category}</div>
-                <h3 class="project-title">${p.title}</h3>
-                <p class="project-desc">${p.description}</p>
-            </div>
-        `).join('');
-
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('click', () => openLightbox(card.dataset.index));
+    // --- Hover Preview Logic (Desktop) ---
+    document.querySelectorAll('.list-item').forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            const index = this.getAttribute('data-index');
+            const project = data.projects[index];
+            
+            // Swap image smoothly
+            previewImg.classList.remove('active');
+            setTimeout(() => {
+                previewImg.src = project.images[0];
+                previewImg.classList.add('active');
+            }, 150); // Slight delay for the crossfade effect
+            
+            previewCategory.textContent = project.category;
         });
-    }
 
-    filterContainer.addEventListener('click', (e) => {
-        if(e.target.tagName === 'BUTTON') {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
-            renderProjects(e.target.dataset.filter);
-        }
+        // Click to open lightbox
+        item.addEventListener('click', () => {
+            openLightbox(this.getAttribute('data-index') || item.dataset.index);
+        });
     });
 
-    renderProjects();
-
-    // Lightbox Logic
+    // --- Lightbox Logic ---
     const lightbox = document.getElementById('lightbox');
     const lbImg = document.getElementById('lightbox-img');
     const lbCaption = document.getElementById('lightbox-caption');
@@ -94,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateLightbox() {
         const proj = data.projects[currentProj];
         lbImg.src = proj.images[currentImg];
-        lbCaption.textContent = `${proj.title} — ${currentImg + 1} / ${proj.images.length}`;
+        lbCaption.textContent = `${proj.title} — Image ${currentImg + 1} of ${proj.images.length}`;
     }
 
     document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
