@@ -3,80 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Senior Designer portfolio for branding, packaging, artwork, digital and production-ready creative work.">
+    <meta name="theme-color" content="#0f172a">
+    <meta property="og:title" content="Collin Amner | Senior Designer">
+    <meta property="og:description" content="Branding, packaging, artwork, digital and production-ready creative work.">
+    <meta property="og:type" content="website">
     <title>Collin Amner | Senior Designer</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    
-    <header class="mobile-header">
-        <div class="logo">Collin Amner</div>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header" aria-label="Site header">
+        <a class="brand-mark" href="#top" aria-label="Collin Amner home">
+            <span class="brand-symbol">CA</span>
+            <span>
+                <strong data-content="hero.name">Collin Amner</strong>
+                <small data-content="hero.role">Senior Designer</small>
+            </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+            <span>Menu</span>
+        </button>
+
+        <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+            <a href="#work">Work</a>
+            <a href="#profile">Profile</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </header>
 
-    <main class="agency-layout">
-        
-        <section class="content-column">
-            
-            <div class="sticky-top">
-                <h1 class="logo">Collin Amner.</h1>
-                <p class="role-title">Senior Designer & Brand Lead</p>
-                <nav class="minimal-nav">
-                    <a href="#work">Index</a>
-                    <a href="#profile">Profile</a>
-                    <a href="#contact">Contact</a>
-                </nav>
+    <main id="main-content">
+        <section id="top" class="hero section-shell">
+            <div class="hero-copy reveal-on-load">
+                <p class="eyebrow" data-content="hero.location">Aylesbury, UK</p>
+                <h1 data-content="hero.headline">Senior Designer creating standout branding, packaging and digital experiences.</h1>
+                <p class="hero-support" data-content="hero.supportText">Over 20 years’ experience across brand identity, packaging design, print-ready artwork, POS, product development and digital design.</p>
+
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#work">View selected work</a>
+                    <a class="btn btn-secondary" href="#contact">Contact Collin</a>
+                </div>
             </div>
 
-            <div id="work" class="archive-list" id="project-list-container">
-                </div>
+            <aside class="hero-card reveal-on-load" aria-label="Professional summary">
+                <p class="card-kicker">Available for</p>
+                <h2>Senior design, brand, packaging and digital roles.</h2>
+                <p data-content="hero.availability">Open to hybrid and remote opportunities across London, Oxfordshire, Buckinghamshire and Hertfordshire.</p>
+                <div id="stats-list" class="stats-grid" aria-label="Portfolio highlights"></div>
+            </aside>
+        </section>
 
-            <div id="profile" class="profile-block">
-                <h2>Profile</h2>
+        <section id="work" class="section-shell work-section">
+            <div class="section-heading">
+                <p class="eyebrow">Selected work</p>
+                <h2>Commercial design with creative polish and production discipline.</h2>
+                <p>Projects are structured to show the kind of thinking employers look for: brand impact, consistency, accuracy, and delivery across channels.</p>
+            </div>
+            <div id="project-list-container" class="project-grid" aria-live="polite"></div>
+        </section>
+
+        <section id="profile" class="section-shell profile-section">
+            <div class="profile-panel">
+                <p class="eyebrow">Profile</p>
+                <h2 data-content="about.title">About Me</h2>
                 <p id="about-text" class="lead-text"></p>
-                
-                <h3 style="margin-top: 3rem; margin-bottom: 1rem;">Specialisms</h3>
-                <ul class="capability-list" id="services-list"></ul>
             </div>
 
-            <div id="contact" class="contact-block">
-                <h2 class="massive-text">Let's Talk.</h2>
-                <p id="contact-cta"></p>
-                <div class="contact-actions" id="contact-links"></div>
-                
-                <footer class="minimal-footer">
-                    <p>&copy; <span id="current-year"></span> Collin Amner.</p>
-                    <span id="footer-socials"></span>
-                </footer>
+            <div class="value-panel">
+                <p class="eyebrow">What employers get</p>
+                <div id="employer-value-list" class="value-grid"></div>
             </div>
-
         </section>
 
-        <section class="preview-column">
-            <div class="preview-sticky-container">
-                <img id="hover-preview-img" src="" alt="Project Preview">
-                <div class="preview-overlay">
-                    <span id="preview-category" class="preview-meta"></span>
-                    <span class="preview-instruction">Click to view gallery</span>
+        <section id="skills" class="section-shell skills-section">
+            <div class="section-heading compact">
+                <p class="eyebrow">Specialisms</p>
+                <h2>Built for brand, packaging and production teams.</h2>
+            </div>
+            <div class="skills-layout">
+                <div>
+                    <h3>Services</h3>
+                    <ul id="services-list" class="check-list"></ul>
+                </div>
+                <div>
+                    <h3>Tools & strengths</h3>
+                    <ul id="skills-list" class="tag-list"></ul>
                 </div>
             </div>
         </section>
 
+        <section id="contact" class="section-shell contact-section">
+            <div>
+                <p class="eyebrow">Next step</p>
+                <h2>Let’s talk about the role, the brand, or the brief.</h2>
+                <p id="contact-cta" class="lead-text"></p>
+            </div>
+            <div id="contact-links" class="contact-card"></div>
+        </section>
     </main>
 
-    <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true">
-        <button class="lightbox-close" aria-label="Close">✕ Close</button>
-        <div class="lightbox-nav">
-            <button class="lightbox-prev" aria-label="Previous">← Prev</button>
-            <button class="lightbox-next" aria-label="Next">Next →</button>
-        </div>
-        <div class="lightbox-content">
-            <img id="lightbox-img" src="" alt="Project view">
-            <div class="lightbox-caption" id="lightbox-caption"></div>
-        </div>
+    <footer class="site-footer section-shell">
+        <p>&copy; <span id="current-year"></span> <span data-content="hero.name">Collin Amner</span>. Portfolio site.</p>
+        <div id="footer-socials" class="footer-socials"></div>
+    </footer>
+
+    <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" aria-describedby="lightbox-caption">
+        <button class="lightbox-close" type="button" aria-label="Close project gallery">Close</button>
+        <button class="lightbox-arrow lightbox-prev" type="button" aria-label="Previous image">‹</button>
+        <figure class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+            <figcaption>
+                <h2 id="lightbox-title"></h2>
+                <p id="lightbox-caption"></p>
+            </figcaption>
+        </figure>
+        <button class="lightbox-arrow lightbox-next" type="button" aria-label="Next image">›</button>
     </div>
 
     <script src="js/content.js"></script>

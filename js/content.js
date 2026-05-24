@@ -1,109 +1,138 @@
 window.PORTFOLIO_CONTENT = {
   "site": {
     "title": "Collin Amner | Senior Designer",
-    "description": "Senior Designer creating standout branding, packaging and digital experiences.",
+    "description": "Senior Designer specialising in branding, packaging, digital design and production-ready creative delivery.",
     "url": "https://collinamner.github.io"
   },
   "hero": {
     "name": "Collin Amner",
     "role": "Senior Designer – Branding, Packaging & Digital",
-    "location": "Aylesbury, UK",
-    "headline": "Senior Designer creating standout branding, packaging and digital experiences for retail, FMCG and ambitious brands.",
-    "supportText": "Over 20 years’ experience across brand identity, packaging design, print-ready artwork, POS, product development and digital design — combining creative thinking with production discipline."
+    "location": "Aylesbury, UK · Hybrid / Remote",
+    "headline": "Senior Designer creating brand, packaging and digital work that is built to sell — and built to produce.",
+    "supportText": "Over 20 years’ experience across brand identity, packaging design, print-ready artwork, POS, product development and digital design. I combine strong creative direction with the practical discipline employers need in busy commercial teams.",
+    "availability": "Open to senior design, creative lead, packaging artwork, brand guardian and in-house FMCG / retail design roles across London, Oxfordshire, Buckinghamshire and Hertfordshire."
   },
   "stats": [
-    { "value": "20+", "label": "Years Experience" },
-    { "value": "FMCG", "label": "Branding / Packaging" },
-    { "value": "100%", "label": "Print & Production Ready" },
-    { "value": "UK", "label": "Based / Hybrid Friendly" }
+    { "value": "20+", "label": "Years commercial design" },
+    { "value": "FMCG", "label": "Branding & packaging" },
+    { "value": "Print", "label": "Artwork-ready thinking" },
+    { "value": "Hybrid", "label": "London & home counties" }
   ],
   "about": {
-    "title": "About Me",
-    "text": "I am a commercially minded Senior Designer with a passion for bringing brands to life physically and digitally. From conceptual brand systems to rigorous packaging artwork automation, I ensure design intent is maintained through to final production. I bridge the gap between creative vision and technical execution."
+    "title": "A commercially minded designer who understands both the idea and the artwork.",
+    "text": "I help brands look sharper, communicate faster and move through production with fewer issues. My background spans concept development, visual identity, packaging systems, point-of-sale, digital/web/UI design, product visualisation and final artwork — giving employers a designer who can think creatively, manage detail and deliver reliably."
   },
+  "employerValue": [
+    {
+      "title": "Brand thinking with production discipline",
+      "text": "Creative ideas are developed with real-world print, packaging, retailer and rollout requirements in mind."
+    },
+    {
+      "title": "Calm ownership of complex artwork",
+      "text": "Strong attention to detail across copy, dielines, barcodes, icons, colour, versioning and final file readiness."
+    },
+    {
+      "title": "A broad design toolkit",
+      "text": "Able to move between packaging, POS, digital, 3D visuals, presentations and brand systems without losing consistency."
+    },
+    {
+      "title": "Useful in-house experience",
+      "text": "Comfortable working with stakeholders, suppliers and deadlines where accuracy, speed and brand guardianship matter."
+    }
+  ],
   "services": [
-    "Branding & Visual Identity",
-    "Packaging Design & Artwork",
-    "Point of Sale (POS)",
-    "Digital, Web & UI Design",
-    "Product Development & 3D Visualization",
-    "Creative Production & Brand Guardianship"
+    "Branding & visual identity",
+    "Packaging design & artwork",
+    "Point of sale and retail campaigns",
+    "Digital, web and UI design",
+    "Product development and 3D visualisation",
+    "Creative production and brand guardianship"
   ],
   "skills": [
-    "Adobe Creative Cloud", "Illustrator", "Photoshop", "InDesign", "Figma", 
-    "WordPress", "SolidWorks", "KeyShot", "Print-ready Production", "Dielines", "Project Management"
+    "Adobe Creative Cloud",
+    "Illustrator",
+    "Photoshop",
+    "InDesign",
+    "Figma",
+    "WordPress",
+    "SolidWorks",
+    "KeyShot",
+    "Print-ready artwork",
+    "Dielines",
+    "Barcode / icon checks",
+    "Project management"
   ],
   "projects": [
     {
-      "id": "proj-1",
+      "id": "packaging-range",
       "title": "Premium Food Packaging Range",
       "category": "Packaging",
-      "description": "Brand-led packaging system for a premium retail food range.",
+      "description": "A brand-led packaging system for a premium retail food range, balancing shelf impact, hierarchy and production consistency.",
       "images": [
-        "https://placehold.co/800x600/1a1a1a/ffffff?text=Packaging+Hero",
-        "https://placehold.co/800x600/2a2a2a/ffffff?text=Packaging+Detail+1",
-        "https://placehold.co/800x600/3a3a3a/ffffff?text=Packaging+Detail+2"
+        "assets/img/packaging-hero.svg",
+        "assets/img/packaging-detail.svg",
+        "assets/img/packaging-hero.svg"
       ]
     },
     {
-      "id": "proj-2",
+      "id": "fmcg-refresh",
       "title": "FMCG Brand Refresh",
       "category": "Branding",
-      "description": "Visual identity refresh across packaging, POS and digital touchpoints.",
+      "description": "A refreshed visual identity across packaging, point-of-sale and digital touchpoints for a more consistent brand presence.",
       "images": [
-        "https://placehold.co/800x600/1a1a1a/ffffff?text=Branding+Hero",
-        "https://placehold.co/800x600/2a2a2a/ffffff?text=Branding+Guidelines",
-        "https://placehold.co/800x600/3a3a3a/ffffff?text=Branding+Mockups"
+        "assets/img/branding-hero.svg",
+        "assets/img/branding-guidelines.svg",
+        "assets/img/branding-hero.svg"
       ]
     },
     {
-      "id": "proj-3",
+      "id": "retail-pos",
       "title": "Retail POS Campaign",
       "category": "POS",
-      "description": "Shopper-focused point-of-sale campaign with scalable artwork assets.",
+      "description": "Shopper-focused point-of-sale design with scalable artwork assets, clear messaging and strong in-store visibility.",
       "images": [
-        "https://placehold.co/800x600/1a1a1a/ffffff?text=POS+Display",
-        "https://placehold.co/800x600/2a2a2a/ffffff?text=In-Store+Mockup"
+        "assets/img/pos-hero.svg",
+        "assets/img/pos-detail.svg"
       ]
     },
     {
-      "id": "proj-4",
+      "id": "digital-ui",
       "title": "Digital Product UI Concept",
       "category": "Digital",
-      "description": "Clean interface concept for a product-led digital experience.",
+      "description": "A clean interface concept for a product-led digital experience, designed around clarity, simple navigation and polished presentation.",
       "images": [
-        "https://placehold.co/800x600/1a1a1a/ffffff?text=UI+Dashboard",
-        "https://placehold.co/800x600/2a2a2a/ffffff?text=Mobile+App"
+        "assets/img/digital-hero.svg",
+        "assets/img/digital-mobile.svg"
       ]
     },
     {
-      "id": "proj-5",
+      "id": "artwork-automation",
       "title": "Packaging Artwork Automation",
       "category": "Artwork",
-      "description": "Streamlined artwork process using structured templates, QC checks and production-ready thinking.",
+      "description": "A structured artwork process using templates, controlled checks and production-ready workflows to reduce errors and speed up delivery.",
       "images": [
-        "https://placehold.co/800x600/1a1a1a/ffffff?text=Dieline+Setup",
-        "https://placehold.co/800x600/2a2a2a/ffffff?text=Print+Ready+Sheet"
+        "assets/img/artwork-hero.svg",
+        "assets/img/artwork-checklist.svg"
       ]
     },
     {
-      "id": "proj-6",
+      "id": "product-visualisation",
       "title": "Product Visualisation Project",
       "category": "Product",
-      "description": "Product design and visualisation using 3D workflows and polished presentation assets.",
+      "description": "Product design and visualisation using 3D workflows and refined presentation assets for stakeholder buy-in.",
       "images": [
-        "https://placehold.co/800x600/1a1a1a/ffffff?text=3D+Render+1",
-        "https://placehold.co/800x600/2a2a2a/ffffff?text=3D+Render+2"
+        "assets/img/product-hero.svg",
+        "assets/img/product-render.svg"
       ]
     }
   ],
   "contact": {
-    "email": "hello@collinamner.com",
-    "phone": "+44 (0) 7000 000000",
-    "ctaText": "Ready to elevate your brand's physical and digital presence? Let's talk."
+    "email": "collin.amner@gmail.com",
+    "phone": "",
+    "ctaText": "I’m interested in roles where strong design, accurate artwork and brand consistency matter. Send me a message and I’ll be happy to share more work, discuss the brief or talk through relevant experience."
   },
   "socials": [
     { "platform": "LinkedIn", "url": "#" },
-    { "platform": "Dribbble", "url": "#" }
+    { "platform": "Portfolio PDF", "url": "#" }
   ]
 };
