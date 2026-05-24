@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio Editor</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Content Notes</title>
+  <link rel="stylesheet" href="css/styles.css">
   <style>
-    body{padding:24px}.editor{width:min(100%,980px);margin:auto}.editor-card{background:#fff;border-radius:22px;padding:22px;margin:0 0 16px;box-shadow:var(--shadow)}
-    label{display:block;font-weight:800;margin:0 0 8px}input,textarea{width:100%;border:1px solid var(--line);border-radius:14px;padding:12px;font:inherit}textarea{min-height:100px}.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.editor-actions{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}.editor button{border:0;border-radius:999px;background:#111;color:#fff;padding:12px 16px;font-weight:800;cursor:pointer}.project-editor{border-top:1px solid var(--line);padding-top:18px;margin-top:18px}@media(max-width:700px){.editor-grid{grid-template-columns:1fr}}
+    .admin-page { width: min(100% - 28px, 900px); margin: 60px auto; }
+    .admin-page pre { overflow:auto; background:#fff; padding:18px; border-radius:14px; }
+    .admin-page li { margin-bottom: 10px; color: var(--muted); line-height: 1.5; }
   </style>
 </head>
 <body>
-  <main class="editor">
-    <h1>Portfolio Editor</h1>
-    <p>This is intentionally minimal. Edit work titles/images, then export <strong>content.js</strong> and replace <strong>js/content.js</strong>.</p>
-    <div class="editor-actions"><button id="save-draft">Save Draft</button><button id="export-content">Export content.js</button><a class="contact-button" href="index.html">View Site</a></div>
-    <form id="editor-form"></form>
+  <main class="admin-page">
+    <h1>Editing this portfolio</h1>
+    <p>Keep this site image-led. Replace the PNG files in <code>assets/projects/</code>, then update <code>js/content.js</code> if you change titles, categories or file paths.</p>
+    <ol>
+      <li>Put your PNGs into folders like <code>assets/projects/project-01/01.png</code>.</li>
+      <li>Use four strong images per project where possible.</li>
+      <li>Keep descriptions to one short sentence.</li>
+      <li>Do not add long CV copy to the homepage.</li>
+    </ol>
+    <pre>assets/projects/project-01/01.png
+assets/projects/project-01/02.png
+assets/projects/project-01/03.png
+assets/projects/project-01/04.png</pre>
   </main>
-  <script src="js/content.js"></script>
-  <script src="js/admin.js"></script>
 </body>
 </html>

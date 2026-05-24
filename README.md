@@ -1,26 +1,35 @@
-# Collin Amner Portfolio — Minimal Visual Version
+# Collin Amner Portfolio
 
-This version is intentionally tight and work-led.
+Minimal, project-led portfolio inspired by editorial archive layouts.
 
-## Files to replace in GitHub
+## Files to replace in your GitHub repo
 
-Replace these in your `portfolio` repo:
+Replace:
 
 - `index.html`
 - `admin.html`
 - `css/styles.css`
 - `js/content.js`
 - `js/main.js`
-- `js/admin.js`
-- the full `assets` folder
+- `assets/`
 
-## Important notes
+## PNG image setup
 
-- The email address is not shown as text on the website.
-- The contact buttons use a hidden `mailto:` link.
-- The homepage is designed to be short: hero, selected work, small about strip, footer.
-- Project images are controlled in `js/content.js`.
+Each project uses PNG images from folders like:
+
+```text
+assets/projects/project-01/01.png
+assets/projects/project-01/02.png
+assets/projects/project-01/03.png
+assets/projects/project-01/04.png
+```
+
+Replace those placeholder PNGs with your real work.
 
 ## Editing projects
 
-Open `admin.html` locally or on GitHub Pages, edit content, export `content.js`, then replace `js/content.js` in the repo.
+Open `js/content.js`.
+
+Change project titles, categories, descriptions and image paths there.
+
+Keep copy short. The portfolio is designed to showcase the images, not read like a CV.

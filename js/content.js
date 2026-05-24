@@ -1,53 +1,72 @@
 window.PORTFOLIO_CONTENT = {
-  contactHref: 'mailto:collin.amner@gmail.com',
-  hero: {
-    kicker: 'Senior Designer',
-    title: 'Branding.<br>Packaging.<br>Digital.',
-    line: 'Visual work for brands, packs and digital products.'
-  },
-  about: 'Commercial design with production discipline. Minimal fuss. Strong visuals. Work that looks good and can actually be made.',
+  about: "I create commercially focused visual design across brand identity, packaging, artwork, POS and digital. This site is kept deliberately minimal so the work stays centre stage.",
+  contactUrl: "mailto:collin.amner@gmail.com",
   projects: [
     {
-      title: 'HEDONIST',
-      category: 'Branding & Packaging',
-      description: 'Premium identity and packaging concept with a dark, confident shelf presence.',
-      thumbnail: 'assets/projects/hedonist.svg',
-      images: ['assets/projects/hedonist.svg', 'assets/projects/hedonist-detail.svg']
+      title: "HEDONIST",
+      type: "Branding & Packaging",
+      description: "Premium identity and packaging work with strong shelf presence.",
+      images: [
+        "assets/projects/project-01/01.png",
+        "assets/projects/project-01/02.png",
+        "assets/projects/project-01/03.png",
+        "assets/projects/project-01/04.png"
+      ]
     },
     {
-      title: 'TIB Supermarket',
-      category: 'Packaging System',
-      description: 'Fresh retail packaging concept designed for simple hierarchy and shelf impact.',
-      thumbnail: 'assets/projects/tib.svg',
-      images: ['assets/projects/tib.svg']
+      title: "TIB Supermarket",
+      type: "Packaging Design",
+      description: "Retail packaging system designed for clarity and visual impact.",
+      images: [
+        "assets/projects/project-02/01.png",
+        "assets/projects/project-02/02.png",
+        "assets/projects/project-02/03.png",
+        "assets/projects/project-02/04.png"
+      ]
     },
     {
-      title: 'C-LAB',
-      category: 'Health Packaging',
-      description: 'Minimal wellness packaging with clean colour, structure and typography.',
-      thumbnail: 'assets/projects/clab.svg',
-      images: ['assets/projects/clab.svg']
+      title: "C-LAB",
+      type: "Branding & Packaging",
+      description: "Clean wellness packaging with a calm, confident visual language.",
+      images: [
+        "assets/projects/project-03/01.png",
+        "assets/projects/project-03/02.png",
+        "assets/projects/project-03/03.png",
+        "assets/projects/project-03/04.png"
+      ]
     },
     {
-      title: 'Food Festival',
-      category: 'Print Design',
-      description: 'Editorial-led campaign and print layout with strong photographic hierarchy.',
-      thumbnail: 'assets/projects/festival.svg',
-      images: ['assets/projects/festival.svg']
+      title: "Thame Food Festival",
+      type: "Print Design",
+      description: "Editorial and campaign design with image-led storytelling.",
+      images: [
+        "assets/projects/project-04/01.png",
+        "assets/projects/project-04/02.png",
+        "assets/projects/project-04/03.png",
+        "assets/projects/project-04/04.png"
+      ]
     },
     {
-      title: 'Fintech UI',
-      category: 'Digital Design',
-      description: 'Dark-mode dashboard concept with focused data presentation and interface polish.',
-      thumbnail: 'assets/projects/fintech.svg',
-      images: ['assets/projects/fintech.svg']
+      title: "Fintech Dashboard",
+      type: "Digital / UI",
+      description: "Interface concept focused on hierarchy, polish and usability.",
+      images: [
+        "assets/projects/project-05/01.png",
+        "assets/projects/project-05/02.png",
+        "assets/projects/project-05/03.png",
+        "assets/projects/project-05/04.png"
+      ]
     },
     {
-      title: 'PURE',
-      category: 'Skincare Packaging',
-      description: 'Soft premium packaging concept using space, colour and restraint.',
-      thumbnail: 'assets/projects/pure.svg',
-      images: ['assets/projects/pure.svg']
+      title: "Pure Skincare",
+      type: "Packaging & Branding",
+      description: "Minimal packaging system with a soft premium feel.",
+      images: [
+        "assets/projects/project-06/01.png",
+        "assets/projects/project-06/02.png",
+        "assets/projects/project-06/03.png",
+        "assets/projects/project-06/04.png"
+      ]
     }
   ]
 };
