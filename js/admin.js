@@ -1,0 +1,189 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('admin-form');
+    let data = JSON.parse(JSON.stringify(window.PORTFOLIO_CONTENT)); // Clone default
+    
+    // Check local storage for drafts
+    const draft = localStorage.getItem('portfolioDraft');
+    if (draft) {
+        data = JSON.parse(draft);
+        console.log("Loaded draft from localStorage");
+    }
+
+    // --- Form Builder Helpers ---
+    function createInput(label, id, value, isTextarea = false) {
+        return `
+            <div class="form-group">
+                <label for="${id}">${label}</label>
+                ${isTextarea 
+                    ? `<textarea id="${id}" class="form-control" data-path="${id}">${value}</textarea>`
+                    : `<input type="text" id="${id}" class="form-control" data-path="${id}" value="${value}">`
+                }
+            </div>
+        `;
+    }
+
+    function renderForm() {
+        let html = `
+            <div class="admin-card" id="sec-hero">
+                <h2>Hero & Site Info</h2>
+                ${createInput('Site Title', 'site.title', data.site.title)}
+                ${createInput('Name', 'hero.name', data.hero.name)}
+                ${createInput('Role', 'hero.role', data.hero.role)}
+                ${createInput('Headline', 'hero.headline', data.hero.headline, true)}
+                ${createInput('Support Text', 'hero.supportText', data.hero.supportText, true)}
+            </div>
+
+            <div class="admin-card" id="sec-about">
+                <h2>About & Text Lists</h2>
+                ${createInput('About Text', 'about.text', data.about.text, true)}
+                ${createInput('Services (comma separated)', 'services', data.services.join(', '), true)}
+                ${createInput('Skills (comma separated)', 'skills', data.skills.join(', '), true)}
+            </div>
+            
+            <div class="admin-card" id="sec-projects">
+                <h2>Projects</h2>
+                <div id="projects-container">
+                    ${data.projects.map((p, i) => renderProjectEditor(p, i)).join('')}
+                </div>
+                <button type="button" id="btn-add-project" class="btn btn-secondary" style="margin-top:1rem;">+ Add Project</button>
+            </div>
+
+            <div class="admin-card" id="sec-contact">
+                <h2>Contact details</h2>
+                ${createInput('Email', 'contact.email', data.contact.email)}
+                ${createInput('Phone', 'contact.phone', data.contact.phone)}
+                ${createInput('Call to Action Text', 'contact.ctaText', data.contact.ctaText)}
+            </div>
+        `;
+        form.innerHTML = html;
+        attachEvents();
+    }
+
+    function renderProjectEditor(proj, index) {
+        return `
+            <div class="project-editor" data-index="${index}">
+                <h3>Project ${index + 1}</h3>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" class="form-control proj-field" data-field="title" value="${proj.title}">
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <input type="text" class="form-control proj-field" data-field="category" value="${proj.category}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control proj-field" data-field="description">${proj.description}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Images (one URL per line)</label>
+                    <textarea class="form-control proj-field" data-field="images" rows="3">${proj.images.join('\n')}</textarea>
+                </div>
+                <div class="project-actions">
+                    <button type="button" class="btn btn-sm btn-secondary btn-move-up" data-index="${index}">↑ Move Up</button>
+                    <button type="button" class="btn btn-sm btn-secondary btn-move-down" data-index="${index}">↓ Move Down</button>
+                    <button type="button" class="btn btn-sm btn-danger btn-remove-proj" data-index="${index}">✕ Remove</button>
+                </div>
+            </div>
+        `;
+    }
+
+    function attachEvents() {
+        // Handle input changes dynamically saving to 'data' object
+        document.querySelectorAll('[data-path]').forEach(input => {
+            input.addEventListener('change', (e) => {
+                const path = e.target.dataset.path.split('.');
+                if (path.length === 1) {
+                    if (path[0] === 'services' || path[0] === 'skills') {
+                        data[path[0]] = e.target.value.split(',').map(s => s.trim());
+                    } else {
+                        data[path[0]] = e.target.value;
+                    }
+                } else if (path.length === 2) {
+                    data[path[0]][path[1]] = e.target.value;
+                }
+            });
+        });
+
+        // Project fields
+        document.querySelectorAll('.proj-field').forEach(input => {
+            input.addEventListener('change', (e) => {
+                const index = e.target.closest('.project-editor').dataset.index;
+                const field = e.target.dataset.field;
+                if (field === 'images') {
+                    data.projects[index][field] = e.target.value.split('\n').map(s => s.trim()).filter(s => s);
+                } else {
+                    data.projects[index][field] = e.target.value;
+                }
+            });
+        });
+
+        // Add Project
+        document.getElementById('btn-add-project')?.addEventListener('click', () => {
+            data.projects.push({
+                id: `proj-${Date.now()}`,
+                title: "New Project", category: "Category", description: "", images: ["https://placehold.co/800x600/222/FFF?text=New+Image"]
+            });
+            renderForm();
+        });
+
+        // Remove Project
+        document.querySelectorAll('.btn-remove-proj').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const idx = parseInt(e.target.dataset.index);
+                if(confirm('Remove this project?')) {
+                    data.projects.splice(idx, 1);
+                    renderForm();
+                }
+            });
+        });
+
+        // Move Projects
+        document.querySelectorAll('.btn-move-up').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const idx = parseInt(e.target.dataset.index);
+                if (idx > 0) {
+                    [data.projects[idx-1], data.projects[idx]] = [data.projects[idx], data.projects[idx-1]];
+                    renderForm();
+                }
+            });
+        });
+        
+        document.querySelectorAll('.btn-move-down').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const idx = parseInt(e.target.dataset.index);
+                if (idx < data.projects.length - 1) {
+                    [data.projects[idx+1], data.projects[idx]] = [data.projects[idx], data.projects[idx+1]];
+                    renderForm();
+                }
+            });
+        });
+    }
+
+    renderForm();
+
+    // --- Save & Export ---
+    document.getElementById('btn-save-draft').addEventListener('click', () => {
+        localStorage.setItem('portfolioDraft', JSON.stringify(data));
+        alert('Draft saved locally in your browser.');
+    });
+
+    document.getElementById('btn-export').addEventListener('click', () => {
+        const fileContent = `window.PORTFOLIO_CONTENT = ${JSON.stringify(data, null, 2)};`;
+        const blob = new Blob([fileContent], { type: "text/javascript" });
+        const url = URL.createObjectURL(blob);
+        
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "content.js";
+        document.body.appendChild(a);
+        a.click();
+        
+        setTimeout(() => {
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }, 0);
+    });
+});
