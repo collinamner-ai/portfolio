@@ -1,109 +1,112 @@
 window.PORTFOLIO_CONTENT = {
   "site": {
-    "title": "Collin Amner | Senior Designer",
-    "description": "Senior Designer creating standout branding, packaging and digital experiences.",
+    "title": "Collin Amner | Senior Designer & Brand Lead",
+    "description": "Portfolio of Collin Amner. Translating brand strategy into high-impact packaging, digital, and physical experiences.",
     "url": "https://collinamner.github.io"
   },
   "hero": {
     "name": "Collin Amner",
-    "role": "Senior Designer – Branding, Packaging & Digital",
+    "role": "Senior Designer & Brand Lead",
     "location": "Aylesbury, UK",
-    "headline": "Senior Designer creating standout branding, packaging and digital experiences for retail, FMCG and ambitious brands.",
-    "supportText": "Over 20 years’ experience across brand identity, packaging design, print-ready artwork, POS, product development and digital design — combining creative thinking with production discipline."
+    "headline": "Translating brand strategy into high-impact packaging, digital, and retail experiences.",
+    "supportText": "With over two decades of experience bridging creative vision and production rigor, I lead end-to-end design initiatives for retail, FMCG, and ambitious global brands."
   },
   "stats": [
     { "value": "20+", "label": "Years Experience" },
-    { "value": "FMCG", "label": "Branding / Packaging" },
+    { "value": "07", "label": "Major UK Retailers" },
     { "value": "100%", "label": "Print & Production Ready" },
     { "value": "UK", "label": "Based / Hybrid Friendly" }
   ],
   "about": {
-    "title": "About Me",
-    "text": "I am a commercially minded Senior Designer with a passion for bringing brands to life physically and digitally. From conceptual brand systems to rigorous packaging artwork automation, I ensure design intent is maintained through to final production. I bridge the gap between creative vision and technical execution."
+    "title": "Profile",
+    "text": "I am a commercially minded Senior Designer and Brand Guardian. For over 20 years, I have navigated the intersection of brand identity, complex packaging automation, and digital product design. From conceptualizing brand systems for blue-chip tech partners (Oculus, Microsoft, Samsung) to engineering rigorous, print-ready packaging workflows for major UK retailers (John Lewis, Waitrose), I ensure absolute design integrity from the first sketch to the final production run."
   },
   "services": [
-    "Branding & Visual Identity",
-    "Packaging Design & Artwork",
-    "Point of Sale (POS)",
-    "Digital, Web & UI Design",
-    "Product Development & 3D Visualization",
-    "Creative Production & Brand Guardianship"
+    "Brand Identity & Governance",
+    "Packaging Design & Structural Concepting",
+    "High-Volume Artwork Automation",
+    "Point of Sale (POS) & Retail Experience",
+    "Digital, Web & UI/UX Design",
+    "Creative Production & Pre-press Rigor"
   ],
   "skills": [
-    "Adobe Creative Cloud", "Illustrator", "Photoshop", "InDesign", "Figma", 
-    "WordPress", "SolidWorks", "KeyShot", "Print-ready Production", "Dielines", "Project Management"
+    "Adobe Creative Suite (Illustrator, Photoshop, InDesign)", 
+    "Figma & UI Prototyping", 
+    "Large Format Print & Preflight", 
+    "Product Lifecycle Management",
+    "Design Accessibility Standards"
   ],
   "projects": [
     {
       "id": "proj-1",
-      "title": "Premium Food Packaging Range",
-      "category": "Packaging",
-      "description": "Brand-led packaging system for a premium retail food range.",
+      "title": "VR ProOptics",
+      "category": "Digital & Brand Identity",
+      "description": "Comprehensive visual identity, digital storefront, and UI/UX design for a pioneering virtual reality optics brand, targeting integrations with Oculus and HTC.",
       "images": [
-        "https://placehold.co/800x600/1a1a1a/ffffff?text=Packaging+Hero",
-        "https://placehold.co/800x600/2a2a2a/ffffff?text=Packaging+Detail+1",
-        "https://placehold.co/800x600/3a3a3a/ffffff?text=Packaging+Detail+2"
+        "https://placehold.co/1600x1200/111/EEE?text=VR+ProOptics+Identity",
+        "https://placehold.co/1600x1200/222/EEE?text=VR+ProOptics+UI",
+        "https://placehold.co/1600x1200/333/EEE?text=VR+ProOptics+App"
       ]
     },
     {
       "id": "proj-2",
-      "title": "FMCG Brand Refresh",
-      "category": "Branding",
-      "description": "Visual identity refresh across packaging, POS and digital touchpoints.",
+      "title": "Adlens Taskmaster",
+      "category": "Branding & POS",
+      "description": "End-to-end brand architecture, packaging, and retail point-of-sale systems for an innovative multi-zone lens technology. Included full brand guidelines and structural POS design.",
       "images": [
-        "https://placehold.co/800x600/1a1a1a/ffffff?text=Branding+Hero",
-        "https://placehold.co/800x600/2a2a2a/ffffff?text=Branding+Guidelines",
-        "https://placehold.co/800x600/3a3a3a/ffffff?text=Branding+Mockups"
+        "https://placehold.co/1600x1200/111/EEE?text=Taskmaster+POS",
+        "https://placehold.co/1600x1200/222/EEE?text=Taskmaster+Packaging",
+        "https://placehold.co/1600x1200/333/EEE?text=Taskmaster+Guidelines"
       ]
     },
     {
       "id": "proj-3",
-      "title": "Retail POS Campaign",
-      "category": "POS",
-      "description": "Shopper-focused point-of-sale campaign with scalable artwork assets.",
+      "title": "Gear4 x Angry Birds",
+      "category": "Packaging Development",
+      "description": "Structural packaging development and global retail execution for officially licensed audio products, bridging entertainment IP with consumer electronics.",
       "images": [
-        "https://placehold.co/800x600/1a1a1a/ffffff?text=POS+Display",
-        "https://placehold.co/800x600/2a2a2a/ffffff?text=In-Store+Mockup"
+        "https://placehold.co/1600x1200/111/EEE?text=Gear4+Angry+Birds+Box",
+        "https://placehold.co/1600x1200/222/EEE?text=Gear4+Product+Render"
       ]
     },
     {
       "id": "proj-4",
-      "title": "Digital Product UI Concept",
-      "category": "Digital",
-      "description": "Clean interface concept for a product-led digital experience.",
+      "title": "UZOOM Eyewear",
+      "category": "Packaging & Rollout",
+      "description": "Vibrant, consumer-focused packaging and brand rollout for screen-protection and precision reading eyewear lines, designed for high-impact retail presence.",
       "images": [
-        "https://placehold.co/800x600/1a1a1a/ffffff?text=UI+Dashboard",
-        "https://placehold.co/800x600/2a2a2a/ffffff?text=Mobile+App"
+        "https://placehold.co/1600x1200/111/EEE?text=UZOOM+Packaging",
+        "https://placehold.co/1600x1200/222/EEE?text=UZOOM+Brand+Assets"
       ]
     },
     {
       "id": "proj-5",
-      "title": "Packaging Artwork Automation",
-      "category": "Artwork",
-      "description": "Streamlined artwork process using structured templates, QC checks and production-ready thinking.",
+      "title": "Goji x Tinchy Stryder",
+      "category": "Product Branding",
+      "description": "Premium packaging and brand identity development for the Cloud 9 audio hardware collaboration, delivering a sleek, culturally relevant aesthetic.",
       "images": [
-        "https://placehold.co/800x600/1a1a1a/ffffff?text=Dieline+Setup",
-        "https://placehold.co/800x600/2a2a2a/ffffff?text=Print+Ready+Sheet"
+        "https://placehold.co/1600x1200/111/EEE?text=Goji+Cloud+9+Packaging",
+        "https://placehold.co/1600x1200/222/EEE?text=Goji+Headphones"
       ]
     },
     {
       "id": "proj-6",
-      "title": "Product Visualisation Project",
-      "category": "Product",
-      "description": "Product design and visualisation using 3D workflows and polished presentation assets.",
+      "title": "Major Retail Automation",
+      "category": "Packaging Artwork",
+      "description": "High-volume, print-ready packaging design and automation workflows for major UK retailers including Waitrose, John Lewis, and Kingfisher, ensuring absolute brand consistency at scale.",
       "images": [
-        "https://placehold.co/800x600/1a1a1a/ffffff?text=3D+Render+1",
-        "https://placehold.co/800x600/2a2a2a/ffffff?text=3D+Render+2"
+        "https://placehold.co/1600x1200/111/EEE?text=Waitrose+Packaging+System",
+        "https://placehold.co/1600x1200/222/EEE?text=John+Lewis+Dielines"
       ]
     }
   ],
   "contact": {
-    "email": "hello@collinamner.com",
-    "phone": "+44 (0) 7000 000000",
-    "ctaText": "Ready to elevate your brand's physical and digital presence? Let's talk."
+    "email": "collin.amner@gmail.com",
+    "phone": "+44 (0) 7917 644 092",
+    "ctaText": "Currently open to new leadership roles and freelance collaborations. Let's build something exceptional."
   },
   "socials": [
     { "platform": "LinkedIn", "url": "#" },
-    { "platform": "Dribbble", "url": "#" }
+    { "platform": "Email", "url": "mailto:collin.amner@gmail.com" }
   ]
 };
