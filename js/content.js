@@ -127,7 +127,7 @@ window.PORTFOLIO_CONTENT = {
     }
   ],
   "contact": {
-    "email": "collin.amner@gmail.com",
+    "email": "xxxxxx@gmail.com",
     "phone": "",
     "ctaText": "I’m interested in roles where strong design, accurate artwork and brand consistency matter. Send me a message and I’ll be happy to share more work, discuss the brief or talk through relevant experience."
   },
