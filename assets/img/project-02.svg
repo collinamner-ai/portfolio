@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Product Study">
-<defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f4f6f8"/><stop offset="1" stop-color="#a9b4c0"/></linearGradient></defs>
-<rect width="1200" height="800" fill="url(#g)"/>
-<rect x="60" y="60" width="1080" height="680" fill="none" stroke="#0a1b2d" stroke-width="6" opacity=".45"/>
-<rect x="240" y="250" width="260" height="330" fill="#ffffff" opacity=".8"/><circle cx="700" cy="430" r="150" fill="#10263c" opacity=".3"/><rect x="670" y="220" width="55" height="300" fill="#0a1b2d" opacity=".55"/>
-<text x="80" y="720" font-family="Arial, sans-serif" font-size="54" font-weight="700" fill="#0a1b2d">Product Study</text>
-</svg>
