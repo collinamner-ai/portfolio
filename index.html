@@ -352,6 +352,84 @@
       color: var(--muted);
     }
 
+    .pdf-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(0, 0, 0, 0.86);
+      backdrop-filter: blur(12px);
+    }
+
+    .pdf-lightbox.is-open {
+      display: flex;
+    }
+
+    .pdf-panel {
+      width: min(1100px, 100%);
+      height: min(820px, calc(100vh - 48px));
+      display: grid;
+      grid-template-rows: auto 1fr;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      background: #0b0d11;
+      box-shadow: var(--shadow);
+    }
+
+    .pdf-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,0.055);
+    }
+
+    .pdf-toolbar strong {
+      letter-spacing: -0.03em;
+    }
+
+    .pdf-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .pdf-link,
+    .pdf-close {
+      min-height: 40px;
+      padding: 0 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .pdf-close:hover,
+    .pdf-close:focus-visible,
+    .pdf-link:hover,
+    .pdf-link:focus-visible {
+      background: rgba(255,255,255,0.14);
+      outline: none;
+    }
+
+    .pdf-panel iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #ffffff;
+    }
+
     footer {
       width: min(1120px, calc(100% - 40px));
       margin: 0 auto;
@@ -437,7 +515,7 @@
           <span class="eyebrow">Artwork / Marketing / Digital / Branding</span>
           <h1 id="intro-title">Senior Graphic Designer <br />&amp; Brand Lead</h1>
           <div class="actions">
-            <a class="btn download" href="assets/collinamner_portfolio.pdf" download>Download portfolio</a>
+            <button class="btn download" type="button" id="openPortfolioPdf">View portfolio</button>
           </div>
         </div>
 
@@ -470,12 +548,12 @@
         <div class="skills-grid" aria-label="Skills list">
           <span class="skill-tag">Graphic design / Artworking</span>
           <span class="skill-tag">Packaging / POS design</span>
-          <span class="skill-tag">Large print / Preflight</span>
+          <span class="skill-tag">Large print / Preflight knowledge</span>
           <span class="skill-tag">Digital design</span>
-          <span class="skill-tag">UI design</span>
-          <span class="skill-tag">Campaign assets</span>
-          <span class="skill-tag">Presentation design</span>
+          <span class="skill-tag">UI concepts</span>
+          <span class="skill-tag">Campaign Assets</span>
           <span class="skill-tag">Adobe Creative Cloud</span>
+          <span class="skill-tag">Presentation design</span>
         </div>
       </section>
 
@@ -542,5 +620,52 @@
       <span>Intro · About Me · Skills · Experience</span>
     </footer>
   </div>
+  <div class="pdf-lightbox" id="pdfLightbox" role="dialog" aria-modal="true" aria-label="Portfolio PDF viewer" aria-hidden="true">
+    <div class="pdf-panel">
+      <div class="pdf-toolbar">
+        <strong>Collin Amner Portfolio</strong>
+        <div class="pdf-actions">
+          <a class="pdf-link" href="assets/collinamner_portfolio.pdf" target="_blank" rel="noopener">Open in new tab</a>
+          <button class="pdf-close" type="button" id="closePortfolioPdf">Close</button>
+        </div>
+      </div>
+      <iframe src="assets/collinamner_portfolio.pdf" title="Collin Amner portfolio PDF"></iframe>
+    </div>
+  </div>
+
+  <script>
+    const openPortfolioPdf = document.getElementById('openPortfolioPdf');
+    const closePortfolioPdf = document.getElementById('closePortfolioPdf');
+    const pdfLightbox = document.getElementById('pdfLightbox');
+
+    function openPdfViewer() {
+      pdfLightbox.classList.add('is-open');
+      pdfLightbox.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('no-scroll');
+      closePortfolioPdf.focus();
+    }
+
+    function closePdfViewer() {
+      pdfLightbox.classList.remove('is-open');
+      pdfLightbox.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('no-scroll');
+      openPortfolioPdf.focus();
+    }
+
+    openPortfolioPdf.addEventListener('click', openPdfViewer);
+    closePortfolioPdf.addEventListener('click', closePdfViewer);
+
+    pdfLightbox.addEventListener('click', (event) => {
+      if (event.target === pdfLightbox) {
+        closePdfViewer();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && pdfLightbox.classList.contains('is-open')) {
+        closePdfViewer();
+      }
+    });
+  </script>
 </body>
 </html>
