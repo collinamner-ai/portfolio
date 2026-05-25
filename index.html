@@ -1,89 +1,781 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Justin Lee - Product Designer</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Your Name</title>
+  <style>
+    :root {
+      --bg: #07090d;
+      --panel: rgba(18, 22, 29, 0.76);
+      --panel-light: rgba(255, 255, 255, 0.06);
+      --text: #f4f7fb;
+      --muted: #a6afbd;
+      --line: rgba(255, 255, 255, 0.12);
+      --accent: #dfe8f4;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body.no-scroll {
+      overflow: hidden;
+    }
+
+    a,
+    button {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      cursor: pointer;
+      border: 0;
+    }
+
+    .page {
+      position: relative;
+      min-height: 100vh;
+      isolation: isolate;
+    }
+
+    .low-poly-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      background:
+        radial-gradient(circle at 75% 12%, rgba(228, 238, 250, 0.22), transparent 18%),
+        radial-gradient(circle at 18% 26%, rgba(144, 156, 168, 0.18), transparent 20%),
+        linear-gradient(135deg, #07080b 0%, #151921 48%, #050609 100%);
+    }
+
+    .low-poly-bg::before,
+    .low-poly-bg::after {
+      content: "";
+      position: absolute;
+      inset: -10%;
+      background-repeat: no-repeat;
+      opacity: 0.92;
+      filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.55));
+    }
+
+    .low-poly-bg::before {
+      background-image:
+        linear-gradient(139deg, transparent 0 48%, rgba(255,255,255,0.18) 49% 51%, transparent 52%),
+        linear-gradient(31deg, transparent 0 50%, rgba(0,0,0,0.45) 51%),
+        linear-gradient(118deg, #2a3038 0 48%, transparent 49%),
+        linear-gradient(25deg, transparent 0 40%, #11161d 41% 70%, transparent 71%),
+        linear-gradient(152deg, transparent 0 42%, #3a424d 43% 62%, transparent 63%),
+        linear-gradient(71deg, transparent 0 45%, #0d1117 46% 72%, transparent 73%),
+        linear-gradient(105deg, transparent 0 35%, #242a33 36% 58%, transparent 59%),
+        linear-gradient(165deg, transparent 0 50%, #06070a 51% 75%, transparent 76%);
+      background-size: 360px 220px, 430px 300px, 520px 340px, 470px 310px, 560px 320px, 390px 280px, 440px 300px, 520px 360px;
+      background-position: 8% 7%, 46% 0%, 72% 4%, 5% 42%, 48% 36%, 83% 38%, 20% 78%, 64% 74%;
+    }
+
+    .low-poly-bg::after {
+      opacity: 0.7;
+      background-image:
+        linear-gradient(43deg, transparent 0 42%, rgba(226, 236, 248, 0.55) 43% 52%, transparent 53%),
+        linear-gradient(134deg, transparent 0 45%, rgba(143, 154, 166, 0.34) 46% 61%, transparent 62%),
+        linear-gradient(18deg, transparent 0 44%, rgba(255, 255, 255, 0.12) 45% 57%, transparent 58%),
+        linear-gradient(104deg, transparent 0 35%, rgba(0, 0, 0, 0.45) 36% 70%, transparent 71%);
+      background-size: 380px 260px, 500px 300px, 420px 300px, 540px 360px;
+      background-position: 2% 18%, 71% 18%, 85% 72%, 32% 52%;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      background: rgba(7, 9, 13, 0.72);
+      backdrop-filter: blur(18px);
+    }
+
+    .header-inner {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 22px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #f6fbff, #7e8792 48%, #151a22 49%);
+      clip-path: polygon(50% 0, 100% 32%, 78% 100%, 21% 100%, 0 32%);
+      box-shadow: 0 10px 30px rgba(255,255,255,0.15);
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    nav a {
+      padding: 8px 0;
+      transition: color 180ms ease;
+    }
+
+    nav a:hover,
+    nav a:focus-visible {
+      color: var(--text);
+      outline: none;
+    }
+
+    section {
+      scroll-margin-top: 96px;
+      padding: 76px 0;
+    }
+
+    .intro {
+      min-height: calc(100vh - 81px);
+      display: flex;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.84rem;
+      margin-bottom: 24px;
+      backdrop-filter: blur(14px);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #e8eef6;
+      box-shadow: 0 0 18px rgba(232,238,246,0.8);
+    }
+
+    h1 {
+      font-size: clamp(3.2rem, 8vw, 6.6rem);
+      line-height: 0.92;
+      letter-spacing: -0.08em;
+      max-width: 900px;
+    }
+
+    .intro p {
+      margin-top: 26px;
+      max-width: 640px;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.8vw, 1.22rem);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 36px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      font-weight: 700;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .btn.primary {
+      color: #080a0f;
+      background: linear-gradient(135deg, #ffffff, #aeb8c3);
+      border-color: rgba(255,255,255,0.65);
+    }
+
+    .btn.secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(14px);
+    }
+
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 30px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1;
+      letter-spacing: -0.06em;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 470px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+
+    .panel {
+      padding: 30px;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.055);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 55px rgba(0,0,0,0.23);
+    }
+
+    .panel p {
+      color: var(--muted);
+    }
+
+    .quick-facts {
+      display: grid;
+      gap: 14px;
+    }
+
+    .quick-facts div {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .quick-facts div:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .quick-facts span {
+      color: var(--muted);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .gallery-item {
+      position: relative;
+      display: block;
+      aspect-ratio: 4 / 3;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      box-shadow: 0 18px 55px rgba(0,0,0,0.28);
+    }
+
+    .gallery-item img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 300ms ease, opacity 300ms ease;
+    }
+
+    .gallery-item:hover img,
+    .gallery-item:focus-within img {
+      transform: scale(1.05);
+      opacity: 0.8;
+    }
+
+    .gallery-open {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: end start;
+      width: 100%;
+      height: 100%;
+      padding: 16px;
+      color: var(--text);
+      text-align: left;
+      background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.72));
+    }
+
+    .gallery-open span {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,0.42);
+      backdrop-filter: blur(10px);
+      font-size: 0.84rem;
+      color: var(--accent);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .skill-tag {
+      padding: 15px 16px;
+      border-radius: 16px;
+      background: var(--panel-light);
+      color: var(--accent);
+      border: 1px solid var(--line);
+      font-weight: 650;
+      font-size: 0.95rem;
+    }
+
+    .experience-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .experience-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 24px;
+      padding: 26px;
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.055);
+      backdrop-filter: blur(18px);
+    }
+
+    .experience-item time {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .experience-item h3 {
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 7px;
+    }
+
+    .experience-item p {
+      color: var(--muted);
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(0, 0, 0, 0.86);
+      backdrop-filter: blur(12px);
+    }
+
+    .lightbox.is-open {
+      display: flex;
+    }
+
+    .lightbox-panel {
+      width: min(1100px, 100%);
+      max-height: calc(100vh - 48px);
+      display: grid;
+      gap: 16px;
+    }
+
+    .lightbox-image-wrap {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #050608;
+      box-shadow: var(--shadow);
+    }
+
+    .lightbox img {
+      display: block;
+      width: 100%;
+      max-height: calc(100vh - 170px);
+      object-fit: contain;
+    }
+
+    .lightbox-caption {
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .lightbox-controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .icon-btn {
+      min-width: 48px;
+      min-height: 48px;
+      padding: 0 15px;
+      border-radius: 14px;
+      color: var(--text);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      font-weight: 800;
+      transition: transform 180ms ease, background 180ms ease;
+    }
+
+    .icon-btn:hover,
+    .icon-btn:focus-visible {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.14);
+      outline: none;
+    }
+
+    footer {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 0 0 34px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .intro {
+        min-height: auto;
+        padding-top: 56px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .experience-item {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      nav {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 4px;
+      }
+
+
+      .section-title,
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .gallery-grid,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="page">
+    <div class="low-poly-bg" aria-hidden="true"></div>
 
-    <nav class="navbar">
-        <div class="logo">
-            <span class="logo-mark">J</span>
-        </div>
-        <div class="nav-links">
-            <a href="#portfolio">PORTFOLIO</a>
-            <a href="#about">ABOUT</a>
-        </div>
-    </nav>
-
-    <header class="hero" id="about">
-        <div class="hero-content">
-            <h1>Hello, I'm Justin Lee.<br>Product Designer & Art Director.</h1>
-            <p>I believe in designing thoughtful, elegant digital experiences.</p>
-            
-            <div class="cta-group">
-                <a href="assets/portfolio.pdf" download class="btn primary-btn">
-                    DOWNLOAD PORTFOLIO PDF <i class="fa-solid fa-download"></i>
-                </a>
-                <a href="#portfolio" class="text-link">View on-screen version</a>
-            </div>
-        </div>
-        <div class="hero-image">
-            <img src="assets/profile.jpg" alt="Justin Lee Profile">
-        </div>
+    <header>
+      <div class="header-inner">
+        <a href="#intro" class="logo" aria-label="Portfolio home">
+          <span class="logo-mark" aria-hidden="true"></span>
+          <span>Your Name</span>
+        </a>
+        <nav aria-label="Main navigation">
+          <a href="#intro">Intro</a>
+          <a href="#about">About Me</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+        </nav>
+      </div>
     </header>
 
-    <hr class="divider">
+    <main>
+      <section id="intro" class="intro wrap" aria-labelledby="intro-title">
+        <div>
+          <span class="eyebrow">Portfolio / Design / Digital</span>
+          <h1 id="intro-title">Sharp ideas. Clean execution.</h1>
+          <p>
+            I create bold, considered design work across branding, packaging, digital, and visual systems — bringing clarity, craft, and polish to every project.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="#gallery">View gallery</a>
+            <a class="btn secondary" href="#about">About me</a>
+          </div>
+        </div>
+      </section>
 
-    <section class="details-section">
-        
-        <div class="skills-col">
-            <h3 class="section-title">CORE COMPETENCIES</h3>
-            <ul class="skills-list">
-                <li><span class="bullet"></span> UI/UX Design</li>
-                <li><span class="bullet"></span> Product Design</li>
-                <li><span class="bullet"></span> Art Direction</li>
-                <li><span class="bullet"></span> Design Systems</li>
-                <li><span class="bullet"></span> Motion Graphics</li>
-                <li><span class="bullet"></span> Prototyping</li>
-            </ul>
+      <section id="about" class="wrap" aria-labelledby="about-title">
+        <div class="section-title">
+          <h2 id="about-title">About Me</h2>
+          <p>A concise introduction to who you are, how you work, and the value you bring to creative projects.</p>
         </div>
 
-        <div class="experience-col">
-            <h3 class="section-title">TRUSTED BY</h3>
-            <div class="logo-grid">
-                <div class="client-logo">Client 1</div>
-                <div class="client-logo">Client 2</div>
-                <div class="client-logo">Client 3</div>
-                <div class="client-logo">Client 4</div>
-                <div class="client-logo">Client 5</div>
-                <div class="client-logo">Client 6</div>
+        <div class="about-grid">
+          <div class="panel">
+            <p>
+              I am a multidisciplinary designer with a practical, detail-focused approach. My work combines strong creative thinking with reliable production knowledge, helping brands move from rough idea to finished execution.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" class="wrap" aria-labelledby="gallery-title">
+        <div class="section-title">
+          <h2 id="gallery-title">Gallery</h2>
+          <p>A simple image grid. Click any image to open it in the lightbox.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <article class="gallery-item">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 675'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23f4f7fb'/%3E%3Cstop offset='.45' stop-color='%237d8794'/%3E%3Cstop offset='1' stop-color='%23080a0f'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='900' height='675' fill='%23080a0f'/%3E%3Cpolygon points='0,0 420,0 180,300' fill='%232c333d'/%3E%3Cpolygon points='420,0 900,0 620,240' fill='%23121820'/%3E%3Cpolygon points='180,300 620,240 420,675' fill='url(%23g)'/%3E%3Cpolygon points='0,675 180,300 420,675' fill='%23171d25'/%3E%3Cpolygon points='620,240 900,675 420,675' fill='%23252c35'/%3E%3Ctext x='48' y='602' fill='white' font-family='Arial' font-size='46' font-weight='700'%3EProject 01%3C/text%3E%3C/svg%3E" alt="Project 01 placeholder artwork" />
+            <button class="gallery-open" type="button" data-index="0" aria-label="Open Project 01 in lightbox"><span>Open image</span></button>
+          </article>
+
+          <article class="gallery-item">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 675'%3E%3Crect width='900' height='675' fill='%23090b10'/%3E%3Cpolygon points='0,0 300,0 80,675' fill='%23192029'/%3E%3Cpolygon points='300,0 900,0 540,360' fill='%23303945'/%3E%3Cpolygon points='80,675 540,360 900,675' fill='%2310161f'/%3E%3Cpolygon points='300,0 540,360 80,675' fill='%23b8c3cf'/%3E%3Cpolygon points='540,360 900,0 900,675' fill='%23262d36'/%3E%3Ctext x='48' y='602' fill='white' font-family='Arial' font-size='46' font-weight='700'%3EProject 02%3C/text%3E%3C/svg%3E" alt="Project 02 placeholder artwork" />
+            <button class="gallery-open" type="button" data-index="1" aria-label="Open Project 02 in lightbox"><span>Open image</span></button>
+          </article>
+
+          <article class="gallery-item">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 675'%3E%3Crect width='900' height='675' fill='%23070a0f'/%3E%3Cpolygon points='0,0 900,0 720,220' fill='%232d3540'/%3E%3Cpolygon points='0,0 310,370 0,675' fill='%2311161e'/%3E%3Cpolygon points='310,370 720,220 900,675' fill='%236f7b88'/%3E%3Cpolygon points='0,675 310,370 900,675' fill='%23222933'/%3E%3Cpolygon points='310,370 900,0 720,220' fill='%23e8eef6'/%3E%3Ctext x='48' y='602' fill='white' font-family='Arial' font-size='46' font-weight='700'%3EProject 03%3C/text%3E%3C/svg%3E" alt="Project 03 placeholder artwork" />
+            <button class="gallery-open" type="button" data-index="2" aria-label="Open Project 03 in lightbox"><span>Open image</span></button>
+          </article>
+
+          <article class="gallery-item">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 675'%3E%3Crect width='900' height='675' fill='%23080a0d'/%3E%3Cpolygon points='0,0 460,0 210,675' fill='%23232a34'/%3E%3Cpolygon points='460,0 900,0 900,310' fill='%2312161d'/%3E%3Cpolygon points='210,675 460,0 600,420' fill='%23cbd4df'/%3E%3Cpolygon points='600,420 900,310 900,675' fill='%232c3440'/%3E%3Cpolygon points='210,675 600,420 900,675' fill='%2310161d'/%3E%3Ctext x='48' y='602' fill='white' font-family='Arial' font-size='46' font-weight='700'%3EProject 04%3C/text%3E%3C/svg%3E" alt="Project 04 placeholder artwork" />
+            <button class="gallery-open" type="button" data-index="3" aria-label="Open Project 04 in lightbox"><span>Open image</span></button>
+          </article>
+
+          <article class="gallery-item">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 675'%3E%3Crect width='900' height='675' fill='%23070a10'/%3E%3Cpolygon points='0,100 250,0 470,260' fill='%23323b47'/%3E%3Cpolygon points='250,0 900,0 470,260' fill='%23111720'/%3E%3Cpolygon points='0,100 470,260 0,675' fill='%23aeb8c3'/%3E%3Cpolygon points='470,260 900,0 900,675' fill='%23242b35'/%3E%3Cpolygon points='0,675 470,260 900,675' fill='%2311171f'/%3E%3Ctext x='48' y='602' fill='white' font-family='Arial' font-size='46' font-weight='700'%3EProject 05%3C/text%3E%3C/svg%3E" alt="Project 05 placeholder artwork" />
+            <button class="gallery-open" type="button" data-index="4" aria-label="Open Project 05 in lightbox"><span>Open image</span></button>
+          </article>
+
+          <article class="gallery-item">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 675'%3E%3Crect width='900' height='675' fill='%23090b0f'/%3E%3Cpolygon points='0,0 900,0 450,250' fill='%23272f39'/%3E%3Cpolygon points='0,0 450,250 220,675' fill='%23121921'/%3E%3Cpolygon points='450,250 900,0 900,675' fill='%2388929f'/%3E%3Cpolygon points='220,675 450,250 900,675' fill='%23182029'/%3E%3Cpolygon points='260,80 450,250 120,270' fill='%23f5f8fb'/%3E%3Ctext x='48' y='602' fill='white' font-family='Arial' font-size='46' font-weight='700'%3EProject 06%3C/text%3E%3C/svg%3E" alt="Project 06 placeholder artwork" />
+            <button class="gallery-open" type="button" data-index="5" aria-label="Open Project 06 in lightbox"><span>Open image</span></button>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" class="wrap" aria-labelledby="skills-title">
+        <div class="section-title">
+          <h2 id="skills-title">Skills</h2>
+          <p>Core capabilities that can be adjusted to match your real portfolio and CV.</p>
+        </div>
+
+        <div class="skills-grid" aria-label="Skills list">
+          <span class="skill-tag">Brand Identity</span>
+          <span class="skill-tag">Packaging Design</span>
+          <span class="skill-tag">Artwork</span>
+          <span class="skill-tag">Digital Design</span>
+          <span class="skill-tag">UI Concepts</span>
+          <span class="skill-tag">Campaign Assets</span>
+          <span class="skill-tag">Adobe Creative Cloud</span>
+          <span class="skill-tag">Figma</span>
+        </div>
+      </section>
+
+      <section id="experience" class="wrap" aria-labelledby="experience-title">
+        <div class="section-title">
+          <h2 id="experience-title">Experience</h2>
+          <p>A flexible timeline for senior roles, freelance work, projects, or career highlights.</p>
+        </div>
+
+        <div class="experience-list">
+          <article class="experience-item">
+            <time>2020 — Now</time>
+            <div>
+              <h3>Senior Designer</h3>
+              <p>Branding, packaging, digital assets, production artwork, and creative systems for multi-channel projects.</p>
             </div>
+          </article>
+
+          <article class="experience-item">
+            <time>2014 — 2020</time>
+            <div>
+              <h3>Branding & Packaging Lead</h3>
+              <p>Led visual design development from concept through to print-ready delivery, maintaining consistency across product ranges.</p>
+            </div>
+          </article>
+
+          <article class="experience-item">
+            <time>2004 — 2014</time>
+            <div>
+              <h3>Graphic Designer / Artworker</h3>
+              <p>Built a strong foundation in layout, typography, retouching, packaging artwork, and production detail.</p>
+            </div>
+          </article>
+
+          <article class="experience-item">
+            <time>Earlier</time>
+            <div>
+              <h3>Additional Creative Experience</h3>
+              <p>Add another role, freelance period, project highlight, or career milestone here.</p>
+            </div>
+          </article>
         </div>
-
-    </section>
-
-    <section class="bottom-cta">
-        <a href="assets/portfolio.pdf" download class="btn primary-btn">
-            DOWNLOAD MY CV / PORTFOLIO (PDF)
-        </a>
-    </section>
+      </section>
+    </main>
 
     <footer>
-        <div class="footer-content">
-            <span class="footer-logo">J</span>
-            <p>Justin Lee © 2026</p>
-            <div class="social-links">
-                <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-        </div>
+      <span>© 2026 Your Name. All rights reserved.</span>
+      <span>Intro · About Me · Gallery · Skills · Experience</span>
     </footer>
+  </div>
 
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image lightbox" aria-hidden="true">
+    <div class="lightbox-panel">
+      <div class="lightbox-image-wrap">
+        <img id="lightboxImage" src="" alt="" />
+      </div>
+      <p class="lightbox-caption" id="lightboxCaption">Gallery image</p>
+      <div class="lightbox-controls" aria-label="Lightbox controls">
+        <button class="icon-btn" type="button" id="prevImage" aria-label="Previous image">Previous</button>
+        <button class="icon-btn" type="button" id="closeLightbox" aria-label="Close lightbox">Close</button>
+        <button class="icon-btn" type="button" id="nextImage" aria-label="Next image">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const galleryImages = Array.from(document.querySelectorAll('.gallery-item img'));
+    const galleryButtons = Array.from(document.querySelectorAll('.gallery-open'));
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const closeLightboxButton = document.getElementById('closeLightbox');
+    const previousButton = document.getElementById('prevImage');
+    const nextButton = document.getElementById('nextImage');
+    let currentImageIndex = 0;
+
+    function showImage(index) {
+      currentImageIndex = (index + galleryImages.length) % galleryImages.length;
+      const selectedImage = galleryImages[currentImageIndex];
+      lightboxImage.src = selectedImage.src;
+      lightboxImage.alt = selectedImage.alt;
+      lightboxCaption.textContent = selectedImage.alt;
+    }
+
+    function openLightbox(index) {
+      showImage(index);
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('no-scroll');
+      closeLightboxButton.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('no-scroll');
+    }
+
+    galleryButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        openLightbox(Number(button.dataset.index));
+      });
+    });
+
+    previousButton.addEventListener('click', () => showImage(currentImageIndex - 1));
+    nextButton.addEventListener('click', () => showImage(currentImageIndex + 1));
+    closeLightboxButton.addEventListener('click', closeLightbox);
+
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (!lightbox.classList.contains('is-open')) return;
+
+      if (event.key === 'Escape') {
+        closeLightbox();
+      }
+
+      if (event.key === 'ArrowLeft') {
+        showImage(currentImageIndex - 1);
+      }
+
+      if (event.key === 'ArrowRight') {
+        showImage(currentImageIndex + 1);
+      }
+    });
+  </script>
 </body>
 </html>
