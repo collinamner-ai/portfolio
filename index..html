@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Collin Amner</title>
+  <style>
+    :root {
+      --bg: #07090d;
+      --panel: rgba(18, 22, 29, 0.76);
+      --panel-light: rgba(255, 255, 255, 0.06);
+      --text: #f4f7fb;
+      --muted: #a6afbd;
+      --line: rgba(255, 255, 255, 0.12);
+      --accent: #dfe8f4;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body.no-scroll {
+      overflow: hidden;
+    }
+
+    a,
+    button {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      cursor: pointer;
+      border: 0;
+    }
+
+    .page {
+      position: relative;
+      min-height: 100vh;
+      isolation: isolate;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      background: rgba(7, 9, 13, 0.72);
+      backdrop-filter: blur(18px);
+    }
+
+    .header-inner {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 22px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    nav a {
+      padding: 8px 0;
+      transition: color 180ms ease;
+    }
+
+    nav a:hover,
+    nav a:focus-visible {
+      color: var(--text);
+      outline: none;
+    }
+
+    section {
+      scroll-margin-top: 96px;
+      padding: 48px 0;
+    }
+
+    main section:not(:first-child) {
+      border-top: 1px solid rgba(220, 226, 235, 0.16);
+    }
+
+    .intro {
+      min-height: auto;
+      padding: 70px 0 50px;
+      display: flex;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.84rem;
+      margin-bottom: 24px;
+      backdrop-filter: blur(14px);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #e8eef6;
+      box-shadow: 0 0 18px rgba(232,238,246,0.8);
+    }
+
+    h1 {
+      font-size: clamp(3.2rem, 8vw, 6.6rem);
+      line-height: 0.92;
+      letter-spacing: -0.08em;
+      max-width: 900px;
+    }
+
+    .intro p {
+      margin-top: 26px;
+      max-width: 640px;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.8vw, 1.22rem);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 36px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      font-weight: 700;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .btn.primary {
+      color: #080a0f;
+      background: linear-gradient(135deg, #ffffff, #aeb8c3);
+      border-color: rgba(255,255,255,0.65);
+    }
+
+    .btn.secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(14px);
+    }
+
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 30px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1;
+      letter-spacing: -0.06em;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 470px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+
+    .panel {
+      padding: 30px;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.055);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 55px rgba(0,0,0,0.23);
+    }
+
+    .panel p {
+      color: var(--muted);
+    }
+
+    .quick-facts {
+      display: grid;
+      gap: 14px;
+    }
+
+    .quick-facts div {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .quick-facts div:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .quick-facts span {
+      color: var(--muted);
+    }
+
+    .work-panel {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 28px;
+      padding: 30px;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.055);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 55px rgba(0,0,0,0.23);
+    }
+
+    .work-panel p {
+      max-width: 620px;
+      color: var(--muted);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .skill-tag {
+      padding: 15px 16px;
+      border-radius: 16px;
+      background: var(--panel-light);
+      color: var(--accent);
+      border: 1px solid var(--line);
+      font-weight: 650;
+      font-size: 0.95rem;
+    }
+
+    .experience-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .experience-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 24px;
+      padding: 26px;
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.055);
+      backdrop-filter: blur(18px);
+    }
+
+    .experience-item time {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .experience-item h3 {
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 7px;
+    }
+
+    .experience-company {
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .experience-item p {
+      color: var(--muted);
+    }
+
+    footer {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 0 0 34px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .intro {
+        min-height: auto;
+        padding: 48px 0 40px;
+      }
+
+      .work-panel {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .experience-item {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      nav {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 4px;
+      }
+
+
+      .section-title,
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <header>
+      <div class="header-inner">
+        <a href="#intro" class="logo" aria-label="Portfolio home">
+          <span>Collin Amner</span>
+        </a>
+        <nav aria-label="Main navigation">
+          <a href="#intro">Intro</a>
+          <a href="#about">About Me</a>
+          <a href="#work">My Work</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="intro" class="intro wrap" aria-labelledby="intro-title">
+        <div>
+          <span class="eyebrow">Artwork / Marketing / Digital / Branding</span>
+          <h1 id="intro-title">Senior Graphic Designer <br />&amp; Brand Lead</h1>
+          <p>
+            I create bold, considered design across branding, packaging, digital, and visual systems — bringing clarity, craft, and purpose to every project.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="#work">View my work</a>
+            <a class="btn secondary" href="#about">About me</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="wrap" aria-labelledby="about-title">
+        <div class="section-title">
+          <h2 id="about-title">About Me</h2>
+          <p></p>
+        </div>
+
+        <div class="about-grid">
+          <div class="panel">
+            <p>
+              Highly accomplished Senior Graphic Designer and Brand Guardian with over 20 years of experience delivering high-quality, audience-led creative across multi-channel campaigns including brand, web, digital, and print. Proven leader in developing visual identity, driving brand governance, managing multiple complex design projects, and mentoring junior designers. Expert in Adobe Creative Suite, workflow-building, and ensuring all design meets accessibility standards.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="work" class="wrap" aria-labelledby="work-title">
+        <div class="section-title">
+          <h2 id="work-title">My Work</h2>
+          <p>Download my portfolio to view selected examples of branding, packaging, artwork, marketing and digital design projects.</p>
+        </div>
+
+        <div class="work-panel">
+          <p>
+            A curated PDF portfolio featuring selected projects, visual design work, production artwork, packaging examples and creative case studies.
+          </p>
+          <a class="btn primary" href="assets/collinamner_portfolio.pdf" download>Download portfolio</a>
+        </div>
+      </section>
+
+      <section id="skills" class="wrap" aria-labelledby="skills-title">
+        <div class="section-title">
+          <h2 id="skills-title">Skills</h2>
+          <p></p>
+        </div>
+
+        <div class="skills-grid" aria-label="Skills list">
+          <span class="skill-tag">Graphic design / Artworking</span>
+          <span class="skill-tag">Packaging / POS design</span>
+          <span class="skill-tag">Large print / Preflight knowledge</span>
+          <span class="skill-tag">Digital Design</span>
+          <span class="skill-tag">UI Concepts</span>
+          <span class="skill-tag">Campaign Assets</span>
+          <span class="skill-tag">Adobe Creative Cloud</span>
+          <span class="skill-tag">Presentation design</span>
+        </div>
+      </section>
+
+      <section id="experience" class="wrap" aria-labelledby="experience-title">
+        <div class="section-title">
+          <h2 id="experience-title">Experience</h2>
+          <p>A career history covering packaging, brand, automation, product design, artwork, and creative leadership.</p>
+        </div>
+
+        <div class="experience-list">
+          <article class="experience-item">
+            <time>Sept 2023 — Present</time>
+            <div>
+              <h3>Packaging &amp; Automation Design Lead</h3>
+              <p class="experience-company">Branded Agency (Writtle Group), Berkhamsted</p>
+            </div>
+          </article>
+
+          <article class="experience-item">
+            <time>Dec 2022 — Sept 2023</time>
+            <div>
+              <h3>Creative Coordinator &amp; Designer</h3>
+              <p class="experience-company">KJC Creative Limited, Aylesbury</p>
+            </div>
+          </article>
+
+          <article class="experience-item">
+            <time>2013 — Nov 2022</time>
+            <div>
+              <h3>Branding &amp; Packaging Design Lead</h3>
+              <p class="experience-company">Adlens Limited, Oxford</p>
+            </div>
+          </article>
+
+          <article class="experience-item">
+            <time>2010 — 2013</time>
+            <div>
+              <h3>Creative Lead, Founder</h3>
+              <p class="experience-company">Amner Creative Design, Thame</p>
+            </div>
+          </article>
+
+          <article class="experience-item">
+            <time>2006 — 2010</time>
+            <div>
+              <h3>Product &amp; Accessories Designer</h3>
+              <p class="experience-company">Path Group PLC, Thame</p>
+            </div>
+          </article>
+
+          <article class="experience-item">
+            <time>2003 — 2006</time>
+            <div>
+              <h3>Product &amp; Graphic Designer</h3>
+              <p class="experience-company">Philex Electronic Limited, Bedford</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2026 Collin Amner. All rights reserved.</span>
+      <span>Intro · About Me · My Work · Skills · Experience</span>
+    </footer>
+  </div>
+</body>
+</html>
