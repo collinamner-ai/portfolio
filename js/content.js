@@ -1,71 +1,67 @@
 window.PORTFOLIO_CONTENT = {
-  about: "I create commercially focused visual design across brand identity, packaging, artwork, POS and digital. This site is kept deliberately minimal so the work stays centre stage.",
+  about: "Senior Designer with experience across branding, packaging, artwork, POS and digital. Clean ideas, strong visuals and production-ready execution.",
   contactUrl: "mailto:collin.amner@gmail.com",
+  services: [
+    "Brand identity",
+    "Packaging design",
+    "Artwork",
+    "POS",
+    "Digital design",
+    "3D visualisation"
+  ],
   projects: [
     {
       title: "HEDONIST",
-      type: "Branding & Packaging",
-      description: "Premium identity and packaging work with strong shelf presence.",
+      type: "Brand / Packaging",
       images: [
-        "assets/projects/project-01/01.png",
-        "assets/projects/project-01/02.png",
-        "assets/projects/project-01/03.png",
-        "assets/projects/project-01/04.png"
+        "assets/projects/hedonist/01.png",
+        "assets/projects/hedonist/02.png",
+        "assets/projects/hedonist/03.png"
       ]
     },
     {
       title: "TIB Supermarket",
-      type: "Packaging Design",
-      description: "Retail packaging system designed for clarity and visual impact.",
+      type: "Packaging",
       images: [
-        "assets/projects/project-02/01.png",
-        "assets/projects/project-02/02.png",
-        "assets/projects/project-02/03.png",
-        "assets/projects/project-02/04.png"
+        "assets/projects/tib/01.png",
+        "assets/projects/tib/02.png",
+        "assets/projects/tib/03.png"
       ]
     },
     {
       title: "C-LAB",
-      type: "Branding & Packaging",
-      description: "Clean wellness packaging with a calm, confident visual language.",
+      type: "Brand / Pack",
       images: [
-        "assets/projects/project-03/01.png",
-        "assets/projects/project-03/02.png",
-        "assets/projects/project-03/03.png",
-        "assets/projects/project-03/04.png"
+        "assets/projects/clab/01.png",
+        "assets/projects/clab/02.png",
+        "assets/projects/clab/03.png"
       ]
     },
     {
       title: "Thame Food Festival",
-      type: "Print Design",
-      description: "Editorial and campaign design with image-led storytelling.",
+      type: "Print",
       images: [
-        "assets/projects/project-04/01.png",
-        "assets/projects/project-04/02.png",
-        "assets/projects/project-04/03.png",
-        "assets/projects/project-04/04.png"
+        "assets/projects/thame/01.png",
+        "assets/projects/thame/02.png",
+        "assets/projects/thame/03.png"
       ]
     },
     {
       title: "Fintech Dashboard",
       type: "Digital / UI",
-      description: "Interface concept focused on hierarchy, polish and usability.",
       images: [
-        "assets/projects/project-05/01.png",
-        "assets/projects/project-05/02.png",
-        "assets/projects/project-05/03.png",
-        "assets/projects/project-05/04.png"
+        "assets/projects/fintech/01.png",
+        "assets/projects/fintech/02.png",
+        "assets/projects/fintech/03.png"
       ]
     },
     {
       title: "Pure Skincare",
-      type: "Packaging & Branding",
-      description: "Minimal packaging system with a soft premium feel.",
+      type: "Packaging",
       images: [
-        "assets/projects/project-06/01.png",
-        "assets/projects/project-06/02.png",
-        "assets/projects/project-06/03.png",
-        "assets/projects/project-06/04.png"
+        "assets/projects/pure/01.png",
+        "assets/projects/pure/02.png",
+        "assets/projects/pure/03.png"
       ]
     }
   ]

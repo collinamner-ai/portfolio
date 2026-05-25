@@ -1,10 +1,8 @@
 # Collin Amner Portfolio
 
-Minimal, project-led portfolio inspired by editorial archive layouts.
+Simple, clean, image-led portfolio tailored for branding, packaging and digital design work.
 
-## Files to replace in your GitHub repo
-
-Replace:
+## Replace these in your GitHub repo
 
 - `index.html`
 - `admin.html`
@@ -13,23 +11,28 @@ Replace:
 - `js/main.js`
 - `assets/`
 
-## PNG image setup
+## PNG images
 
-Each project uses PNG images from folders like:
+Use this structure:
 
 ```text
-assets/projects/project-01/01.png
-assets/projects/project-01/02.png
-assets/projects/project-01/03.png
-assets/projects/project-01/04.png
+assets/projects/hedonist/01.png
+assets/projects/hedonist/02.png
+assets/projects/hedonist/03.png
 ```
 
-Replace those placeholder PNGs with your real work.
+The first image is used as the project thumbnail. Extra images appear in the click-through gallery.
 
-## Editing projects
+## Edit project names
 
-Open `js/content.js`.
+Open:
 
-Change project titles, categories, descriptions and image paths there.
+```text
+js/content.js
+```
 
-Keep copy short. The portfolio is designed to showcase the images, not read like a CV.
+Change titles, categories and image paths there.
+
+## Contact
+
+The email address is not shown on the page. The `Get in touch` button uses a hidden `mailto:` link in `js/content.js`.

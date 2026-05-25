@@ -3,28 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio Content Notes</title>
+  <title>Portfolio Editing Notes</title>
   <link rel="stylesheet" href="css/styles.css">
   <style>
-    .admin-page { width: min(100% - 28px, 900px); margin: 60px auto; }
-    .admin-page pre { overflow:auto; background:#fff; padding:18px; border-radius:14px; }
-    .admin-page li { margin-bottom: 10px; color: var(--muted); line-height: 1.5; }
+    .notes { width: min(100% - 32px, 840px); margin: 60px auto; }
+    .notes h1 { font-size: clamp(2.4rem, 8vw, 6rem); line-height: .86; letter-spacing: -.08em; margin: 0 0 28px; }
+    .notes p, .notes li { color: var(--muted); line-height: 1.6; }
+    code { background: #fff; border: 1px solid var(--line); padding: 2px 6px; border-radius: 6px; }
   </style>
 </head>
 <body>
-  <main class="admin-page">
-    <h1>Editing this portfolio</h1>
-    <p>Keep this site image-led. Replace the PNG files in <code>assets/projects/</code>, then update <code>js/content.js</code> if you change titles, categories or file paths.</p>
-    <ol>
-      <li>Put your PNGs into folders like <code>assets/projects/project-01/01.png</code>.</li>
-      <li>Use four strong images per project where possible.</li>
-      <li>Keep descriptions to one short sentence.</li>
-      <li>Do not add long CV copy to the homepage.</li>
-    </ol>
-    <pre>assets/projects/project-01/01.png
-assets/projects/project-01/02.png
-assets/projects/project-01/03.png
-assets/projects/project-01/04.png</pre>
+  <main class="notes">
+    <h1>Editing notes</h1>
+    <p>This portfolio is designed to stay simple and clean. Replace PNG files inside <code>assets/projects/</code> and update <code>js/content.js</code>.</p>
+    <ul>
+      <li>Use one strong thumbnail per project.</li>
+      <li>Add extra PNGs for the click-through gallery.</li>
+      <li>Keep project titles and categories short.</li>
+      <li>Do not add long descriptions to the homepage.</li>
+    </ul>
   </main>
 </body>
 </html>

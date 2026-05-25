@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Collin Amner | Selected Work</title>
-  <meta name="description" content="Selected visual work by Collin Amner, Senior Designer." />
+  <title>Collin Amner | Senior Designer</title>
+  <meta name="description" content="Selected work by Collin Amner, Senior Designer specialising in branding, packaging and digital design." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,34 +14,42 @@
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="Collin Amner home">Collin Amner</a>
+    <a class="logo" href="#top" aria-label="Collin Amner home">Collin Amner</a>
     <nav class="nav" aria-label="Main navigation">
-      <a href="#projects">Projects</a>
+      <a href="#work">Work</a>
       <a href="#info">Info</a>
-      <a class="contact-trigger" href="#contact">Contact</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <main id="main">
-    <section class="intro" id="top" aria-labelledby="page-title">
-      <p class="role">Senior Designer</p>
-      <h1 id="page-title">Selected work</h1>
-      <p class="intro-line">Branding, packaging, print and digital design.</p>
+    <section class="hero" id="top">
+      <p class="label">Senior Designer</p>
+      <h1>Branding, packaging and digital design for real-world brands.</h1>
     </section>
 
-    <section class="projects" id="projects" aria-label="Selected projects"></section>
+    <section class="work" id="work" aria-label="Selected work">
+      <div class="work-header">
+        <p class="label">Selected work</p>
+        <p>Click any project to view the PNG gallery.</p>
+      </div>
+      <div class="project-grid" id="project-grid"></div>
+    </section>
 
     <section class="info" id="info">
       <div>
-        <p class="section-label">Info</p>
-        <h2>Visual-first portfolio for brand, packaging and digital work.</h2>
+        <p class="label">Info</p>
+        <p id="about-text"></p>
       </div>
-      <p id="about-text"></p>
+      <div>
+        <p class="label">Services</p>
+        <ul id="services-list"></ul>
+      </div>
     </section>
 
     <section class="contact" id="contact">
-      <p class="section-label">Contact</p>
-      <a class="button" id="contact-link" href="#">Contact Collin</a>
+      <p>Interested in the work?</p>
+      <a id="contact-link" href="#">Get in touch</a>
     </section>
   </main>
 
@@ -50,12 +58,12 @@
     <p>Aylesbury, UK</p>
   </footer>
 
-  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Project gallery">
-    <button class="lightbox-close" type="button" data-close>Close</button>
-    <button class="lightbox-arrow lightbox-prev" type="button" aria-label="Previous image">←</button>
-    <img id="lightbox-image" src="" alt="">
-    <button class="lightbox-arrow lightbox-next" type="button" aria-label="Next image">→</button>
-    <p id="lightbox-caption"></p>
+  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <button class="modal-close" type="button">Close</button>
+    <button class="modal-nav modal-prev" type="button" aria-label="Previous image">←</button>
+    <img id="modal-image" src="" alt="" />
+    <button class="modal-nav modal-next" type="button" aria-label="Next image">→</button>
+    <p id="modal-caption"></p>
   </div>
 
   <script src="js/content.js"></script>
