@@ -4,63 +4,86 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Collin Amner | Senior Designer</title>
-  <meta name="description" content="Selected work by Collin Amner, Senior Designer specialising in branding, packaging and digital design." />
+  <meta name="description" content="Selected branding, packaging and digital design work by Collin Amner." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
 </head>
+
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#work">Skip to work</a>
 
   <header class="site-header">
-    <a class="logo" href="#top" aria-label="Collin Amner home">Collin Amner</a>
-    <nav class="nav" aria-label="Main navigation">
+    <a class="wordmark" href="./" aria-label="Collin Amner home">Collin Amner</a>
+    <nav class="site-nav" aria-label="Main navigation">
       <a href="#work">Work</a>
-      <a href="#info">Info</a>
-      <a href="#contact">Contact</a>
+      <button type="button" class="plain-button" data-open-contact>Contact</button>
     </nav>
   </header>
 
-  <main id="main">
-    <section class="hero" id="top">
-      <div class="hero-kicker">
-        <span>Senior Designer</span>
-        <span>Brand / Pack / Digital</span>
-      </div>
-      <h1>Visual design for brands, packaging and digital experiences.</h1>
+  <main class="page-shell">
+    <section class="intro-panel" aria-label="Introduction">
+      <p class="eyebrow">Senior Designer</p>
+      <h1>Branding, packaging and digital design.</h1>
+      <p class="intro-copy">A tight visual portfolio of selected work across brand identity, packaging, artwork, POS and digital.</p>
+      <button class="primary-action" type="button" data-open-contact>Make contact</button>
     </section>
 
-    <section class="work" id="work" aria-label="Selected work">
-      <div class="section-head">
-        <p>Selected Work</p>
-        <span>Click to view</span>
+    <section class="work-panel" id="work" aria-label="Selected work">
+      <div class="work-topline">
+        <p>Selected work</p>
+        <p>PNG portfolio grid</p>
       </div>
-      <div class="project-grid" id="project-grid"></div>
+      <div class="work-grid" id="work-grid"></div>
     </section>
+  </main>
 
-    <section class="info" id="info">
-      <p class="section-label">Profile</p>
-      <p id="about-text"></p>
-      <ul id="services-list"></ul>
-    </section>
+  <footer class="site-footer">
+    <span>© <span id="year"></span></span>
+    <span>Aylesbury, UK</span>
+  </footer>
 
-    <section class="contact" id="contact">
-      <div class="contact-intro">
-        <p class="section-label">Contact</p>
-        <h2>Interested in the work?</h2>
-        <p>Use the form below. Your email address is not displayed anywhere on the page.</p>
+  <div class="project-modal" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Project gallery">
+    <div class="modal-scrim" data-close-project></div>
+    <section class="project-view" aria-live="polite">
+      <header class="project-view-header">
+        <div>
+          <p id="project-count"></p>
+          <h2 id="project-title"></h2>
+          <p id="project-type"></p>
+        </div>
+        <button type="button" class="plain-button" data-close-project>Close</button>
+      </header>
+
+      <div class="project-image-wrap">
+        <button type="button" class="gallery-button gallery-prev" aria-label="Previous image">←</button>
+        <img id="project-image" src="" alt="" />
+        <button type="button" class="gallery-button gallery-next" aria-label="Next image">→</button>
       </div>
+    </section>
+  </div>
 
-      <form class="contact-form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+  <div class="contact-modal" id="contact-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Contact form">
+    <div class="modal-scrim" data-close-contact></div>
+    <section class="contact-card">
+      <header class="contact-card-header">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Send an enquiry</h2>
+        </div>
+        <button type="button" class="plain-button" data-close-contact>Close</button>
+      </header>
+
+      <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <label>
           <span>Name</span>
-          <input type="text" name="name" autocomplete="name" required>
+          <input type="text" name="name" autocomplete="name" required />
         </label>
 
         <label>
           <span>Your email</span>
-          <input type="email" name="reply_to" autocomplete="email" required>
+          <input type="email" name="reply_to" autocomplete="email" required />
         </label>
 
         <label>
@@ -68,24 +91,12 @@
           <textarea name="message" rows="5" required></textarea>
         </label>
 
-        <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off">
-        <button type="submit">Send enquiry</button>
-        <p class="form-note" id="form-note">Replace YOUR_FORM_ID with your private Formspree form ID.</p>
+        <input class="anti-spam" type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+        <button type="submit">Send</button>
       </form>
+
+      <p class="form-helper">Connect this form by replacing YOUR_FORM_ID with your private form endpoint. No personal email address is stored in these site files.</p>
     </section>
-  </main>
-
-  <footer class="footer">
-    <p>© <span id="year"></span> Collin Amner</p>
-    <p>Aylesbury, UK</p>
-  </footer>
-
-  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true">
-    <button class="modal-close" type="button">Close</button>
-    <button class="modal-nav modal-prev" type="button" aria-label="Previous image">←</button>
-    <img id="modal-image" src="" alt="" />
-    <button class="modal-nav modal-next" type="button" aria-label="Next image">→</button>
-    <p id="modal-caption"></p>
   </div>
 
   <script src="js/content.js"></script>

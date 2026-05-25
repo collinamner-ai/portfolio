@@ -1,90 +1,113 @@
 document.addEventListener("DOMContentLoaded", () => {
   const data = window.PORTFOLIO_CONTENT;
-  const grid = document.getElementById("project-grid");
-  const modal = document.getElementById("modal");
-  const modalImage = document.getElementById("modal-image");
-  const modalCaption = document.getElementById("modal-caption");
-  const closeButton = document.querySelector(".modal-close");
-  const prevButton = document.querySelector(".modal-prev");
-  const nextButton = document.querySelector(".modal-next");
+  const grid = document.getElementById("work-grid");
+  const projectModal = document.getElementById("project-modal");
+  const contactModal = document.getElementById("contact-modal");
+  const projectTitle = document.getElementById("project-title");
+  const projectType = document.getElementById("project-type");
+  const projectCount = document.getElementById("project-count");
+  const projectImage = document.getElementById("project-image");
+  const prevButton = document.querySelector(".gallery-prev");
+  const nextButton = document.querySelector(".gallery-next");
 
-  let activeProject = 0;
-  let activeImage = 0;
+  let activeProjectIndex = 0;
+  let activeImageIndex = 0;
 
-  document.getElementById("about-text").textContent = data.about;
   document.getElementById("year").textContent = new Date().getFullYear();
-  document.getElementById("services-list").innerHTML = data.services.map(item => `<li>${item}</li>`).join("");
 
-  function pad(number) {
-    return String(number).padStart(2, "0");
+  function pad(value) {
+    return String(value).padStart(2, "0");
   }
 
-  function renderProjects() {
+  function renderGrid() {
     grid.innerHTML = data.projects.map((project, index) => `
-      <button class="project-card" type="button" data-project="${index}" aria-label="Open ${project.title}">
-        <div class="project-thumb">
-          <img src="${project.images[0]}" alt="${project.title} preview" loading="${index < 3 ? "eager" : "lazy"}">
-        </div>
-        <div class="project-meta">
+      <button class="work-card" type="button" data-project="${index}" aria-label="Open ${project.title}">
+        <img src="${project.images[0]}" alt="${project.title} thumbnail" loading="${index < 3 ? "eager" : "lazy"}">
+        <span class="work-card-text">
           <h2>${project.title}</h2>
           <p>${project.type}</p>
-        </div>
+        </span>
       </button>
     `).join("");
 
-    document.querySelectorAll(".project-card").forEach(card => {
-      card.addEventListener("click", () => openModal(Number(card.dataset.project), 0));
+    document.querySelectorAll(".work-card").forEach((card) => {
+      card.addEventListener("click", () => openProject(Number(card.dataset.project), 0));
     });
   }
 
-  function renderModal() {
-    const project = data.projects[activeProject];
-    modalImage.src = project.images[activeImage];
-    modalImage.alt = `${project.title} image ${activeImage + 1}`;
-    modalCaption.textContent = `${pad(activeProject + 1)} / ${project.title} / ${pad(activeImage + 1)}`;
+  function renderProject() {
+    const project = data.projects[activeProjectIndex];
+    projectTitle.textContent = project.title;
+    projectType.textContent = project.type;
+    projectCount.textContent = `${pad(activeProjectIndex + 1)} / ${pad(data.projects.length)}`;
+    projectImage.src = project.images[activeImageIndex];
+    projectImage.alt = `${project.title} image ${activeImageIndex + 1}`;
     prevButton.hidden = project.images.length < 2;
     nextButton.hidden = project.images.length < 2;
   }
 
-  function openModal(projectIndex, imageIndex) {
-    activeProject = projectIndex;
-    activeImage = imageIndex;
-    renderModal();
-    modal.setAttribute("aria-hidden", "false");
+  function openProject(projectIndex, imageIndex) {
+    activeProjectIndex = projectIndex;
+    activeImageIndex = imageIndex;
+    renderProject();
+    projectModal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
   }
 
-  function closeModal() {
-    modal.setAttribute("aria-hidden", "true");
+  function closeProject() {
+    projectModal.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
   }
 
   function nextImage() {
-    const project = data.projects[activeProject];
-    activeImage = (activeImage + 1) % project.images.length;
-    renderModal();
+    const images = data.projects[activeProjectIndex].images;
+    activeImageIndex = (activeImageIndex + 1) % images.length;
+    renderProject();
   }
 
-  function prevImage() {
-    const project = data.projects[activeProject];
-    activeImage = (activeImage - 1 + project.images.length) % project.images.length;
-    renderModal();
+  function previousImage() {
+    const images = data.projects[activeProjectIndex].images;
+    activeImageIndex = (activeImageIndex - 1 + images.length) % images.length;
+    renderProject();
   }
 
-  closeButton.addEventListener("click", closeModal);
+  function openContact() {
+    contactModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeContact() {
+    contactModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  document.querySelectorAll("[data-close-project]").forEach((button) => {
+    button.addEventListener("click", closeProject);
+  });
+
+  document.querySelectorAll("[data-open-contact]").forEach((button) => {
+    button.addEventListener("click", openContact);
+  });
+
+  document.querySelectorAll("[data-close-contact]").forEach((button) => {
+    button.addEventListener("click", closeContact);
+  });
+
+  prevButton.addEventListener("click", previousImage);
   nextButton.addEventListener("click", nextImage);
-  prevButton.addEventListener("click", prevImage);
 
-  modal.addEventListener("click", event => {
-    if (event.target === modal) closeModal();
+  document.addEventListener("keydown", (event) => {
+    const projectOpen = projectModal.getAttribute("aria-hidden") === "false";
+    const contactOpen = contactModal.getAttribute("aria-hidden") === "false";
+
+    if (event.key === "Escape") {
+      if (projectOpen) closeProject();
+      if (contactOpen) closeContact();
+    }
+
+    if (projectOpen && event.key === "ArrowRight") nextImage();
+    if (projectOpen && event.key === "ArrowLeft") previousImage();
   });
 
-  document.addEventListener("keydown", event => {
-    if (modal.getAttribute("aria-hidden") === "true") return;
-    if (event.key === "Escape") closeModal();
-    if (event.key === "ArrowRight") nextImage();
-    if (event.key === "ArrowLeft") prevImage();
-  });
-
-  renderProjects();
+  renderGrid();
 });

@@ -6,21 +6,21 @@
   <title>Portfolio Editing Notes</title>
   <link rel="stylesheet" href="css/styles.css">
   <style>
-    .notes { width: min(100% - 32px, 880px); margin: 60px auto; }
-    .notes h1 { font-family: "DM Serif Display", Georgia, serif; font-size: clamp(3rem, 9vw, 7rem); line-height: .84; letter-spacing: -.055em; font-weight: 400; margin: 0 0 28px; }
-    .notes p, .notes li { color: var(--muted); line-height: 1.6; }
-    code { background: #fff; border: 1px solid var(--line); padding: 2px 6px; border-radius: 6px; }
+    .notes { width: min(100% - 32px, 900px); margin: 60px auto; }
+    .notes h1 { font-family: Newsreader, Georgia, serif; font-size: clamp(3.2rem, 10vw, 8rem); line-height: .82; letter-spacing: -.075em; margin: 0 0 28px; }
+    .notes p, .notes li { color: var(--muted); line-height: 1.65; }
+    code { background: var(--panel); border: 1px solid var(--line); padding: 2px 6px; border-radius: 6px; }
   </style>
 </head>
 <body>
   <main class="notes">
     <h1>Editing notes</h1>
-    <p>This portfolio uses a contact form. Do not add a personal email address into the site files.</p>
+    <p>This build is intentionally simple: one intro panel, one work grid, project modal galleries, and a contact form modal.</p>
     <ul>
-      <li>Replace PNGs inside <code>assets/projects/</code>.</li>
-      <li>Update project titles and image paths in <code>js/content.js</code>.</li>
-      <li>For the form, create a Formspree form and replace <code>YOUR_FORM_ID</code> in <code>index.html</code>.</li>
-      <li>Keep copy short and let the work lead.</li>
+      <li>Replace PNGs inside <code>assets/work/</code>.</li>
+      <li>Edit project names and image paths in <code>js/content.js</code>.</li>
+      <li>Replace <code>YOUR_FORM_ID</code> in <code>index.html</code> with your private form endpoint.</li>
+      <li>Do not add a personal email address to the website files.</li>
     </ul>
   </main>
 </body>
