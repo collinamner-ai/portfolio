@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Mobile App">
+<defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f4f6f8"/><stop offset="1" stop-color="#a9b4c0"/></linearGradient></defs>
+<rect width="1200" height="800" fill="url(#g)"/>
+<rect x="60" y="60" width="1080" height="680" fill="none" stroke="#0a1b2d" stroke-width="6" opacity=".45"/>
+<rect x="420" y="120" width="360" height="560" rx="0" fill="#10263c" opacity=".75"/><rect x="460" y="180" width="280" height="410" fill="#ffffff" opacity=".85"/><rect x="500" y="230" width="200" height="36" fill="#cfd6dd"/><rect x="500" y="310" width="170" height="30" fill="#cfd6dd"/><rect x="500" y="380" width="210" height="30" fill="#cfd6dd"/>
+<text x="80" y="720" font-family="Arial, sans-serif" font-size="54" font-weight="700" fill="#0a1b2d">Mobile App</text>
+</svg>
