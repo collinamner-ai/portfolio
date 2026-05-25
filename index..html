@@ -122,8 +122,31 @@
     .intro {
       min-height: auto;
       padding: 70px 0 50px;
-      display: flex;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+      gap: 44px;
       align-items: center;
+    }
+
+    .intro-content {
+      max-width: 920px;
+    }
+
+    .profile-frame {
+      justify-self: end;
+      width: min(420px, 100%);
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+    }
+
+    .profile-frame img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 16%, black 84%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 16%, black 84%, transparent 100%);
     }
 
     .eyebrow {
@@ -261,22 +284,19 @@
       color: var(--muted);
     }
 
-    .work-panel {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 28px;
-      padding: 30px;
-      border-radius: 30px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.055);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 18px 55px rgba(0,0,0,0.23);
+
+    .btn.download {
+      min-height: 54px;
+      padding: 0 24px;
+      color: #ffffff;
+      background: linear-gradient(135deg, #1479ff, #005bd6);
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 14px 34px rgba(20, 121, 255, 0.28);
     }
 
-    .work-panel p {
-      max-width: 620px;
-      color: var(--muted);
+    .btn.download:hover,
+    .btn.download:focus-visible {
+      background: linear-gradient(135deg, #2f8cff, #0066ee);
     }
 
     .skills-grid {
@@ -349,14 +369,16 @@
       }
 
       .intro {
+        grid-template-columns: 1fr;
         min-height: auto;
         padding: 48px 0 40px;
       }
 
-      .work-panel {
-        flex-direction: column;
-        align-items: flex-start;
+      .profile-frame {
+        justify-self: start;
+        width: min(320px, 100%);
       }
+
 
       .skills-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -403,7 +425,6 @@
         <nav aria-label="Main navigation">
           <a href="#intro">Intro</a>
           <a href="#about">About Me</a>
-          <a href="#work">My Work</a>
           <a href="#skills">Skills</a>
           <a href="#experience">Experience</a>
         </nav>
@@ -412,16 +433,16 @@
 
     <main>
       <section id="intro" class="intro wrap" aria-labelledby="intro-title">
-        <div>
+        <div class="intro-content">
           <span class="eyebrow">Artwork / Marketing / Digital / Branding</span>
           <h1 id="intro-title">Senior Graphic Designer <br />&amp; Brand Lead</h1>
-          <p>
-            I create bold, considered design across branding, packaging, digital, and visual systems — bringing clarity, craft, and purpose to every project.
-          </p>
           <div class="actions">
-            <a class="btn primary" href="#work">View my work</a>
-            <a class="btn secondary" href="#about">About me</a>
+            <a class="btn download" href="assets/collinamner_portfolio.pdf" download>Download portfolio</a>
           </div>
+        </div>
+
+        <div class="profile-frame">
+          <img src="assets/profile.png" alt="Black and white portrait of Collin Amner" />
         </div>
       </section>
 
@@ -437,20 +458,6 @@
               Highly accomplished Senior Graphic Designer and Brand Guardian with over 20 years of experience delivering high-quality, audience-led creative across multi-channel campaigns including brand, web, digital, and print. Proven leader in developing visual identity, driving brand governance, managing multiple complex design projects, and mentoring junior designers. Expert in Adobe Creative Suite, workflow-building, and ensuring all design meets accessibility standards.
             </p>
           </div>
-        </div>
-      </section>
-
-      <section id="work" class="wrap" aria-labelledby="work-title">
-        <div class="section-title">
-          <h2 id="work-title">My Work</h2>
-          <p>Download my portfolio to view selected examples of branding, packaging, artwork, marketing and digital design projects.</p>
-        </div>
-
-        <div class="work-panel">
-          <p>
-            A curated PDF portfolio featuring selected projects, visual design work, production artwork, packaging examples and creative case studies.
-          </p>
-          <a class="btn primary" href="assets/collinamner_portfolio.pdf" download>Download portfolio</a>
         </div>
       </section>
 
@@ -532,7 +539,7 @@
 
     <footer>
       <span>© 2026 Collin Amner. All rights reserved.</span>
-      <span>Intro · About Me · My Work · Skills · Experience</span>
+      <span>Intro · About Me · Skills · Experience</span>
     </footer>
   </div>
 </body>
