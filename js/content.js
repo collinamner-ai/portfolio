@@ -1,12 +1,11 @@
 window.PORTFOLIO_CONTENT = {
-  about: "Senior Designer with experience across branding, packaging, artwork, POS and digital. Clean ideas, strong visuals and production-ready execution.",
-  contactUrl: "mailto:collin.amner@gmail.com",
+  about: "Senior Designer creating brand, packaging, artwork, POS and digital design with a strong visual eye and production-ready finish.",
   services: [
     "Brand identity",
-    "Packaging design",
+    "Packaging",
     "Artwork",
     "POS",
-    "Digital design",
+    "Digital",
     "3D visualisation"
   ],
   projects: [

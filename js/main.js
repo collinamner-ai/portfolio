@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("about-text").textContent = data.about;
   document.getElementById("year").textContent = new Date().getFullYear();
   document.getElementById("services-list").innerHTML = data.services.map(item => `<li>${item}</li>`).join("");
-  document.getElementById("contact-link").href = data.contactUrl;
 
   function pad(number) {
     return String(number).padStart(2, "0");

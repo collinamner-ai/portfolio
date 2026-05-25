@@ -7,7 +7,7 @@
   <meta name="description" content="Selected work by Collin Amner, Senior Designer specialising in branding, packaging and digital design." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -24,32 +24,54 @@
 
   <main id="main">
     <section class="hero" id="top">
-      <p class="label">Senior Designer</p>
-      <h1>Branding, packaging and digital design for real-world brands.</h1>
+      <div class="hero-kicker">
+        <span>Senior Designer</span>
+        <span>Brand / Pack / Digital</span>
+      </div>
+      <h1>Visual design for brands, packaging and digital experiences.</h1>
     </section>
 
     <section class="work" id="work" aria-label="Selected work">
-      <div class="work-header">
-        <p class="label">Selected work</p>
-        <p>Click any project to view the PNG gallery.</p>
+      <div class="section-head">
+        <p>Selected Work</p>
+        <span>Click to view</span>
       </div>
       <div class="project-grid" id="project-grid"></div>
     </section>
 
     <section class="info" id="info">
-      <div>
-        <p class="label">Info</p>
-        <p id="about-text"></p>
-      </div>
-      <div>
-        <p class="label">Services</p>
-        <ul id="services-list"></ul>
-      </div>
+      <p class="section-label">Profile</p>
+      <p id="about-text"></p>
+      <ul id="services-list"></ul>
     </section>
 
     <section class="contact" id="contact">
-      <p>Interested in the work?</p>
-      <a id="contact-link" href="#">Get in touch</a>
+      <div class="contact-intro">
+        <p class="section-label">Contact</p>
+        <h2>Interested in the work?</h2>
+        <p>Use the form below. Your email address is not displayed anywhere on the page.</p>
+      </div>
+
+      <form class="contact-form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+
+        <label>
+          <span>Your email</span>
+          <input type="email" name="reply_to" autocomplete="email" required>
+        </label>
+
+        <label>
+          <span>Message</span>
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+
+        <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off">
+        <button type="submit">Send enquiry</button>
+        <p class="form-note" id="form-note">Replace YOUR_FORM_ID with your private Formspree form ID.</p>
+      </form>
     </section>
   </main>
 

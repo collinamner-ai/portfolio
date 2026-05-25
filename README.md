@@ -1,6 +1,6 @@
 # Collin Amner Portfolio
 
-Simple, clean, image-led portfolio tailored for branding, packaging and digital design work.
+Premium, minimal, image-led portfolio for branding, packaging and digital design work.
 
 ## Replace these in your GitHub repo
 
@@ -21,9 +21,21 @@ assets/projects/hedonist/02.png
 assets/projects/hedonist/03.png
 ```
 
-The first image is used as the project thumbnail. Extra images appear in the click-through gallery.
+The first PNG is the thumbnail. Other PNGs appear in the click-through gallery.
 
-## Edit project names
+## Contact form
+
+This version does not contain a personal email address anywhere in the site files.
+
+The contact form uses a placeholder endpoint:
+
+```text
+https://formspree.io/f/YOUR_FORM_ID
+```
+
+Create a private Formspree form, then replace `YOUR_FORM_ID` in `index.html`.
+
+## Editing projects
 
 Open:
 
@@ -31,8 +43,4 @@ Open:
 js/content.js
 ```
 
-Change titles, categories and image paths there.
-
-## Contact
-
-The email address is not shown on the page. The `Get in touch` button uses a hidden `mailto:` link in `js/content.js`.
+Change project titles, categories and image paths there.
