@@ -29,7 +29,7 @@ window.PORTFOLIO_CONTENT = {
     },
     {
       title: "Thame Food Festival",
-      type: "Print",
+      type: "Print / Campaign",
       images: [
         "assets/work/04-thame/01.png",
         "assets/work/04-thame/02.png",
