@@ -843,38 +843,6 @@
             <img src="assets/work-12.png" alt="Print project 03" />
             <button class="work-open" type="button" data-index="11" aria-label="Open print project 03"></button>
           </article>
-            <article class="work-item" data-category="print">
-            <img src="assets/work-13.png" alt="Print project 03" />
-            <button class="work-open" type="button" data-index="11" aria-label="Open print project 03"></button>
-          </article>
-            <article class="work-item" data-category="print">
-            <img src="assets/work-14.png" alt="Print project 03" />
-            <button class="work-open" type="button" data-index="11" aria-label="Open print project 03"></button>
-          </article>
-            <article class="work-item" data-category="print">
-            <img src="assets/work-15.png" alt="Print project 03" />
-            <button class="work-open" type="button" data-index="11" aria-label="Open print project 03"></button>
-          </article>
-            <article class="work-item" data-category="print">
-            <img src="assets/work-16.png" alt="Print project 03" />
-            <button class="work-open" type="button" data-index="11" aria-label="Open print project 03"></button>
-          </article>
-            <article class="work-item" data-category="print">
-            <img src="assets/work-17.png" alt="Print project 03" />
-            <button class="work-open" type="button" data-index="11" aria-label="Open print project 03"></button>
-          </article>
-            <article class="work-item" data-category="print">
-            <img src="assets/work-18.png" alt="Print project 03" />
-            <button class="work-open" type="button" data-index="11" aria-label="Open print project 03"></button>
-          </article>
-            <article class="work-item" data-category="print">
-            <img src="assets/work-19.png" alt="Print project 03" />
-            <button class="work-open" type="button" data-index="11" aria-label="Open print project 03"></button>
-          </article>
-            <article class="work-item" data-category="print">
-            <img src="assets/work-20.png" alt="Print project 03" />
-            <button class="work-open" type="button" data-index="11" aria-label="Open print project 03"></button>
-          </article>
         </div>
       </section>
 
@@ -1087,7 +1055,8 @@
         const filter = filterButton.dataset.filter;
         workFilters.forEach((button) => button.classList.toggle('is-active', button === filterButton));
         workItems.forEach((item) => {
-          item.classList.toggle('is-hidden', filter !== 'all' && item.dataset.category !== filter);
+          const categories = item.dataset.category.split(',').map((category) => category.trim());
+          item.classList.toggle('is-hidden', filter !== 'all' && !categories.includes(filter));
         });
         updateVisibleWorkItems();
       });
