@@ -14,6 +14,7 @@
       --line: rgba(255, 255, 255, 0.12);
       --accent: #dfe8f4;
       --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      --blue: #1479ff;
     }
 
     * {
@@ -100,14 +101,34 @@
     }
 
     nav a {
-      padding: 8px 0;
+      position: relative;
+      padding: 8px 0 10px;
       transition: color 180ms ease;
     }
 
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+
     nav a:hover,
-    nav a:focus-visible {
+    nav a:focus-visible,
+    nav a.is-active {
       color: var(--text);
       outline: none;
+    }
+
+    nav a.is-active::after {
+      transform: scaleX(1);
     }
 
     section {
@@ -299,6 +320,191 @@
       background: linear-gradient(135deg, #2f8cff, #0066ee);
     }
 
+    .work-kicker {
+      margin-bottom: 22px;
+      color: var(--blue);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .work-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 26px;
+      margin-bottom: 28px;
+    }
+
+    .work-filter {
+      position: relative;
+      padding: 0 0 9px;
+      color: var(--muted);
+      background: transparent;
+      font-weight: 700;
+      transition: color 180ms ease;
+    }
+
+    .work-filter::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+
+    .work-filter:hover,
+    .work-filter:focus-visible,
+    .work-filter.is-active {
+      color: var(--text);
+      outline: none;
+    }
+
+    .work-filter.is-active::after {
+      transform: scaleX(1);
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .work-item {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      display: block;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.04);
+      box-shadow: 0 16px 44px rgba(0,0,0,0.28);
+    }
+
+    .work-item.is-hidden {
+      display: none;
+    }
+
+    .work-item img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 260ms ease, opacity 260ms ease;
+    }
+
+    .work-item:hover img,
+    .work-item:focus-visible img {
+      transform: scale(1.05);
+      opacity: 0.84;
+    }
+
+    .work-open {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.55));
+      color: var(--text);
+      opacity: 0;
+      transition: opacity 180ms ease;
+    }
+
+    .work-item:hover .work-open,
+    .work-open:focus-visible {
+      opacity: 1;
+      outline: none;
+    }
+
+    .work-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 55;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(12px);
+    }
+
+    .work-lightbox.is-open {
+      display: flex;
+    }
+
+    .work-lightbox-panel {
+      width: min(1100px, 100%);
+      display: grid;
+      gap: 14px;
+    }
+
+    .work-lightbox-image-wrap {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #07090d;
+      box-shadow: var(--shadow);
+    }
+
+    .work-lightbox img {
+      display: block;
+      width: 100%;
+      max-height: calc(100vh - 170px);
+      object-fit: contain;
+    }
+
+    .work-lightbox-caption {
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .work-lightbox-controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .work-lightbox-button {
+      min-height: 42px;
+      padding: 0 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .work-lightbox-button:hover,
+    .work-lightbox-button:focus-visible {
+      background: rgba(255,255,255,0.14);
+      outline: none;
+    }
+
+    .skills-subsection {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .skills-subsection:last-child {
+      margin-bottom: 0;
+    }
+
+    .skills-subsection h3 {
+      color: var(--blue);
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -332,7 +538,7 @@
     }
 
     .experience-item time {
-      color: var(--muted);
+      color: var(--blue);
       font-weight: 700;
     }
 
@@ -340,6 +546,34 @@
       font-size: 1.25rem;
       letter-spacing: -0.03em;
       margin-bottom: 7px;
+    }
+
+    .experience-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 0;
+      list-style: none;
+    }
+
+    .experience-tags li {
+      position: relative;
+      padding-left: 14px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 650;
+    }
+
+    .experience-tags li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--blue);
+      transform: translateY(-50%);
     }
 
     .experience-company {
@@ -458,6 +692,10 @@
       }
 
 
+      .work-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .skills-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -486,6 +724,7 @@
         align-items: flex-start;
       }
 
+      .work-grid,
       .skills-grid {
         grid-template-columns: 1fr;
       }
@@ -503,6 +742,7 @@
         <nav aria-label="Main navigation">
           <a href="#intro">Intro</a>
           <a href="#about">About Me</a>
+          <a href="#work">My Work</a>
           <a href="#skills">Skills</a>
           <a href="#experience">Experience</a>
         </nav>
@@ -539,21 +779,92 @@
         </div>
       </section>
 
+      <section id="work" class="wrap" aria-labelledby="work-title">
+        <div class="section-title">
+          <h2 id="work-title">My Work</h2>
+          <p>Selected examples across packaging, print, digital and branding.</p>
+        </div>
+
+        <div class="work-filters" aria-label="Work filters">
+          <button class="work-filter is-active" type="button" data-filter="all">All</button>
+          <button class="work-filter" type="button" data-filter="packaging">Packaging</button>
+          <button class="work-filter" type="button" data-filter="print">Print</button>
+          <button class="work-filter" type="button" data-filter="digital">Digital</button>
+          <button class="work-filter" type="button" data-filter="branding">Branding</button>
+        </div>
+
+        <div class="work-grid" aria-label="Selected work gallery">
+          <article class="work-item" data-category="packaging">
+            <img src="assets/images/work/work-01.jpg" alt="Packaging project 01" />
+            <button class="work-open" type="button" data-index="0" aria-label="Open packaging project 01"></button>
+          </article>
+          <article class="work-item" data-category="packaging">
+            <img src="assets/images/work/work-02.jpg" alt="Packaging project 02" />
+            <button class="work-open" type="button" data-index="1" aria-label="Open packaging project 02"></button>
+          </article>
+          <article class="work-item" data-category="packaging">
+            <img src="assets/images/work/work-03.jpg" alt="Packaging project 03" />
+            <button class="work-open" type="button" data-index="2" aria-label="Open packaging project 03"></button>
+          </article>
+          <article class="work-item" data-category="print">
+            <img src="assets/images/work/work-04.jpg" alt="Print project 01" />
+            <button class="work-open" type="button" data-index="3" aria-label="Open print project 01"></button>
+          </article>
+          <article class="work-item" data-category="digital">
+            <img src="assets/images/work/work-05.jpg" alt="Digital project 01" />
+            <button class="work-open" type="button" data-index="4" aria-label="Open digital project 01"></button>
+          </article>
+          <article class="work-item" data-category="branding">
+            <img src="assets/images/work/work-06.jpg" alt="Branding project 01" />
+            <button class="work-open" type="button" data-index="5" aria-label="Open branding project 01"></button>
+          </article>
+          <article class="work-item" data-category="packaging">
+            <img src="assets/images/work/work-07.jpg" alt="Packaging project 04" />
+            <button class="work-open" type="button" data-index="6" aria-label="Open packaging project 04"></button>
+          </article>
+          <article class="work-item" data-category="print">
+            <img src="assets/images/work/work-08.jpg" alt="Print project 02" />
+            <button class="work-open" type="button" data-index="7" aria-label="Open print project 02"></button>
+          </article>
+          <article class="work-item" data-category="digital">
+            <img src="assets/images/work/work-09.jpg" alt="Digital project 02" />
+            <button class="work-open" type="button" data-index="8" aria-label="Open digital project 02"></button>
+          </article>
+          <article class="work-item" data-category="branding">
+            <img src="assets/images/work/work-10.jpg" alt="Branding project 02" />
+            <button class="work-open" type="button" data-index="9" aria-label="Open branding project 02"></button>
+          </article>
+          <article class="work-item" data-category="packaging">
+            <img src="assets/images/work/work-11.jpg" alt="Packaging project 05" />
+            <button class="work-open" type="button" data-index="10" aria-label="Open packaging project 05"></button>
+          </article>
+          <article class="work-item" data-category="print">
+            <img src="assets/images/work/work-12.jpg" alt="Print project 03" />
+            <button class="work-open" type="button" data-index="11" aria-label="Open print project 03"></button>
+          </article>
+        </div>
+      </section>
+
       <section id="skills" class="wrap" aria-labelledby="skills-title">
         <div class="section-title">
           <h2 id="skills-title">Skills</h2>
           <p></p>
         </div>
 
-        <div class="skills-grid" aria-label="Skills list">
-          <span class="skill-tag">Graphic design / Artworking</span>
-          <span class="skill-tag">Packaging / POS design</span>
-          <span class="skill-tag">Large print / Preflight knowledge</span>
-          <span class="skill-tag">Digital design</span>
-          <span class="skill-tag">UI concepts</span>
-          <span class="skill-tag">Campaign Assets</span>
-          <span class="skill-tag">Adobe Creative Cloud</span>
-          <span class="skill-tag">Presentation design</span>
+        <div class="skills-subsection">
+          <h3>Core Skills</h3>
+          <div class="skills-grid" aria-label="Core skills list">
+            <span class="skill-tag">Branding &amp; Visual Identity</span>
+            <span class="skill-tag">Packaging Design</span>
+            <span class="skill-tag">Print-Ready Artwork</span>
+            <span class="skill-tag">POS &amp; Retail Display</span>
+            <span class="skill-tag">Artwork Automation</span>
+            <span class="skill-tag">Pre-Press &amp; Production</span>
+            <span class="skill-tag">UI/Web Design</span>
+            <span class="skill-tag">Presentation Design</span>
+            <span class="skill-tag">Product Development</span>
+            <span class="skill-tag">Creative Project Management</span>
+          </div>
         </div>
       </section>
 
@@ -569,6 +880,11 @@
             <div>
               <h3>Packaging &amp; Automation Design Lead</h3>
               <p class="experience-company">Branded Agency (Writtle Group), Berkhamsted</p>
+              <ul class="experience-tags">
+                <li>Packaging</li>
+                <li>Pre-Press</li>
+                <li>Automation</li>
+              </ul>
             </div>
           </article>
 
@@ -577,6 +893,11 @@
             <div>
               <h3>Creative Coordinator &amp; Designer</h3>
               <p class="experience-company">KJC Creative Limited, Aylesbury</p>
+              <ul class="experience-tags">
+                <li>Coordination</li>
+                <li>Print</li>
+                <li>Digital</li>
+              </ul>
             </div>
           </article>
 
@@ -585,14 +906,24 @@
             <div>
               <h3>Branding &amp; Packaging Design Lead</h3>
               <p class="experience-company">Adlens Limited, Oxford</p>
+              <ul class="experience-tags">
+                <li>Branding</li>
+                <li>Packaging</li>
+                <li>Mentoring</li>
+              </ul>
             </div>
           </article>
 
           <article class="experience-item">
             <time>2010 — 2013</time>
             <div>
-              <h3>Creative Lead, Founder</h3>
+              <h3>Creative Lead / Founder</h3>
               <p class="experience-company">Amner Creative Design, Thame</p>
+              <ul class="experience-tags">
+                <li>Brand Projects</li>
+                <li>Licensed Products</li>
+                <li>Major Clients</li>
+              </ul>
             </div>
           </article>
 
@@ -601,6 +932,11 @@
             <div>
               <h3>Product &amp; Accessories Designer</h3>
               <p class="experience-company">Path Group PLC, Thame</p>
+              <ul class="experience-tags">
+                <li>Product Design</li>
+                <li>Artwork</li>
+                <li>Launches</li>
+              </ul>
             </div>
           </article>
 
@@ -609,6 +945,11 @@
             <div>
               <h3>Product &amp; Graphic Designer</h3>
               <p class="experience-company">Philex Electronic Limited, Bedford</p>
+              <ul class="experience-tags">
+                <li>Packaging</li>
+                <li>Retail Displays</li>
+                <li>Marketing</li>
+              </ul>
             </div>
           </article>
         </div>
@@ -616,10 +957,24 @@
     </main>
 
     <footer>
-      <span>© 2026. All rights reserved.</span>
-      <span>Intro · About Me · Skills · Experience</span>
+      <span>© 2026 Collin Amner. All rights reserved.</span>
+      <span>Intro · About Me · My Work · Skills · Experience</span>
     </footer>
   </div>
+  <div class="work-lightbox" id="workLightbox" role="dialog" aria-modal="true" aria-label="Work image viewer" aria-hidden="true">
+    <div class="work-lightbox-panel">
+      <div class="work-lightbox-image-wrap">
+        <img id="workLightboxImage" src="" alt="" />
+      </div>
+      <p class="work-lightbox-caption" id="workLightboxCaption">Selected work image</p>
+      <div class="work-lightbox-controls" aria-label="Work image viewer controls">
+        <button class="work-lightbox-button" type="button" id="previousWorkImage">Previous</button>
+        <button class="work-lightbox-button" type="button" id="closeWorkLightbox">Close</button>
+        <button class="work-lightbox-button" type="button" id="nextWorkImage">Next</button>
+      </div>
+    </div>
+  </div>
+
   <div class="pdf-lightbox" id="pdfLightbox" role="dialog" aria-modal="true" aria-label="Portfolio PDF viewer" aria-hidden="true">
     <div class="pdf-panel">
       <div class="pdf-toolbar">
@@ -629,7 +984,7 @@
           <button class="pdf-close" type="button" id="closePortfolioPdf">Close</button>
         </div>
       </div>
-      <iframe src="assets/collinamner_portfolio.pdf" title="Collin Amner portfolio PDF"></iframe>
+      <iframe id="portfolioPdfFrame" data-src="assets/collinamner_portfolio.pdf" title="Collin Amner portfolio PDF"></iframe>
     </div>
   </div>
 
@@ -637,8 +992,10 @@
     const openPortfolioPdf = document.getElementById('openPortfolioPdf');
     const closePortfolioPdf = document.getElementById('closePortfolioPdf');
     const pdfLightbox = document.getElementById('pdfLightbox');
+    const portfolioPdfFrame = document.getElementById('portfolioPdfFrame');
 
     function openPdfViewer() {
+      portfolioPdfFrame.src = portfolioPdfFrame.dataset.src;
       pdfLightbox.classList.add('is-open');
       pdfLightbox.setAttribute('aria-hidden', 'false');
       document.body.classList.add('no-scroll');
@@ -647,6 +1004,7 @@
 
     function closePdfViewer() {
       pdfLightbox.classList.remove('is-open');
+      portfolioPdfFrame.removeAttribute('src');
       pdfLightbox.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('no-scroll');
       openPortfolioPdf.focus();
@@ -661,9 +1019,103 @@
       }
     });
 
+    const navLinks = Array.from(document.querySelectorAll('nav a'));
+    const pageSections = Array.from(document.querySelectorAll('main section[id]'));
+
+    const activeSectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((link) => {
+          link.classList.toggle('is-active', link.getAttribute('href') === `#${entry.target.id}`);
+        });
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+
+    pageSections.forEach((section) => activeSectionObserver.observe(section));
+
+    const workFilters = Array.from(document.querySelectorAll('.work-filter'));
+    const workItems = Array.from(document.querySelectorAll('.work-item'));
+    const workButtons = Array.from(document.querySelectorAll('.work-open'));
+    const workLightbox = document.getElementById('workLightbox');
+    const workLightboxImage = document.getElementById('workLightboxImage');
+    const workLightboxCaption = document.getElementById('workLightboxCaption');
+    const closeWorkLightbox = document.getElementById('closeWorkLightbox');
+    const previousWorkImage = document.getElementById('previousWorkImage');
+    const nextWorkImage = document.getElementById('nextWorkImage');
+    let currentWorkImageIndex = 0;
+    let visibleWorkItems = workItems;
+
+    function updateVisibleWorkItems() {
+      visibleWorkItems = workItems.filter((item) => !item.classList.contains('is-hidden'));
+    }
+
+    workFilters.forEach((filterButton) => {
+      filterButton.addEventListener('click', () => {
+        const filter = filterButton.dataset.filter;
+        workFilters.forEach((button) => button.classList.toggle('is-active', button === filterButton));
+        workItems.forEach((item) => {
+          item.classList.toggle('is-hidden', filter !== 'all' && item.dataset.category !== filter);
+        });
+        updateVisibleWorkItems();
+      });
+    });
+
+    function showWorkImage(index) {
+      updateVisibleWorkItems();
+      currentWorkImageIndex = (index + visibleWorkItems.length) % visibleWorkItems.length;
+      const selectedImage = visibleWorkItems[currentWorkImageIndex].querySelector('img');
+      workLightboxImage.src = selectedImage.src;
+      workLightboxImage.alt = selectedImage.alt;
+      workLightboxCaption.textContent = selectedImage.alt;
+    }
+
+    function openWorkLightbox(item) {
+      updateVisibleWorkItems();
+      showWorkImage(visibleWorkItems.indexOf(item));
+      workLightbox.classList.add('is-open');
+      workLightbox.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('no-scroll');
+      closeWorkLightbox.focus();
+    }
+
+    function closeWorkViewer() {
+      workLightbox.classList.remove('is-open');
+      workLightbox.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('no-scroll');
+      workLightboxImage.removeAttribute('src');
+    }
+
+    workButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        openWorkLightbox(button.closest('.work-item'));
+      });
+    });
+
+    previousWorkImage.addEventListener('click', () => showWorkImage(currentWorkImageIndex - 1));
+    nextWorkImage.addEventListener('click', () => showWorkImage(currentWorkImageIndex + 1));
+    closeWorkLightbox.addEventListener('click', closeWorkViewer);
+
+    workLightbox.addEventListener('click', (event) => {
+      if (event.target === workLightbox) {
+        closeWorkViewer();
+      }
+    });
+
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && pdfLightbox.classList.contains('is-open')) {
         closePdfViewer();
+      }
+
+      if (event.key === 'Escape' && workLightbox.classList.contains('is-open')) {
+        closeWorkViewer();
+      }
+
+      if (event.key === 'ArrowLeft' && workLightbox.classList.contains('is-open')) {
+        showWorkImage(currentWorkImageIndex - 1);
+      }
+
+      if (event.key === 'ArrowRight' && workLightbox.classList.contains('is-open')) {
+        showWorkImage(currentWorkImageIndex + 1);
       }
     });
   </script>
