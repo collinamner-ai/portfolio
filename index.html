@@ -156,16 +156,22 @@
     @media (max-width: 900px) {
       .intro { grid-template-columns: 1fr; padding: 48px 0 40px; }
       .profile-frame { justify-self: start; width: min(320px,100%); }
-      .work-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 320px; width: 100%; margin-left: 0; margin-right: 0; transform: none; }
+      .work-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; margin: 28px 0 20px; transform: none; gap: 5px; }
       .skills-grid { grid-template-columns: repeat(2,1fr); }
       .experience-item { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 680px) {
+      section { padding: 30px 0; scroll-margin-top: 88px; }
+      .intro { padding: 38px 0 28px; gap: 24px; }
+      .section-title { margin-bottom: 18px; gap: 14px; }
+      .panel { padding: 22px; border-radius: 22px; }
+      .experience-list { gap: 10px; }
+      .experience-item { padding: 20px; border-radius: 20px; gap: 14px; }
       .header-inner { align-items: flex-start; flex-direction: column; }
       nav { width: 100%; overflow-x: auto; padding-bottom: 4px; }
       .section-title, footer { flex-direction: column; align-items: flex-start; }
-      .work-gallery { grid-template-columns: 1fr; grid-auto-rows: 420px; width: 100%; margin-left: 0; margin-right: 0; transform: none; }
+      .work-gallery { grid-template-columns: 1fr; width: 100%; margin: 22px 0 16px; transform: none; gap: 5px; }
       .skills-grid { grid-template-columns: 1fr; }
     }
   </style>
