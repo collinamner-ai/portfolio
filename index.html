@@ -15,6 +15,8 @@
       --accent: #dfe8f4;
       --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
       --blue: #1479ff;
+      --green: #10b981;
+      --red: #ef4444;
     }
 
     * {
@@ -244,7 +246,6 @@
       backdrop-filter: blur(14px);
     }
 
-
     .section-title {
       display: flex;
       justify-content: space-between;
@@ -305,7 +306,6 @@
       color: var(--muted);
     }
 
-
     .btn.download {
       min-height: 54px;
       padding: 0 24px;
@@ -318,15 +318,6 @@
     .btn.download:hover,
     .btn.download:focus-visible {
       background: linear-gradient(135deg, #2f8cff, #0066ee);
-    }
-
-    .work-kicker {
-      margin-bottom: 22px;
-      color: var(--blue);
-      font-size: 0.84rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
     }
 
     .work-filters {
@@ -385,6 +376,7 @@
       border: 1px solid rgba(255,255,255,0.16);
       background: rgba(255,255,255,0.04);
       box-shadow: 0 16px 44px rgba(0,0,0,0.28);
+      cursor: pointer;
     }
 
     .work-item.is-hidden {
@@ -411,15 +403,12 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.55));
-      color: var(--text);
       opacity: 0;
       transition: opacity 180ms ease;
     }
 
-    .work-item:hover .work-open,
-    .work-open:focus-visible {
+    .work-item:hover .work-open {
       opacity: 1;
-      outline: none;
     }
 
     .work-lightbox {
@@ -587,93 +576,355 @@
       color: var(--muted);
     }
 
-    .pdf-lightbox {
+    footer {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 34px 0;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 0.9rem;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .admin-button {
+      min-height: 40px;
+      padding: 0 16px;
+      border-radius: 12px;
+      border: 1px solid var(--blue);
+      background: rgba(20, 121, 255, 0.1);
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 0.85rem;
+      transition: all 180ms ease;
+    }
+
+    .admin-button:hover {
+      background: rgba(20, 121, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Admin Panel Styles */
+    .admin-modal {
       position: fixed;
       inset: 0;
-      z-index: 60;
+      z-index: 100;
       display: none;
       align-items: center;
       justify-content: center;
       padding: 24px;
-      background: rgba(0, 0, 0, 0.86);
+      background: rgba(0, 0, 0, 0.92);
       backdrop-filter: blur(12px);
     }
 
-    .pdf-lightbox.is-open {
+    .admin-modal.is-open {
       display: flex;
     }
 
-    .pdf-panel {
-      width: min(1100px, 100%);
-      height: min(820px, calc(100vh - 48px));
+    .admin-panel {
+      width: min(1200px, 100%);
+      max-height: 90vh;
       display: grid;
-      grid-template-rows: auto 1fr;
+      grid-template-rows: auto 1fr auto;
       border: 1px solid var(--line);
       border-radius: 24px;
       overflow: hidden;
-      background: #0b0d11;
-      box-shadow: var(--shadow);
+      background: rgba(7, 9, 13, 0.95);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.65);
     }
 
-    .pdf-toolbar {
+    .admin-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      padding: 14px 16px;
+      padding: 24px;
       border-bottom: 1px solid var(--line);
-      background: rgba(255,255,255,0.055);
+      background: rgba(255, 255, 255, 0.04);
     }
 
-    .pdf-toolbar strong {
+    .admin-header h2 {
+      font-size: 1.5rem;
       letter-spacing: -0.03em;
     }
 
-    .pdf-actions {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .pdf-link,
-    .pdf-close {
+    .admin-close {
       min-height: 40px;
       padding: 0 14px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 12px;
+      border-radius: 10px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.08);
       color: var(--text);
       font-weight: 700;
     }
 
-    .pdf-close:hover,
-    .pdf-close:focus-visible,
-    .pdf-link:hover,
-    .pdf-link:focus-visible {
+    .admin-close:hover {
       background: rgba(255,255,255,0.14);
+    }
+
+    .admin-content {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 24px;
+      padding: 24px;
+      overflow-y: auto;
+    }
+
+    .admin-work-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .admin-work-item {
+      display: grid;
+      grid-template-columns: 80px 1fr auto auto auto;
+      gap: 12px;
+      align-items: center;
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .admin-work-thumbnail {
+      width: 80px;
+      height: 60px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .admin-work-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .admin-work-details h3 {
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .admin-work-details p {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .admin-work-controls {
+      display: flex;
+      gap: 6px;
+    }
+
+    .admin-btn-small {
+      min-height: 36px;
+      padding: 0 10px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+      font-size: 0.8rem;
+      font-weight: 700;
+      transition: all 180ms ease;
+    }
+
+    .admin-btn-small:hover {
+      background: rgba(255,255,255,0.14);
+    }
+
+    .admin-sidebar {
+      display: grid;
+      gap: 16px;
+      grid-template-rows: auto auto 1fr;
+    }
+
+    .admin-form-group {
+      display: grid;
+      gap: 6px;
+    }
+
+    .admin-form-group label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .admin-form-group input,
+    .admin-form-group textarea,
+    .admin-form-group select {
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+
+    .admin-form-group textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .admin-form-group input:focus,
+    .admin-form-group textarea:focus,
+    .admin-form-group select:focus {
+      outline: none;
+      border-color: var(--blue);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .admin-tags-input {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+      min-height: 40px;
+    }
+
+    .admin-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: rgba(20, 121, 255, 0.2);
+      border: 1px solid var(--blue);
+      color: var(--blue);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .admin-tag button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.1);
+      color: inherit;
+    }
+
+    .admin-tag button:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .admin-tag-input {
+      flex: 1;
+      min-width: 60px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      color: inherit;
+      font-family: inherit;
+    }
+
+    .admin-tag-input:focus {
       outline: none;
     }
 
-    .pdf-panel iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      background: #ffffff;
+    .admin-footer {
+      display: flex;
+      gap: 12px;
+      padding: 20px 24px;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      justify-content: flex-end;
     }
 
-    footer {
-      width: min(1120px, calc(100% - 40px));
-      margin: 0 auto;
-      padding: 0 0 34px;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
+    .admin-btn {
+      min-height: 42px;
+      padding: 0 20px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-weight: 700;
+      transition: all 180ms ease;
+    }
+
+    .admin-btn.save {
+      background: linear-gradient(135deg, var(--green), #059669);
+      border-color: rgba(16, 185, 129, 0.3);
+      color: white;
+    }
+
+    .admin-btn.save:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(16, 185, 129, 0.2);
+    }
+
+    .admin-btn.cancel {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .admin-btn.cancel:hover {
+      background: rgba(255,255,255,0.14);
+    }
+
+    .admin-login {
+      display: grid;
+      gap: 20px;
+      padding: 40px;
+    }
+
+    .admin-login h2 {
+      font-size: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    .admin-login-form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .admin-login-form input {
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .admin-login-form input:focus {
+      outline: none;
+      border-color: var(--blue);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .admin-login-btn {
+      min-height: 44px;
+      padding: 0;
+      border-radius: 10px;
+      border: 1px solid var(--blue);
+      background: linear-gradient(135deg, var(--blue), #005bd6);
+      color: white;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .admin-login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(20, 121, 255, 0.3);
+    }
+
+    .admin-error {
+      padding: 12px 16px;
+      border-radius: 8px;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #fca5a5;
       font-size: 0.9rem;
+      font-weight: 600;
     }
 
     @media (max-width: 900px) {
@@ -692,7 +943,6 @@
         width: min(320px, 100%);
       }
 
-
       .work-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -703,6 +953,19 @@
 
       .experience-item {
         grid-template-columns: 1fr;
+      }
+
+      .admin-content {
+        grid-template-columns: 1fr;
+      }
+
+      .admin-work-item {
+        grid-template-columns: 60px 1fr auto;
+      }
+
+      .admin-work-thumbnail {
+        width: 60px;
+        height: 45px;
       }
     }
 
@@ -718,7 +981,6 @@
         padding-bottom: 4px;
       }
 
-
       .section-title,
       footer {
         flex-direction: column;
@@ -728,6 +990,26 @@
       .work-grid,
       .skills-grid {
         grid-template-columns: 1fr;
+      }
+
+      .admin-panel {
+        width: 100%;
+        max-height: 100vh;
+      }
+
+      .admin-content {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 16px;
+      }
+
+      .admin-work-item {
+        grid-template-columns: 50px 1fr auto;
+      }
+
+      .admin-work-thumbnail {
+        width: 50px;
+        height: 38px;
       }
     }
   </style>
@@ -786,109 +1068,12 @@
           <p>Selected examples across packaging, print, digital and branding.</p>
         </div>
 
-        <div class="work-filters" aria-label="Work filters">
-          <button class="work-filter is-active" type="button" data-filter="all">All</button>
-          <button class="work-filter" type="button" data-filter="packaging">Packaging</button>
-          <button class="work-filter" type="button" data-filter="print">Print</button>
-          <button class="work-filter" type="button" data-filter="digital">Digital</button>
-          <button class="work-filter" type="button" data-filter="branding">Branding</button>
+        <div class="work-filters" id="workFiltersContainer" aria-label="Work filters">
+          <!-- Filters generated by JS -->
         </div>
 
-        <div class="work-grid" aria-label="Selected work gallery">
-          <article class="work-item" data-category="packaging, branding">
-            <img src="./assets/work-01.png" alt="Packaging project 01" loading="lazy" />
-            <button class="work-open" type="button" aria-label="Open packaging project 01"></button>
-          </article>
-
-          <article class="work-item" data-category="packaging">
-            <img src="./assets/work-02.png" alt="Packaging project 02" loading="lazy" />
-            <button class="work-open" type="button" aria-label="Open packaging project 02"></button>
-          </article>
-
-          <article class="work-item" data-category="packaging">
-            <img src="./assets/work-03.png" alt="Packaging project 03" loading="lazy" />
-            <button class="work-open" type="button" aria-label="Open packaging project 03"></button>
-          </article>
-
-          <article class="work-item" data-category="print, digital">
-            <img src="./assets/work-04.png" alt="Print project 01" loading="lazy" />
-            <button class="work-open" type="button" aria-label="Open print project 01"></button>
-          </article>
-
-          <article class="work-item" data-category="digital">
-            <img src="./assets/work-05.png" alt="Digital project 01" loading="lazy" />
-            <button class="work-open" type="button" aria-label="Open digital project 01"></button>
-          </article>
-
-          <article class="work-item" data-category="branding">
-            <img src="./assets/work-06.png" alt="Branding project 01" loading="lazy" />
-            <button class="work-open" type="button" aria-label="Open branding project 01"></button>
-          </article>
-
-          <article class="work-item" data-category="packaging">
-            <img src="./assets/work-07.png" alt="Packaging project 04" loading="lazy" />
-            <button class="work-open" type="button" aria-label="Open packaging project 04"></button>
-          </article>
-
-          <article class="work-item" data-category="print">
-            <img src="./assets/work-08.png" alt="Print project 02" loading="lazy" />
-            <button class="work-open" type="button" aria-label="Open print project 02"></button>
-          </article>
-
-          <article class="work-item" data-category="digital">
-            <img src="./assets/work-09.png" alt="Digital project 02" loading="lazy" />
-            <button class="work-open" type="button" aria-label="Open digital project 02"></button>
-          </article>
-
-          <article class="work-item" data-category="branding">
-            <img src="./assets/work-10.png" alt="Branding project 02" loading="lazy" />
-            <button class="work-open" type="button" aria-label="Open branding project 02"></button>
-          </article>
-
-          <article class="work-item" data-category="packaging">
-            <img src="./assets/work-11.png" alt="Packaging project 05" loading="lazy" />
-            <button class="work-open" type="button" aria-label="Open packaging project 05"></button>
-          </article>
-
-          <article class="work-item" data-category="print">
-            <img src="./assets/work-12.png" alt="Print project 03" loading="lazy" />
-            <button class="work-open" type="button" aria-label="Open print project 03"></button>
-          </article>
-
-          <article class="work-item" data-category="packaging">
-            <img src="./assets/work-13.png" alt="Packaging project 06" loading="lazy" />
-            <button class="work-open" type="button" aria-label="Open packaging project 06"></button>
-          </article>
-
-          <article class="work-item" data-category="print">
-            <img src="./assets/work-14.png" alt="Print project 04" loading="lazy" />
-            <button class="work-open" type="button" aria-label="Open print project 04"></button>
-          </article>
-
-          <article class="work-item" data-category="digital">
-            <img src="./assets/work-15.png" alt="Digital project 03" loading="lazy" />
-            <button class="work-open" type="button" aria-label="Open digital project 03"></button>
-          </article>
-
-          <article class="work-item" data-category="branding">
-            <img src="./assets/work-16.png" alt="Branding project 03" loading="lazy" />
-            <button class="work-open" type="button" aria-label="Open branding project 03"></button>
-          </article>
-
-          <article class="work-item" data-category="packaging">
-            <img src="./assets/work-17.png" alt="Packaging project 07" loading="lazy" />
-            <button class="work-open" type="button" aria-label="Open packaging project 07"></button>
-          </article>
-
-          <article class="work-item" data-category="print">
-            <img src="./assets/work-18.png" alt="Print project 05" loading="lazy" />
-            <button class="work-open" type="button" aria-label="Open print project 05"></button>
-          </article>
-
-          <article class="work-item" data-category="branding">
-            <img src="./assets/work-20.png" alt="Branding project 04" loading="lazy" />
-            <button class="work-open" type="button" aria-label="Open branding project 04"></button>
-          </article>
+        <div class="work-grid" id="workGrid" aria-label="Selected work gallery">
+          <!-- Work items generated by JS -->
         </div>
       </section>
 
@@ -1004,10 +1189,15 @@
     </main>
 
     <footer>
-      <span>© 2026 Collin Amner. All rights reserved.</span>
-      <span>Intro · About Me · My Work · Skills · Experience</span>
+      <div style="display: flex; gap: 20px; align-items: center;">
+        <span>© 2026 Collin Amner. All rights reserved.</span>
+        <span>Intro · About Me · My Work · Skills · Experience</span>
+      </div>
+      <button class="admin-button" id="adminButton" title="Admin Panel">⚙️ Admin</button>
     </footer>
   </div>
+
+  <!-- Work Lightbox -->
   <div class="work-lightbox" id="workLightbox" role="dialog" aria-modal="true" aria-label="Work image viewer" aria-hidden="true">
     <div class="work-lightbox-panel">
       <div class="work-lightbox-image-wrap">
@@ -1022,50 +1212,387 @@
     </div>
   </div>
 
-  <div class="pdf-lightbox" id="pdfLightbox" role="dialog" aria-modal="true" aria-label="Portfolio PDF viewer" aria-hidden="true">
-    <div class="pdf-panel">
-      <div class="pdf-toolbar">
-        <strong>Collin Amner Portfolio</strong>
-        <div class="pdf-actions">
-          <a class="pdf-link" href="./assets/collinamner_portfolio.pdf" target="_blank" rel="noopener">Open in new tab</a>
-          <button class="pdf-close" type="button" id="closePortfolioPdf">Close</button>
-        </div>
+  <!-- Admin Modal -->
+  <div class="admin-modal" id="adminModal">
+    <div class="admin-panel">
+      <div class="admin-header">
+        <h2>Portfolio Admin</h2>
+        <button class="admin-close" id="adminModalClose">Close</button>
       </div>
-      <iframe id="portfolioPdfFrame" data-src="./assets/collinamner_portfolio.pdf" title="Collin Amner portfolio PDF"></iframe>
+      <div id="adminContent" class="admin-content">
+        <!-- Login or admin panel loads here -->
+      </div>
+      <div class="admin-footer" id="adminFooter" style="display: none;">
+        <button class="admin-btn cancel" id="adminCancel">Cancel</button>
+        <button class="admin-btn save" id="adminSave">Save Changes</button>
+      </div>
     </div>
   </div>
 
   <script>
-    const openPortfolioPdf = document.getElementById('openPortfolioPdf');
-    const closePortfolioPdf = document.getElementById('closePortfolioPdf');
-    const pdfLightbox = document.getElementById('pdfLightbox');
-    const portfolioPdfFrame = document.getElementById('portfolioPdfFrame');
+    // ============================================
+    // DATA MANAGEMENT
+    // ============================================
+    const STORAGE_KEY = 'portfolio_work_data';
+    const AUTH_KEY = 'portfolio_admin_auth';
+    const PASSWORD = 'admin2026';
 
-    function openPdfViewer() {
-      portfolioPdfFrame.src = portfolioPdfFrame.dataset.src;
-      pdfLightbox.classList.add('is-open');
-      pdfLightbox.setAttribute('aria-hidden', 'false');
+    const DEFAULT_WORK_DATA = [
+      { id: 1, title: 'Project 01', image: './assets/work-01.png', categories: ['packaging', 'branding'], position: 0 },
+      { id: 2, title: 'Project 02', image: './assets/work-02.png', categories: ['packaging'], position: 1 },
+      { id: 3, title: 'Project 03', image: './assets/work-03.png', categories: ['packaging'], position: 2 },
+      { id: 4, title: 'Project 04', image: './assets/work-04.png', categories: ['print', 'digital'], position: 3 },
+      { id: 5, title: 'Project 05', image: './assets/work-05.png', categories: ['digital'], position: 4 },
+      { id: 6, title: 'Project 06', image: './assets/work-06.png', categories: ['branding'], position: 5 },
+      { id: 7, title: 'Project 07', image: './assets/work-07.png', categories: ['packaging'], position: 6 },
+      { id: 8, title: 'Project 08', image: './assets/work-08.png', categories: ['print'], position: 7 },
+      { id: 9, title: 'Project 09', image: './assets/work-09.png', categories: ['digital'], position: 8 },
+      { id: 10, title: 'Project 10', image: './assets/work-10.png', categories: ['branding'], position: 9 },
+      { id: 11, title: 'Project 11', image: './assets/work-11.png', categories: ['packaging'], position: 10 },
+      { id: 12, title: 'Project 12', image: './assets/work-12.png', categories: ['print'], position: 11 },
+      { id: 13, title: 'Project 13', image: './assets/work-13.png', categories: ['packaging'], position: 12 },
+      { id: 14, title: 'Project 14', image: './assets/work-14.png', categories: ['print'], position: 13 },
+      { id: 15, title: 'Project 15', image: './assets/work-15.png', categories: ['digital'], position: 14 },
+      { id: 16, title: 'Project 16', image: './assets/work-16.png', categories: ['branding'], position: 15 },
+      { id: 17, title: 'Project 17', image: './assets/work-17.png', categories: ['packaging'], position: 16 },
+      { id: 18, title: 'Project 18', image: './assets/work-18.png', categories: ['print'], position: 17 },
+      { id: 19, title: 'Project 20', image: './assets/work-20.png', categories: ['branding'], position: 18 },
+    ];
+
+    let workData = loadWorkData();
+    let isAuthenticated = checkAuth();
+    let currentFilter = 'all';
+    let currentWorkImageIndex = 0;
+    let visibleWorkItems = [];
+    let editingData = null;
+
+    function loadWorkData() {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      return stored ? JSON.parse(stored) : DEFAULT_WORK_DATA;
+    }
+
+    function saveWorkData(data) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      workData = data;
+      renderWorkGrid();
+      renderFilters();
+    }
+
+    function checkAuth() {
+      return localStorage.getItem(AUTH_KEY) === 'true';
+    }
+
+    function authenticate(password) {
+      if (password === PASSWORD) {
+        localStorage.setItem(AUTH_KEY, 'true');
+        isAuthenticated = true;
+        return true;
+      }
+      return false;
+    }
+
+    function logout() {
+      localStorage.removeItem(AUTH_KEY);
+      isAuthenticated = false;
+    }
+
+    // ============================================
+    // WORK SECTION RENDERING
+    // ============================================
+    function renderFilters() {
+      const container = document.getElementById('workFiltersContainer');
+      const categories = new Set();
+      categories.add('all');
+      
+      workData.forEach(item => {
+        item.categories.forEach(cat => categories.add(cat));
+      });
+
+      const filters = Array.from(categories).sort((a, b) => {
+        if (a === 'all') return -1;
+        return a.localeCompare(b);
+      });
+
+      container.innerHTML = filters.map(filter => `
+        <button class="work-filter ${filter === 'all' ? 'is-active' : ''}" 
+                type="button" 
+                data-filter="${filter}">
+          ${filter.charAt(0).toUpperCase() + filter.slice(1)}
+        </button>
+      `).join('');
+
+      document.querySelectorAll('.work-filter').forEach(btn => {
+        btn.addEventListener('click', () => filterWork(btn.dataset.filter));
+      });
+    }
+
+    function renderWorkGrid() {
+      const grid = document.getElementById('workGrid');
+      const sorted = [...workData].sort((a, b) => a.position - b.position);
+      
+      grid.innerHTML = sorted.map(item => `
+        <article class="work-item ${!matchesFilter(item) ? 'is-hidden' : ''}" data-id="${item.id}">
+          <img src="${item.image}" alt="${item.title}" loading="lazy" />
+          <button class="work-open" type="button" aria-label="Open ${item.title}"></button>
+        </article>
+      `).join('');
+
+      document.querySelectorAll('.work-item').forEach(item => {
+        item.addEventListener('click', () => openWorkLightbox(item));
+      });
+
+      updateVisibleWorkItems();
+    }
+
+    function matchesFilter(item) {
+      if (currentFilter === 'all') return true;
+      return item.categories.includes(currentFilter);
+    }
+
+    function filterWork(filter) {
+      currentFilter = filter;
+      
+      document.querySelectorAll('.work-filter').forEach(btn => {
+        btn.classList.toggle('is-active', btn.dataset.filter === filter);
+      });
+
+      document.querySelectorAll('.work-item').forEach(item => {
+        const id = parseInt(item.dataset.id);
+        const data = workData.find(w => w.id === id);
+        item.classList.toggle('is-hidden', !matchesFilter(data));
+      });
+
+      updateVisibleWorkItems();
+    }
+
+    function updateVisibleWorkItems() {
+      visibleWorkItems = Array.from(document.querySelectorAll('.work-item:not(.is-hidden)'));
+    }
+
+    // ============================================
+    // LIGHTBOX
+    // ============================================
+    const workLightbox = document.getElementById('workLightbox');
+    const workLightboxImage = document.getElementById('workLightboxImage');
+    const workLightboxCaption = document.getElementById('workLightboxCaption');
+
+    function openWorkLightbox(item) {
+      updateVisibleWorkItems();
+      const index = visibleWorkItems.indexOf(item);
+      showWorkImage(index);
+      workLightbox.classList.add('is-open');
+      workLightbox.setAttribute('aria-hidden', 'false');
       document.body.classList.add('no-scroll');
-      closePortfolioPdf.focus();
     }
 
-    function closePdfViewer() {
-      pdfLightbox.classList.remove('is-open');
-      portfolioPdfFrame.removeAttribute('src');
-      pdfLightbox.setAttribute('aria-hidden', 'true');
+    function closeWorkLightbox() {
+      workLightbox.classList.remove('is-open');
+      workLightbox.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('no-scroll');
-      openPortfolioPdf.focus();
     }
 
-    openPortfolioPdf.addEventListener('click', openPdfViewer);
-    closePortfolioPdf.addEventListener('click', closePdfViewer);
+    function showWorkImage(index) {
+      updateVisibleWorkItems();
+      currentWorkImageIndex = (index + visibleWorkItems.length) % visibleWorkItems.length;
+      const img = visibleWorkItems[currentWorkImageIndex].querySelector('img');
+      workLightboxImage.src = img.src;
+      workLightboxImage.alt = img.alt;
+      workLightboxCaption.textContent = img.alt;
+    }
 
-    pdfLightbox.addEventListener('click', (event) => {
-      if (event.target === pdfLightbox) {
-        closePdfViewer();
+    document.getElementById('closeWorkLightbox').addEventListener('click', closeWorkLightbox);
+    document.getElementById('previousWorkImage').addEventListener('click', () => showWorkImage(currentWorkImageIndex - 1));
+    document.getElementById('nextWorkImage').addEventListener('click', () => showWorkImage(currentWorkImageIndex + 1));
+
+    workLightbox.addEventListener('click', (e) => {
+      if (e.target === workLightbox) closeWorkLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (workLightbox.classList.contains('is-open')) {
+        if (e.key === 'Escape') closeWorkLightbox();
+        if (e.key === 'ArrowLeft') showWorkImage(currentWorkImageIndex - 1);
+        if (e.key === 'ArrowRight') showWorkImage(currentWorkImageIndex + 1);
       }
     });
 
+    // ============================================
+    // ADMIN PANEL
+    // ============================================
+    const adminModal = document.getElementById('adminModal');
+    const adminContent = document.getElementById('adminContent');
+    const adminButton = document.getElementById('adminButton');
+    const adminModalClose = document.getElementById('adminModalClose');
+    const adminFooter = document.getElementById('adminFooter');
+
+    adminButton.addEventListener('click', openAdminModal);
+    adminModalClose.addEventListener('click', closeAdminModal);
+
+    function openAdminModal() {
+      adminModal.classList.add('is-open');
+      document.body.classList.add('no-scroll');
+      
+      if (isAuthenticated) {
+        renderAdminPanel();
+      } else {
+        renderLoginForm();
+      }
+    }
+
+    function closeAdminModal() {
+      adminModal.classList.remove('is-open');
+      document.body.classList.remove('no-scroll');
+      editingData = null;
+    }
+
+    function renderLoginForm() {
+      adminFooter.style.display = 'none';
+      adminContent.innerHTML = `
+        <div class="admin-login" style="grid-column: 1 / -1;">
+          <h2>Admin Access</h2>
+          <p style="color: var(--muted); margin-bottom: 20px;">Enter your password to edit the portfolio.</p>
+          <div class="admin-login-form">
+            <input type="password" id="adminPassword" placeholder="Password" />
+            <button class="admin-login-btn" type="button" id="adminLoginBtn">Login</button>
+            <div id="adminLoginError" style="display: none;"></div>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('adminLoginBtn').addEventListener('click', () => {
+        const password = document.getElementById('adminPassword').value;
+        const errorEl = document.getElementById('adminLoginError');
+        
+        if (authenticate(password)) {
+          renderAdminPanel();
+        } else {
+          errorEl.textContent = 'Incorrect password';
+          errorEl.style.display = 'block';
+        }
+      });
+
+      document.getElementById('adminPassword').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          document.getElementById('adminLoginBtn').click();
+        }
+      });
+    }
+
+    function renderAdminPanel() {
+      adminFooter.style.display = 'flex';
+      editingData = JSON.parse(JSON.stringify(workData));
+
+      adminContent.innerHTML = `
+        <div class="admin-work-list">
+          <h3 style="margin-bottom: 12px; color: var(--muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;">Work Items (${editingData.length})</h3>
+          ${editingData.sort((a, b) => a.position - b.position).map((item, idx) => `
+            <div class="admin-work-item" data-id="${item.id}">
+              <div class="admin-work-thumbnail">
+                <img src="${item.image}" alt="${item.title}" />
+              </div>
+              <div class="admin-work-details">
+                <h3>${item.title}</h3>
+                <p>${item.categories.join(', ')}</p>
+              </div>
+              <button class="admin-btn-small" type="button" onclick="moveUp(${item.id})">↑</button>
+              <button class="admin-btn-small" type="button" onclick="moveDown(${item.id})">↓</button>
+              <button class="admin-btn-small edit-btn" type="button" onclick="editWork(${item.id})">Edit</button>
+            </div>
+          `).join('')}
+        </div>
+        <div class="admin-sidebar">
+          <div style="color: var(--muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700;">Edit Work Item</div>
+          <div id="adminEditPanel">
+            <div style="padding: 20px; text-align: center; color: var(--muted);">Select a work item to edit</div>
+          </div>
+          <div style="margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line);">
+            <button class="admin-btn-small" style="width: 100%; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.3); color: #fca5a5;" id="adminLogout">Logout</button>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('adminLogout').addEventListener('click', () => {
+        logout();
+        renderLoginForm();
+      });
+    }
+
+    window.moveUp = function(id) {
+      const index = editingData.findIndex(w => w.id === id);
+      if (index > 0) {
+        [editingData[index].position, editingData[index - 1].position] = [editingData[index - 1].position, editingData[index].position];
+        renderAdminPanel();
+      }
+    };
+
+    window.moveDown = function(id) {
+      const index = editingData.findIndex(w => w.id === id);
+      if (index < editingData.length - 1) {
+        [editingData[index].position, editingData[index + 1].position] = [editingData[index + 1].position, editingData[index].position];
+        renderAdminPanel();
+      }
+    };
+
+    window.editWork = function(id) {
+      const item = editingData.find(w => w.id === id);
+      const panel = document.getElementById('adminEditPanel');
+      
+      const categoryOptions = ['packaging', 'print', 'digital', 'branding'];
+      
+      panel.innerHTML = `
+        <div class="admin-form-group">
+          <label>Title</label>
+          <input type="text" id="editTitle" value="${item.title}" />
+        </div>
+        <div class="admin-form-group">
+          <label>Image URL</label>
+          <input type="text" id="editImage" value="${item.image}" />
+        </div>
+        <div class="admin-form-group">
+          <label>Categories</label>
+          <div style="display: grid; gap: 6px;">
+            ${categoryOptions.map(cat => `
+              <label style="display: flex; align-items: center; gap: 8px; font-weight: 400; cursor: pointer;">
+                <input type="checkbox" ${item.categories.includes(cat) ? 'checked' : ''} value="${cat}" class="admin-cat-check" style="cursor: pointer;" />
+                ${cat.charAt(0).toUpperCase() + cat.slice(1)}
+              </label>
+            `).join('')}
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px; margin-top: 16px;">
+          <button class="admin-btn-small" style="flex: 1; background: rgba(20, 121, 255, 0.1); border-color: var(--blue); color: var(--blue);" id="saveEdit">Save</button>
+          <button class="admin-btn-small" style="flex: 1;" id="cancelEdit">Cancel</button>
+        </div>
+      `;
+
+      document.getElementById('saveEdit').addEventListener('click', () => {
+        item.title = document.getElementById('editTitle').value;
+        item.image = document.getElementById('editImage').value;
+        item.categories = Array.from(document.querySelectorAll('.admin-cat-check:checked')).map(cb => cb.value);
+        renderAdminPanel();
+      });
+
+      document.getElementById('cancelEdit').addEventListener('click', () => {
+        panel.innerHTML = '<div style="padding: 20px; text-align: center; color: var(--muted);">Select a work item to edit</div>';
+      });
+    };
+
+    document.getElementById('adminSave').addEventListener('click', () => {
+      if (editingData) {
+        saveWorkData(editingData);
+        closeAdminModal();
+      }
+    });
+
+    document.getElementById('adminCancel').addEventListener('click', closeAdminModal);
+
+    adminModal.addEventListener('click', (e) => {
+      if (e.target === adminModal) closeAdminModal();
+    });
+
+    // ============================================
+    // NAVIGATION
+    // ============================================
     const navLinks = Array.from(document.querySelectorAll('nav a'));
     const pageSections = Array.from(document.querySelectorAll('main section[id]'));
 
@@ -1080,92 +1607,11 @@
 
     pageSections.forEach((section) => activeSectionObserver.observe(section));
 
-    const workFilters = Array.from(document.querySelectorAll('.work-filter'));
-    const workItems = Array.from(document.querySelectorAll('.work-item'));
-    const workButtons = Array.from(document.querySelectorAll('.work-open'));
-    const workLightbox = document.getElementById('workLightbox');
-    const workLightboxImage = document.getElementById('workLightboxImage');
-    const workLightboxCaption = document.getElementById('workLightboxCaption');
-    const closeWorkLightbox = document.getElementById('closeWorkLightbox');
-    const previousWorkImage = document.getElementById('previousWorkImage');
-    const nextWorkImage = document.getElementById('nextWorkImage');
-    let currentWorkImageIndex = 0;
-    let visibleWorkItems = workItems;
-
-    function updateVisibleWorkItems() {
-      visibleWorkItems = workItems.filter((item) => !item.classList.contains('is-hidden'));
-    }
-
-    workFilters.forEach((filterButton) => {
-      filterButton.addEventListener('click', () => {
-        const filter = filterButton.dataset.filter;
-        workFilters.forEach((button) => button.classList.toggle('is-active', button === filterButton));
-        workItems.forEach((item) => {
-          const categories = item.dataset.category.split(',').map((category) => category.trim());
-          item.classList.toggle('is-hidden', filter !== 'all' && !categories.includes(filter));
-        });
-        updateVisibleWorkItems();
-      });
-    });
-
-    function showWorkImage(index) {
-      updateVisibleWorkItems();
-      currentWorkImageIndex = (index + visibleWorkItems.length) % visibleWorkItems.length;
-      const selectedImage = visibleWorkItems[currentWorkImageIndex].querySelector('img');
-      workLightboxImage.src = selectedImage.src;
-      workLightboxImage.alt = selectedImage.alt;
-      workLightboxCaption.textContent = selectedImage.alt;
-    }
-
-    function openWorkLightbox(item) {
-      updateVisibleWorkItems();
-      showWorkImage(visibleWorkItems.indexOf(item));
-      workLightbox.classList.add('is-open');
-      workLightbox.setAttribute('aria-hidden', 'false');
-      document.body.classList.add('no-scroll');
-      closeWorkLightbox.focus();
-    }
-
-    function closeWorkViewer() {
-      workLightbox.classList.remove('is-open');
-      workLightbox.setAttribute('aria-hidden', 'true');
-      document.body.classList.remove('no-scroll');
-      workLightboxImage.removeAttribute('src');
-    }
-
-    workButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        openWorkLightbox(button.closest('.work-item'));
-      });
-    });
-
-    previousWorkImage.addEventListener('click', () => showWorkImage(currentWorkImageIndex - 1));
-    nextWorkImage.addEventListener('click', () => showWorkImage(currentWorkImageIndex + 1));
-    closeWorkLightbox.addEventListener('click', closeWorkViewer);
-
-    workLightbox.addEventListener('click', (event) => {
-      if (event.target === workLightbox) {
-        closeWorkViewer();
-      }
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && pdfLightbox.classList.contains('is-open')) {
-        closePdfViewer();
-      }
-
-      if (event.key === 'Escape' && workLightbox.classList.contains('is-open')) {
-        closeWorkViewer();
-      }
-
-      if (event.key === 'ArrowLeft' && workLightbox.classList.contains('is-open')) {
-        showWorkImage(currentWorkImageIndex - 1);
-      }
-
-      if (event.key === 'ArrowRight' && workLightbox.classList.contains('is-open')) {
-        showWorkImage(currentWorkImageIndex + 1);
-      }
-    });
+    // ============================================
+    // INITIALIZATION
+    // ============================================
+    renderFilters();
+    renderWorkGrid();
   </script>
 </body>
 </html>
