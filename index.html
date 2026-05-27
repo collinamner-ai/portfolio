@@ -794,7 +794,102 @@
           <button class="work-filter" type="button" data-filter="branding">Branding</button>
         </div>
 
-        <div class="work-grid" id="workGrid" aria-label="Selected work gallery"></div>
+        <div class="work-grid" aria-label="Selected work gallery">
+          <article class="work-item" data-category="packaging, branding">
+            <img src="./assets/work-01.png" alt="Packaging project 01" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open packaging project 01"></button>
+          </article>
+
+          <article class="work-item" data-category="packaging">
+            <img src="./assets/work-02.png" alt="Packaging project 02" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open packaging project 02"></button>
+          </article>
+
+          <article class="work-item" data-category="packaging">
+            <img src="./assets/work-03.png" alt="Packaging project 03" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open packaging project 03"></button>
+          </article>
+
+          <article class="work-item" data-category="print, digital">
+            <img src="./assets/work-04.png" alt="Print project 01" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open print project 01"></button>
+          </article>
+
+          <article class="work-item" data-category="digital">
+            <img src="./assets/work-05.png" alt="Digital project 01" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open digital project 01"></button>
+          </article>
+
+          <article class="work-item" data-category="branding">
+            <img src="./assets/work-06.png" alt="Branding project 01" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open branding project 01"></button>
+          </article>
+
+          <article class="work-item" data-category="packaging">
+            <img src="./assets/work-07.png" alt="Packaging project 04" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open packaging project 04"></button>
+          </article>
+
+          <article class="work-item" data-category="print">
+            <img src="./assets/work-08.png" alt="Print project 02" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open print project 02"></button>
+          </article>
+
+          <article class="work-item" data-category="digital">
+            <img src="./assets/work-09.png" alt="Digital project 02" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open digital project 02"></button>
+          </article>
+
+          <article class="work-item" data-category="branding">
+            <img src="./assets/work-10.png" alt="Branding project 02" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open branding project 02"></button>
+          </article>
+
+          <article class="work-item" data-category="packaging">
+            <img src="./assets/work-11.png" alt="Packaging project 05" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open packaging project 05"></button>
+          </article>
+
+          <article class="work-item" data-category="print">
+            <img src="./assets/work-12.png" alt="Print project 03" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open print project 03"></button>
+          </article>
+
+          <article class="work-item" data-category="packaging">
+            <img src="./assets/work-13.png" alt="Packaging project 06" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open packaging project 06"></button>
+          </article>
+
+          <article class="work-item" data-category="print">
+            <img src="./assets/work-14.png" alt="Print project 04" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open print project 04"></button>
+          </article>
+
+          <article class="work-item" data-category="digital">
+            <img src="./assets/work-15.png" alt="Digital project 03" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open digital project 03"></button>
+          </article>
+
+          <article class="work-item" data-category="branding">
+            <img src="./assets/work-16.png" alt="Branding project 03" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open branding project 03"></button>
+          </article>
+
+          <article class="work-item" data-category="packaging">
+            <img src="./assets/work-17.png" alt="Packaging project 07" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open packaging project 07"></button>
+          </article>
+
+          <article class="work-item" data-category="print">
+            <img src="./assets/work-18.png" alt="Print project 05" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open print project 05"></button>
+          </article>
+
+          <article class="work-item" data-category="branding">
+            <img src="./assets/work-20.png" alt="Branding project 04" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open branding project 04"></button>
+          </article>
+        </div>
       </section>
 
       <section id="skills" class="wrap" aria-labelledby="skills-title">
@@ -985,37 +1080,6 @@
 
     pageSections.forEach((section) => activeSectionObserver.observe(section));
 
-    const workProjects = [
-      { file: 'work-01.png', category: 'packaging', alt: 'Packaging project 01' },
-      { file: 'work-02.png', category: 'packaging', alt: 'Packaging project 02' },
-      { file: 'work-03.png', category: 'packaging', alt: 'Packaging project 03' },
-      { file: 'work-04.png', category: 'print', alt: 'Print project 01' },
-      { file: 'work-05.png', category: 'digital', alt: 'Digital project 01' },
-      { file: 'work-06.png', category: 'branding', alt: 'Branding project 01' },
-      { file: 'work-07.png', category: 'packaging', alt: 'Packaging project 04' },
-      { file: 'work-08.png', category: 'print', alt: 'Print project 02' },
-      { file: 'work-09.png', category: 'digital', alt: 'Digital project 02' },
-      { file: 'work-10.png', category: 'branding', alt: 'Branding project 02' },
-      { file: 'work-11.png', category: 'packaging', alt: 'Packaging project 05' },
-      { file: 'work-12.png', category: 'print', alt: 'Print project 03' },
-      { file: 'work-13.png', category: 'packaging', alt: 'Packaging project 06' },
-      { file: 'work-14.png', category: 'print', alt: 'Print project 04' },
-      { file: 'work-15.png', category: 'digital', alt: 'Digital project 03' },
-      { file: 'work-16.png', category: 'branding', alt: 'Branding project 03' },
-      { file: 'work-17.png', category: 'packaging', alt: 'Packaging project 07' },
-      { file: 'work-18.png', category: 'print', alt: 'Print project 05' },
-      { file: 'work-20.png', category: 'branding', alt: 'Branding project 04' }
-    ];
-
-    const workGrid = document.getElementById('workGrid');
-
-    workGrid.innerHTML = workProjects.map((project, index) => `
-      <article class="work-item" data-category="${project.category}">
-        <img src="assets/${project.file}" alt="${project.alt}" loading="lazy" />
-        <button class="work-open" type="button" data-index="${index}" aria-label="Open ${project.alt}"></button>
-      </article>
-    `).join('');
-
     const workFilters = Array.from(document.querySelectorAll('.work-filter'));
     const workItems = Array.from(document.querySelectorAll('.work-item'));
     const workButtons = Array.from(document.querySelectorAll('.work-open'));
@@ -1048,7 +1112,7 @@
       updateVisibleWorkItems();
       currentWorkImageIndex = (index + visibleWorkItems.length) % visibleWorkItems.length;
       const selectedImage = visibleWorkItems[currentWorkImageIndex].querySelector('img');
-      workLightboxImage.src = selectedImage.src;
+      workLightboxImage.src = selectedImage.currentSrc || selectedImage.getAttribute('src');
       workLightboxImage.alt = selectedImage.alt;
       workLightboxCaption.textContent = selectedImage.alt;
     }
