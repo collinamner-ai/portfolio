@@ -202,13 +202,6 @@
       max-width: 900px;
     }
 
-    .intro p {
-      margin-top: 26px;
-      max-width: 640px;
-      color: var(--muted);
-      font-size: clamp(1rem, 1.8vw, 1.22rem);
-    }
-
     .actions {
       display: flex;
       flex-wrap: wrap;
@@ -234,16 +227,18 @@
       outline: none;
     }
 
-    .btn.primary {
-      color: #080a0f;
-      background: linear-gradient(135deg, #ffffff, #aeb8c3);
-      border-color: rgba(255,255,255,0.65);
+    .btn.download {
+      min-height: 54px;
+      padding: 0 24px;
+      color: #ffffff;
+      background: linear-gradient(135deg, #1479ff, #005bd6);
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 14px 34px rgba(20, 121, 255, 0.28);
     }
 
-    .btn.secondary {
-      color: var(--text);
-      background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(14px);
+    .btn.download:hover,
+    .btn.download:focus-visible {
+      background: linear-gradient(135deg, #2f8cff, #0066ee);
     }
 
     .section-title {
@@ -282,42 +277,6 @@
 
     .panel p {
       color: var(--muted);
-    }
-
-    .quick-facts {
-      display: grid;
-      gap: 14px;
-    }
-
-    .quick-facts div {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .quick-facts div:last-child {
-      border-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    .quick-facts span {
-      color: var(--muted);
-    }
-
-    .btn.download {
-      min-height: 54px;
-      padding: 0 24px;
-      color: #ffffff;
-      background: linear-gradient(135deg, #1479ff, #005bd6);
-      border-color: rgba(255, 255, 255, 0.18);
-      box-shadow: 0 14px 34px rgba(20, 121, 255, 0.28);
-    }
-
-    .btn.download:hover,
-    .btn.download:focus-visible {
-      background: linear-gradient(135deg, #2f8cff, #0066ee);
     }
 
     .work-filters {
@@ -376,7 +335,6 @@
       border: 1px solid rgba(255,255,255,0.16);
       background: rgba(255,255,255,0.04);
       box-shadow: 0 16px 44px rgba(0,0,0,0.28);
-      cursor: pointer;
     }
 
     .work-item.is-hidden {
@@ -391,89 +349,21 @@
       transition: transform 260ms ease, opacity 260ms ease;
     }
 
-    .work-item:hover img,
-    .work-item:focus-visible img {
-      transform: scale(1.05);
-      opacity: 0.84;
+    .work-item:hover img {
+      transform: scale(1.04);
+      opacity: 0.92;
     }
 
-    .work-open {
-      position: absolute;
-      inset: 0;
+    .work-image-error {
       width: 100%;
       height: 100%;
-      background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.55));
-      opacity: 0;
-      transition: opacity 180ms ease;
-    }
-
-    .work-item:hover .work-open {
-      opacity: 1;
-    }
-
-    .work-lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 55;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: rgba(0, 0, 0, 0.88);
-      backdrop-filter: blur(12px);
-    }
-
-    .work-lightbox.is-open {
-      display: flex;
-    }
-
-    .work-lightbox-panel {
-      width: min(1100px, 100%);
       display: grid;
-      gap: 14px;
-    }
-
-    .work-lightbox-image-wrap {
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background: #07090d;
-      box-shadow: var(--shadow);
-    }
-
-    .work-lightbox img {
-      display: block;
-      width: 100%;
-      max-height: calc(100vh - 170px);
-      object-fit: contain;
-    }
-
-    .work-lightbox-caption {
+      place-items: center;
+      padding: 16px;
       color: var(--muted);
       text-align: center;
-    }
-
-    .work-lightbox-controls {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .work-lightbox-button {
-      min-height: 42px;
-      padding: 0 14px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.08);
-      color: var(--text);
-      font-weight: 700;
-    }
-
-    .work-lightbox-button:hover,
-    .work-lightbox-button:focus-visible {
-      background: rgba(255,255,255,0.14);
-      outline: none;
+      font-size: 0.85rem;
+      background: rgba(255,255,255,0.045);
     }
 
     .skills-subsection {
@@ -606,7 +496,80 @@
       transform: translateY(-2px);
     }
 
-    /* Admin Panel Styles */
+    .pdf-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(0, 0, 0, 0.86);
+      backdrop-filter: blur(12px);
+    }
+
+    .pdf-lightbox.is-open {
+      display: flex;
+    }
+
+    .pdf-panel {
+      width: min(1100px, 100%);
+      height: min(820px, calc(100vh - 48px));
+      display: grid;
+      grid-template-rows: auto 1fr;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      background: #0b0d11;
+      box-shadow: var(--shadow);
+    }
+
+    .pdf-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,0.055);
+    }
+
+    .pdf-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .pdf-link,
+    .pdf-close {
+      min-height: 40px;
+      padding: 0 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .pdf-close:hover,
+    .pdf-close:focus-visible,
+    .pdf-link:hover,
+    .pdf-link:focus-visible {
+      background: rgba(255,255,255,0.14);
+      outline: none;
+    }
+
+    .pdf-panel iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #ffffff;
+    }
+
     .admin-modal {
       position: fixed;
       inset: 0;
@@ -713,11 +676,6 @@
       color: var(--muted);
     }
 
-    .admin-work-controls {
-      display: flex;
-      gap: 6px;
-    }
-
     .admin-btn-small {
       min-height: 36px;
       padding: 0 10px;
@@ -743,6 +701,7 @@
     .admin-form-group {
       display: grid;
       gap: 6px;
+      margin-bottom: 14px;
     }
 
     .admin-form-group label {
@@ -754,7 +713,6 @@
     }
 
     .admin-form-group input,
-    .admin-form-group textarea,
     .admin-form-group select {
       padding: 8px 12px;
       border-radius: 8px;
@@ -765,70 +723,11 @@
       font-size: 0.9rem;
     }
 
-    .admin-form-group textarea {
-      min-height: 80px;
-      resize: vertical;
-    }
-
     .admin-form-group input:focus,
-    .admin-form-group textarea:focus,
     .admin-form-group select:focus {
       outline: none;
       border-color: var(--blue);
       background: rgba(255,255,255,0.08);
-    }
-
-    .admin-tags-input {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      padding: 8px;
-      border-radius: 8px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.06);
-      min-height: 40px;
-    }
-
-    .admin-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 8px;
-      border-radius: 6px;
-      background: rgba(20, 121, 255, 0.2);
-      border: 1px solid var(--blue);
-      color: var(--blue);
-      font-size: 0.8rem;
-      font-weight: 700;
-    }
-
-    .admin-tag button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 16px;
-      height: 16px;
-      border-radius: 3px;
-      background: rgba(255,255,255,0.1);
-      color: inherit;
-    }
-
-    .admin-tag button:hover {
-      background: rgba(255,255,255,0.2);
-    }
-
-    .admin-tag-input {
-      flex: 1;
-      min-width: 60px;
-      padding: 0;
-      border: none;
-      background: transparent;
-      color: inherit;
-      font-family: inherit;
-    }
-
-    .admin-tag-input:focus {
-      outline: none;
     }
 
     .admin-footer {
@@ -895,26 +794,14 @@
       font-size: 1rem;
     }
 
-    .admin-login-form input:focus {
-      outline: none;
-      border-color: var(--blue);
-      background: rgba(255,255,255,0.08);
-    }
-
     .admin-login-btn {
       min-height: 44px;
-      padding: 0;
       border-radius: 10px;
       border: 1px solid var(--blue);
       background: linear-gradient(135deg, var(--blue), #005bd6);
       color: white;
       font-weight: 700;
       font-size: 1rem;
-    }
-
-    .admin-login-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 24px rgba(20, 121, 255, 0.3);
     }
 
     .admin-error {
@@ -928,12 +815,13 @@
     }
 
     @media (max-width: 900px) {
-      .about-grid {
+      .intro,
+      .about-grid,
+      .admin-content {
         grid-template-columns: 1fr;
       }
 
       .intro {
-        grid-template-columns: 1fr;
         min-height: auto;
         padding: 48px 0 40px;
       }
@@ -943,19 +831,12 @@
         width: min(320px, 100%);
       }
 
-      .work-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
+      .work-grid,
       .skills-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
       .experience-item {
-        grid-template-columns: 1fr;
-      }
-
-      .admin-content {
         grid-template-columns: 1fr;
       }
 
@@ -998,7 +879,6 @@
       }
 
       .admin-content {
-        grid-template-columns: 1fr;
         gap: 12px;
         padding: 16px;
       }
@@ -1016,7 +896,6 @@
 </head>
 <body>
   <div class="page">
-
     <header>
       <div class="header-inner">
         <a href="#intro" class="logo" aria-label="Portfolio home">
@@ -1043,7 +922,7 @@
         </div>
 
         <div class="profile-frame">
-          <img src="./assets/profile.png" alt="Black and white portrait of Collin Amner" data-github-url="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/assets/profile.png" />
+          <img src="./assets/profile.png" alt="Black and white portrait of Collin Amner" />
         </div>
       </section>
 
@@ -1068,13 +947,8 @@
           <p>Selected examples across packaging, print, digital and branding.</p>
         </div>
 
-        <div class="work-filters" id="workFiltersContainer" aria-label="Work filters">
-          <!-- Filters generated by JS -->
-        </div>
-
-        <div class="work-grid" id="workGrid" aria-label="Selected work gallery">
-          <!-- Work items generated by JS -->
-        </div>
+        <div class="work-filters" id="workFiltersContainer" aria-label="Work filters"></div>
+        <div class="work-grid" id="workGrid" aria-label="Selected work gallery"></div>
       </section>
 
       <section id="skills" class="wrap" aria-labelledby="skills-title">
@@ -1114,10 +988,10 @@
               <p class="experience-company">Branded Agency (Writtle Group), Berkhamsted</p>
             </div>
             <ul class="experience-tags">
-                <li>Packaging</li>
-                <li>Pre-Press</li>
-                <li>Automation</li>
-              </ul>
+              <li>Packaging</li>
+              <li>Pre-Press</li>
+              <li>Automation</li>
+            </ul>
           </article>
 
           <article class="experience-item">
@@ -1127,10 +1001,10 @@
               <p class="experience-company">KJC Creative Limited, Aylesbury</p>
             </div>
             <ul class="experience-tags">
-                <li>Coordination</li>
-                <li>Print</li>
-                <li>Digital</li>
-              </ul>
+              <li>Coordination</li>
+              <li>Print</li>
+              <li>Digital</li>
+            </ul>
           </article>
 
           <article class="experience-item">
@@ -1140,10 +1014,10 @@
               <p class="experience-company">Adlens Limited, Oxford</p>
             </div>
             <ul class="experience-tags">
-                <li>Branding</li>
-                <li>Packaging</li>
-                <li>Mentoring</li>
-              </ul>
+              <li>Branding</li>
+              <li>Packaging</li>
+              <li>Mentoring</li>
+            </ul>
           </article>
 
           <article class="experience-item">
@@ -1153,10 +1027,10 @@
               <p class="experience-company">Amner Creative Design, Thame</p>
             </div>
             <ul class="experience-tags">
-                <li>Brand Projects</li>
-                <li>Licensed Products</li>
-                <li>Major Clients</li>
-              </ul>
+              <li>Brand Projects</li>
+              <li>Licensed Products</li>
+              <li>Major Clients</li>
+            </ul>
           </article>
 
           <article class="experience-item">
@@ -1166,10 +1040,10 @@
               <p class="experience-company">Path Group PLC, Thame</p>
             </div>
             <ul class="experience-tags">
-                <li>Product Design</li>
-                <li>Artwork</li>
-                <li>Launches</li>
-              </ul>
+              <li>Product Design</li>
+              <li>Artwork</li>
+              <li>Launches</li>
+            </ul>
           </article>
 
           <article class="experience-item">
@@ -1179,17 +1053,17 @@
               <p class="experience-company">Philex Electronic Limited, Bedford</p>
             </div>
             <ul class="experience-tags">
-                <li>Packaging</li>
-                <li>Retail Displays</li>
-                <li>Marketing</li>
-              </ul>
+              <li>Packaging</li>
+              <li>Retail Displays</li>
+              <li>Marketing</li>
+            </ul>
           </article>
         </div>
       </section>
     </main>
 
     <footer>
-      <div style="display: flex; gap: 20px; align-items: center;">
+      <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
         <span>© 2026 Collin Amner. All rights reserved.</span>
         <span>Intro · About Me · My Work · Skills · Experience</span>
       </div>
@@ -1197,31 +1071,26 @@
     </footer>
   </div>
 
-  <!-- Work Lightbox -->
-  <div class="work-lightbox" id="workLightbox" role="dialog" aria-modal="true" aria-label="Work image viewer" aria-hidden="true">
-    <div class="work-lightbox-panel">
-      <div class="work-lightbox-image-wrap">
-        <img id="workLightboxImage" src="" alt="" />
+  <div class="pdf-lightbox" id="pdfLightbox" role="dialog" aria-modal="true" aria-label="Portfolio PDF viewer" aria-hidden="true">
+    <div class="pdf-panel">
+      <div class="pdf-toolbar">
+        <strong>Collin Amner Portfolio</strong>
+        <div class="pdf-actions">
+          <a class="pdf-link" href="./assets/collinamner_portfolio.pdf" target="_blank" rel="noopener">Open in new tab</a>
+          <button class="pdf-close" type="button" id="closePortfolioPdf">Close</button>
+        </div>
       </div>
-      <p class="work-lightbox-caption" id="workLightboxCaption">Selected work image</p>
-      <div class="work-lightbox-controls" aria-label="Work image viewer controls">
-        <button class="work-lightbox-button" type="button" id="previousWorkImage">Previous</button>
-        <button class="work-lightbox-button" type="button" id="closeWorkLightbox">Close</button>
-        <button class="work-lightbox-button" type="button" id="nextWorkImage">Next</button>
-      </div>
+      <iframe id="portfolioPdfFrame" data-src="./assets/collinamner_portfolio.pdf" title="Collin Amner portfolio PDF"></iframe>
     </div>
   </div>
 
-  <!-- Admin Modal -->
   <div class="admin-modal" id="adminModal">
     <div class="admin-panel">
       <div class="admin-header">
         <h2>Portfolio Admin</h2>
         <button class="admin-close" id="adminModalClose">Close</button>
       </div>
-      <div id="adminContent" class="admin-content">
-        <!-- Login or admin panel loads here -->
-      </div>
+      <div id="adminContent" class="admin-content"></div>
       <div class="admin-footer" id="adminFooter" style="display: none;">
         <button class="admin-btn cancel" id="adminCancel">Cancel</button>
         <button class="admin-btn save" id="adminSave">Save Changes</button>
@@ -1234,43 +1103,41 @@
     // DATA MANAGEMENT
     // ============================================
     const STORAGE_KEY = 'portfolio_work_data';
+    const STORAGE_VERSION_KEY = 'portfolio_work_data_version';
+    const DATA_VERSION = 'work-assets-local-v3';
     const AUTH_KEY = 'portfolio_admin_auth';
     const PASSWORD = 'admin2026';
 
-    // ⚠️ IMPORTANT: Update these URLs with your GitHub repo details
-    const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/collinamner-ai/portfolio/main/assets';
-    const USE_GITHUB_URLS = true;
-
     const DEFAULT_WORK_DATA = [
-      { id: 1, title: 'Project 01', image: `${GITHUB_RAW_URL}/work-01.png`, categories: ['packaging', 'branding'], position: 0 },
-      { id: 2, title: 'Project 02', image: `${GITHUB_RAW_URL}/work-02.png`, categories: ['packaging'], position: 1 },
-      { id: 3, title: 'Project 03', image: `${GITHUB_RAW_URL}/work-03.png`, categories: ['packaging'], position: 2 },
-      { id: 4, title: 'Project 04', image: `${GITHUB_RAW_URL}/work-04.png`, categories: ['print', 'digital'], position: 3 },
-      { id: 5, title: 'Project 05', image: `${GITHUB_RAW_URL}/work-05.png`, categories: ['digital'], position: 4 },
-      { id: 6, title: 'Project 06', image: `${GITHUB_RAW_URL}/work-06.png`, categories: ['branding'], position: 5 },
-      { id: 7, title: 'Project 07', image: `${GITHUB_RAW_URL}/work-07.png`, categories: ['packaging'], position: 6 },
-      { id: 8, title: 'Project 08', image: `${GITHUB_RAW_URL}/work-08.png`, categories: ['print'], position: 7 },
-      { id: 9, title: 'Project 09', image: `${GITHUB_RAW_URL}/work-09.png`, categories: ['digital'], position: 8 },
-      { id: 10, title: 'Project 10', image: `${GITHUB_RAW_URL}/work-10.png`, categories: ['branding'], position: 9 },
-      { id: 11, title: 'Project 11', image: `${GITHUB_RAW_URL}/work-11.png`, categories: ['packaging'], position: 10 },
-      { id: 12, title: 'Project 12', image: `${GITHUB_RAW_URL}/work-12.png`, categories: ['print'], position: 11 },
-      { id: 13, title: 'Project 13', image: `${GITHUB_RAW_URL}/work-13.png`, categories: ['packaging'], position: 12 },
-      { id: 14, title: 'Project 14', image: `${GITHUB_RAW_URL}/work-14.png`, categories: ['print'], position: 13 },
-      { id: 15, title: 'Project 15', image: `${GITHUB_RAW_URL}/work-15.png`, categories: ['digital'], position: 14 },
-      { id: 16, title: 'Project 16', image: `${GITHUB_RAW_URL}/work-16.png`, categories: ['branding'], position: 15 },
-      { id: 17, title: 'Project 17', image: `${GITHUB_RAW_URL}/work-17.png`, categories: ['packaging'], position: 16 },
-      { id: 18, title: 'Project 18', image: `${GITHUB_RAW_URL}/work-18.png`, categories: ['print'], position: 17 },
-      { id: 19, title: 'Project 20', image: `${GITHUB_RAW_URL}/work-20.png`, categories: ['branding'], position: 18 },
+      { id: 1, title: 'Project 01', image: './assets/work-01.png', categories: ['packaging', 'branding'], position: 0 },
+      { id: 2, title: 'Project 02', image: './assets/work-02.png', categories: ['packaging'], position: 1 },
+      { id: 3, title: 'Project 03', image: './assets/work-03.png', categories: ['packaging'], position: 2 },
+      { id: 4, title: 'Project 04', image: './assets/work-04.png', categories: ['print', 'digital'], position: 3 },
+      { id: 5, title: 'Project 05', image: './assets/work-05.png', categories: ['digital'], position: 4 },
+      { id: 6, title: 'Project 06', image: './assets/work-06.png', categories: ['branding'], position: 5 },
+      { id: 7, title: 'Project 07', image: './assets/work-07.png', categories: ['packaging'], position: 6 },
+      { id: 8, title: 'Project 08', image: './assets/work-08.png', categories: ['print'], position: 7 },
+      { id: 9, title: 'Project 09', image: './assets/work-09.png', categories: ['digital'], position: 8 },
+      { id: 10, title: 'Project 10', image: './assets/work-10.png', categories: ['branding'], position: 9 },
+      { id: 11, title: 'Project 11', image: './assets/work-11.png', categories: ['packaging'], position: 10 },
+      { id: 12, title: 'Project 12', image: './assets/work-12.png', categories: ['print'], position: 11 },
+      { id: 13, title: 'Project 13', image: './assets/work-13.png', categories: ['packaging'], position: 12 },
+      { id: 14, title: 'Project 14', image: './assets/work-14.png', categories: ['print'], position: 13 },
+      { id: 15, title: 'Project 15', image: './assets/work-15.png', categories: ['digital'], position: 14 },
+      { id: 16, title: 'Project 16', image: './assets/work-16.png', categories: ['branding'], position: 15 },
+      { id: 17, title: 'Project 17', image: './assets/work-17.png', categories: ['packaging'], position: 16 },
+      { id: 18, title: 'Project 18', image: './assets/work-18.png', categories: ['print'], position: 17 },
+      { id: 19, title: 'Project 20', image: './assets/work-20.png', categories: ['branding'], position: 18 }
     ];
 
-    // Clear old cached data on page load (forces fresh data with correct image URLs)
-    localStorage.removeItem(STORAGE_KEY);
+    if (localStorage.getItem(STORAGE_VERSION_KEY) !== DATA_VERSION) {
+      localStorage.removeItem(STORAGE_KEY);
+      localStorage.setItem(STORAGE_VERSION_KEY, DATA_VERSION);
+    }
 
     let workData = loadWorkData();
     let isAuthenticated = checkAuth();
     let currentFilter = 'all';
-    let currentWorkImageIndex = 0;
-    let visibleWorkItems = [];
     let editingData = null;
 
     function loadWorkData() {
@@ -1304,51 +1171,49 @@
     }
 
     // ============================================
-    // WORK SECTION RENDERING
+    // WORK SECTION RENDERING — NO LIGHTBOX
     // ============================================
     function renderFilters() {
       const container = document.getElementById('workFiltersContainer');
-      const categories = new Set();
-      categories.add('all');
-      
-      workData.forEach(item => {
-        item.categories.forEach(cat => categories.add(cat));
+      const categories = new Set(['all']);
+
+      workData.forEach((item) => {
+        item.categories.forEach((category) => categories.add(category));
       });
 
       const filters = Array.from(categories).sort((a, b) => {
         if (a === 'all') return -1;
+        if (b === 'all') return 1;
         return a.localeCompare(b);
       });
 
-      container.innerHTML = filters.map(filter => `
-        <button class="work-filter ${filter === 'all' ? 'is-active' : ''}" 
-                type="button" 
-                data-filter="${filter}">
+      container.innerHTML = filters.map((filter) => `
+        <button class="work-filter ${filter === currentFilter ? 'is-active' : ''}" type="button" data-filter="${filter}">
           ${filter.charAt(0).toUpperCase() + filter.slice(1)}
         </button>
       `).join('');
 
-      document.querySelectorAll('.work-filter').forEach(btn => {
-        btn.addEventListener('click', () => filterWork(btn.dataset.filter));
+      document.querySelectorAll('.work-filter').forEach((button) => {
+        button.addEventListener('click', () => filterWork(button.dataset.filter));
       });
     }
 
     function renderWorkGrid() {
       const grid = document.getElementById('workGrid');
       const sorted = [...workData].sort((a, b) => a.position - b.position);
-      
-      grid.innerHTML = sorted.map(item => `
-        <article class="work-item ${!matchesFilter(item) ? 'is-hidden' : ''}" data-id="${item.id}">
-          <img src="${item.image}" alt="${item.title}" loading="lazy" />
-          <button class="work-open" type="button" aria-label="Open ${item.title}"></button>
+
+      grid.innerHTML = sorted.map((item) => `
+        <article class="work-item ${matchesFilter(item) ? '' : 'is-hidden'}" data-id="${item.id}">
+          <img src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.replaceWith(createImageError('${item.image}'))" />
         </article>
       `).join('');
+    }
 
-      document.querySelectorAll('.work-item').forEach(item => {
-        item.addEventListener('click', () => openWorkLightbox(item));
-      });
-
-      updateVisibleWorkItems();
+    function createImageError(path) {
+      const error = document.createElement('div');
+      error.className = 'work-image-error';
+      error.textContent = `Image not found: ${path}`;
+      return error;
     }
 
     function matchesFilter(item) {
@@ -1358,69 +1223,47 @@
 
     function filterWork(filter) {
       currentFilter = filter;
-      
-      document.querySelectorAll('.work-filter').forEach(btn => {
-        btn.classList.toggle('is-active', btn.dataset.filter === filter);
+
+      document.querySelectorAll('.work-filter').forEach((button) => {
+        button.classList.toggle('is-active', button.dataset.filter === filter);
       });
 
-      document.querySelectorAll('.work-item').forEach(item => {
-        const id = parseInt(item.dataset.id);
-        const data = workData.find(w => w.id === id);
+      document.querySelectorAll('.work-item').forEach((item) => {
+        const id = Number(item.dataset.id);
+        const data = workData.find((entry) => entry.id === id);
         item.classList.toggle('is-hidden', !matchesFilter(data));
       });
-
-      updateVisibleWorkItems();
-    }
-
-    function updateVisibleWorkItems() {
-      visibleWorkItems = Array.from(document.querySelectorAll('.work-item:not(.is-hidden)'));
     }
 
     // ============================================
-    // LIGHTBOX
+    // PORTFOLIO PDF VIEWER
     // ============================================
-    const workLightbox = document.getElementById('workLightbox');
-    const workLightboxImage = document.getElementById('workLightboxImage');
-    const workLightboxCaption = document.getElementById('workLightboxCaption');
+    const openPortfolioPdf = document.getElementById('openPortfolioPdf');
+    const closePortfolioPdf = document.getElementById('closePortfolioPdf');
+    const pdfLightbox = document.getElementById('pdfLightbox');
+    const portfolioPdfFrame = document.getElementById('portfolioPdfFrame');
 
-    function openWorkLightbox(item) {
-      updateVisibleWorkItems();
-      const index = visibleWorkItems.indexOf(item);
-      showWorkImage(index);
-      workLightbox.classList.add('is-open');
-      workLightbox.setAttribute('aria-hidden', 'false');
+    function openPdfViewer() {
+      portfolioPdfFrame.src = portfolioPdfFrame.dataset.src;
+      pdfLightbox.classList.add('is-open');
+      pdfLightbox.setAttribute('aria-hidden', 'false');
       document.body.classList.add('no-scroll');
+      closePortfolioPdf.focus();
     }
 
-    function closeWorkLightbox() {
-      workLightbox.classList.remove('is-open');
-      workLightbox.setAttribute('aria-hidden', 'true');
+    function closePdfViewer() {
+      pdfLightbox.classList.remove('is-open');
+      portfolioPdfFrame.removeAttribute('src');
+      pdfLightbox.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('no-scroll');
+      openPortfolioPdf.focus();
     }
 
-    function showWorkImage(index) {
-      updateVisibleWorkItems();
-      currentWorkImageIndex = (index + visibleWorkItems.length) % visibleWorkItems.length;
-      const img = visibleWorkItems[currentWorkImageIndex].querySelector('img');
-      workLightboxImage.src = img.src;
-      workLightboxImage.alt = img.alt;
-      workLightboxCaption.textContent = img.alt;
-    }
+    openPortfolioPdf.addEventListener('click', openPdfViewer);
+    closePortfolioPdf.addEventListener('click', closePdfViewer);
 
-    document.getElementById('closeWorkLightbox').addEventListener('click', closeWorkLightbox);
-    document.getElementById('previousWorkImage').addEventListener('click', () => showWorkImage(currentWorkImageIndex - 1));
-    document.getElementById('nextWorkImage').addEventListener('click', () => showWorkImage(currentWorkImageIndex + 1));
-
-    workLightbox.addEventListener('click', (e) => {
-      if (e.target === workLightbox) closeWorkLightbox();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (workLightbox.classList.contains('is-open')) {
-        if (e.key === 'Escape') closeWorkLightbox();
-        if (e.key === 'ArrowLeft') showWorkImage(currentWorkImageIndex - 1);
-        if (e.key === 'ArrowRight') showWorkImage(currentWorkImageIndex + 1);
-      }
+    pdfLightbox.addEventListener('click', (event) => {
+      if (event.target === pdfLightbox) closePdfViewer();
     });
 
     // ============================================
@@ -1438,12 +1281,8 @@
     function openAdminModal() {
       adminModal.classList.add('is-open');
       document.body.classList.add('no-scroll');
-      
-      if (isAuthenticated) {
-        renderAdminPanel();
-      } else {
-        renderLoginForm();
-      }
+      if (isAuthenticated) renderAdminPanel();
+      else renderLoginForm();
     }
 
     function closeAdminModal() {
@@ -1461,7 +1300,7 @@
           <div class="admin-login-form">
             <input type="password" id="adminPassword" placeholder="Password" />
             <button class="admin-login-btn" type="button" id="adminLoginBtn">Login</button>
-            <div id="adminLoginError" style="display: none;"></div>
+            <div id="adminLoginError" class="admin-error" style="display: none;"></div>
           </div>
         </div>
       `;
@@ -1469,7 +1308,7 @@
       document.getElementById('adminLoginBtn').addEventListener('click', () => {
         const password = document.getElementById('adminPassword').value;
         const errorEl = document.getElementById('adminLoginError');
-        
+
         if (authenticate(password)) {
           renderAdminPanel();
         } else {
@@ -1478,21 +1317,20 @@
         }
       });
 
-      document.getElementById('adminPassword').addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-          document.getElementById('adminLoginBtn').click();
-        }
+      document.getElementById('adminPassword').addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') document.getElementById('adminLoginBtn').click();
       });
     }
 
     function renderAdminPanel() {
       adminFooter.style.display = 'flex';
       editingData = JSON.parse(JSON.stringify(workData));
+      const sortedEditingData = [...editingData].sort((a, b) => a.position - b.position);
 
       adminContent.innerHTML = `
         <div class="admin-work-list">
           <h3 style="margin-bottom: 12px; color: var(--muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;">Work Items (${editingData.length})</h3>
-          ${editingData.sort((a, b) => a.position - b.position).map((item, idx) => `
+          ${sortedEditingData.map((item) => `
             <div class="admin-work-item" data-id="${item.id}">
               <div class="admin-work-thumbnail">
                 <img src="${item.image}" alt="${item.title}" />
@@ -1503,7 +1341,7 @@
               </div>
               <button class="admin-btn-small" type="button" onclick="moveUp(${item.id})">↑</button>
               <button class="admin-btn-small" type="button" onclick="moveDown(${item.id})">↓</button>
-              <button class="admin-btn-small edit-btn" type="button" onclick="editWork(${item.id})">Edit</button>
+              <button class="admin-btn-small" type="button" onclick="editWork(${item.id})">Edit</button>
             </div>
           `).join('')}
         </div>
@@ -1525,100 +1363,41 @@
     }
 
     window.moveUp = function(id) {
-      const index = editingData.findIndex(w => w.id === id);
+      const sorted = [...editingData].sort((a, b) => a.position - b.position);
+      const index = sorted.findIndex((item) => item.id === id);
       if (index > 0) {
-        [editingData[index].position, editingData[index - 1].position] = [editingData[index - 1].position, editingData[index].position];
+        [sorted[index].position, sorted[index - 1].position] = [sorted[index - 1].position, sorted[index].position];
         renderAdminPanel();
       }
     };
 
     window.moveDown = function(id) {
-      const index = editingData.findIndex(w => w.id === id);
-      if (index < editingData.length - 1) {
-        [editingData[index].position, editingData[index + 1].position] = [editingData[index + 1].position, editingData[index].position];
+      const sorted = [...editingData].sort((a, b) => a.position - b.position);
+      const index = sorted.findIndex((item) => item.id === id);
+      if (index < sorted.length - 1) {
+        [sorted[index].position, sorted[index + 1].position] = [sorted[index + 1].position, sorted[index].position];
         renderAdminPanel();
       }
     };
 
     window.editWork = function(id) {
-      const item = editingData.find(w => w.id === id);
+      const item = editingData.find((entry) => entry.id === id);
       const panel = document.getElementById('adminEditPanel');
-      
       const categoryOptions = ['packaging', 'print', 'digital', 'branding'];
-      
+
       panel.innerHTML = `
         <div class="admin-form-group">
           <label>Title</label>
           <input type="text" id="editTitle" value="${item.title}" />
         </div>
         <div class="admin-form-group">
-          <label>Image URL</label>
+          <label>Image Path</label>
           <input type="text" id="editImage" value="${item.image}" />
         </div>
         <div class="admin-form-group">
           <label>Categories</label>
           <div style="display: grid; gap: 6px;">
-            ${categoryOptions.map(cat => `
+            ${categoryOptions.map((category) => `
               <label style="display: flex; align-items: center; gap: 8px; font-weight: 400; cursor: pointer;">
-                <input type="checkbox" ${item.categories.includes(cat) ? 'checked' : ''} value="${cat}" class="admin-cat-check" style="cursor: pointer;" />
-                ${cat.charAt(0).toUpperCase() + cat.slice(1)}
-              </label>
-            `).join('')}
-          </div>
-        </div>
-        <div style="display: flex; gap: 8px; margin-top: 16px;">
-          <button class="admin-btn-small" style="flex: 1; background: rgba(20, 121, 255, 0.1); border-color: var(--blue); color: var(--blue);" id="saveEdit">Save</button>
-          <button class="admin-btn-small" style="flex: 1;" id="cancelEdit">Cancel</button>
-        </div>
-      `;
-
-      document.getElementById('saveEdit').addEventListener('click', () => {
-        item.title = document.getElementById('editTitle').value;
-        item.image = document.getElementById('editImage').value;
-        item.categories = Array.from(document.querySelectorAll('.admin-cat-check:checked')).map(cb => cb.value);
-        renderAdminPanel();
-      });
-
-      document.getElementById('cancelEdit').addEventListener('click', () => {
-        panel.innerHTML = '<div style="padding: 20px; text-align: center; color: var(--muted);">Select a work item to edit</div>';
-      });
-    };
-
-    document.getElementById('adminSave').addEventListener('click', () => {
-      if (editingData) {
-        saveWorkData(editingData);
-        closeAdminModal();
-      }
-    });
-
-    document.getElementById('adminCancel').addEventListener('click', closeAdminModal);
-
-    adminModal.addEventListener('click', (e) => {
-      if (e.target === adminModal) closeAdminModal();
-    });
-
-    // ============================================
-    // NAVIGATION
-    // ============================================
-    const navLinks = Array.from(document.querySelectorAll('nav a'));
-    const pageSections = Array.from(document.querySelectorAll('main section[id]'));
-
-    const activeSectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        navLinks.forEach((link) => {
-          link.classList.toggle('is-active', link.getAttribute('href') === `#${entry.target.id}`);
-        });
-      });
-    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
-
-    pageSections.forEach((section) => activeSectionObserver.observe(section));
-
-    // ============================================
-    // INITIALIZATION
-    // ============================================
-    renderFilters();
-    renderWorkGrid();
-  </script>
-</body>
-</html>
+                <input type="checkbox" ${item.categories.includes(category) ? 'checked' : ''} value="${category}" class="admin-cat-check" style="cursor: pointer;" />
+                ${category.charAt(0).toUpperCase() +
