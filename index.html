@@ -148,6 +148,10 @@
     .experience-tags li::before { content: ""; position: absolute; left: 0; top: .72em; width: 5px; height: 5px; border-radius: 50%; background: var(--blue); transform: translateY(-50%); }
 
     footer { width: min(1120px, calc(100% - 40px)); margin: 0 auto; padding: 34px 0; color: var(--muted); display: flex; justify-content: space-between; gap: 16px; font-size: .9rem; align-items: center; border-top: 1px solid rgba(255,255,255,.07); }
+    .footer-meta { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+    .footer-social { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 9px; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.06); color: var(--muted); transition: color .18s ease, background .18s ease, border-color .18s ease, transform .18s ease; }
+    .footer-social:hover, .footer-social:focus-visible { color: #fff; background: var(--blue); border-color: var(--blue); transform: translateY(-2px); outline: none; }
+    .footer-social svg { width: 17px; height: 17px; fill: currentColor; }
 
     @media (max-width: 900px) {
       .intro { grid-template-columns: 1fr; padding: 48px 0 40px; }
@@ -187,10 +191,10 @@
           <span class="eyebrow">Artwork / Marketing / Digital / Branding</span>
           <h1 id="intro-title">Senior Graphic Designer <br />&amp; Brand Lead</h1>
           <div class="actions">
-            <a class="btn download" href="https://raw.githubusercontent.com/collinamner-ai/portfolio/main/assets/collinamner_portfolio.pdf" target="_blank" rel="noopener">View portfolio</a>
+            <a class="btn download" href="./assets/collinamner_portfolio.pdf" target="_blank" rel="noopener">Download PDF Portfolio</a>
           </div>
         </div>
-        <div class="profile-frame"><img src="https://raw.githubusercontent.com/collinamner-ai/portfolio/main/assets/profile.png" alt="Black and white portrait of Collin Amner" /></div>
+        <div class="profile-frame"><img src="./assets/profile.png" alt="Black and white portrait of Collin Amner" /></div>
       </section>
 
       <section id="about" class="wrap" aria-labelledby="about-title">
@@ -213,14 +217,6 @@
           <img class="work-image" src="https://raw.githubusercontent.com/collinamner-ai/portfolio/main/assets/work-10.png" alt="Portfolio project 10">
           <img class="work-image" src="https://raw.githubusercontent.com/collinamner-ai/portfolio/main/assets/work-11.png" alt="Portfolio project 11">
           <img class="work-image" src="https://raw.githubusercontent.com/collinamner-ai/portfolio/main/assets/work-12.png" alt="Portfolio project 12">
-              <img class="work-image" src="https://raw.githubusercontent.com/collinamner-ai/portfolio/main/assets/work-13.png" alt="Portfolio project 13">
-              <img class="work-image" src="https://raw.githubusercontent.com/collinamner-ai/portfolio/main/assets/work-14.png" alt="Portfolio project 14">
-              <img class="work-image" src="https://raw.githubusercontent.com/collinamner-ai/portfolio/main/assets/work-15.png" alt="Portfolio project 15">
-              <img class="work-image" src="https://raw.githubusercontent.com/collinamner-ai/portfolio/main/assets/work-16.png" alt="Portfolio project 16">
-              <img class="work-image" src="https://raw.githubusercontent.com/collinamner-ai/portfolio/main/assets/work-17.png" alt="Portfolio project 17">
-              <img class="work-image" src="https://raw.githubusercontent.com/collinamner-ai/portfolio/main/assets/work-18.png" alt="Portfolio project 18">
-              <img class="work-image" src="https://raw.githubusercontent.com/collinamner-ai/portfolio/main/assets/work-19.png" alt="Portfolio project 19">
-              <img class="work-image" src="https://raw.githubusercontent.com/collinamner-ai/portfolio/main/assets/work-20.png" alt="Portfolio project 20">
         </div>
       </section>
 
@@ -245,7 +241,10 @@
     </main>
 
     <footer>
-      <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;"><span>© 2026 Collin Amner. All rights reserved.</span><span>Intro · About Me · My Work · Skills · Experience</span></div>
+      <div class="footer-meta"><span>© 2026 Collin Amner. All rights reserved.</span><span>Intro · About Me · My Work · Skills · Experience</span></div>
+      <a class="footer-social" href="https://www.linkedin.com/in/collin-amner-9802814/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.44-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.1 20.45H3.54V9H7.1v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/></svg>
+      </a>
     </footer>
   </div>
 
