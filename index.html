@@ -164,8 +164,28 @@
 
     @media (max-width: 680px) {
       :root { --sticky-offset: 142px; }
+
+      body::after {
+        content: "";
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 90px;
+        pointer-events: none;
+        z-index: 12;
+        background: linear-gradient(to bottom, rgba(7,9,13,0), rgba(7,9,13,.92));
+      }
+
       section { padding: 30px 0; scroll-margin-top: var(--sticky-offset); }
-      .intro { padding: 38px 0 28px; gap: 24px; }
+      .intro { padding: 24px 0 24px; gap: 16px; display: flex; flex-direction: column; align-items: flex-start; }
+      .intro-content { display: contents; }
+      .eyebrow { order: 1; margin-bottom: 4px; }
+      h1 { order: 2; font-size: clamp(2.9rem, 14vw, 4.4rem); line-height: .9; }
+      .profile-frame { order: 3; width: min(270px, 82vw); justify-self: center; align-self: center; margin: 2px auto 0; }
+      .profile-frame img { -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 7%, black 96%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 7%, black 96%, transparent 100%); object-position: center top; }
+      .actions { order: 4; margin-top: 6px; width: 100%; justify-content: center; }
+      .btn.download { width: min(100%, 280px); }
       .section-title { margin-bottom: 18px; gap: 14px; }
       .panel { padding: 22px; border-radius: 22px; }
       .experience-list { gap: 10px; }
