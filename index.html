@@ -51,6 +51,110 @@
     .panel { padding: 30px; border-radius: 30px; border: 1px solid var(--line); background: var(--panel); backdrop-filter: blur(18px); box-shadow: 0 18px 55px rgba(0,0,0,.23); }
     .panel p { color: var(--muted); }
 
+    .work-gallery {
+      width: min(100vw, 1400px);
+      margin: 54px 50% 36px;
+      transform: translateX(-50%);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-auto-rows: 254px;
+      gap: 10px;
+    }
+
+    .work-card {
+      position: relative;
+      display: block;
+      min-width: 0;
+      overflow: hidden;
+      background: var(--panel);
+      cursor: zoom-in;
+    }
+
+    .work-card img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform .35s ease, filter .35s ease;
+    }
+
+    .work-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.2);
+      opacity: 0;
+      transition: opacity .25s ease;
+      pointer-events: none;
+    }
+
+    .work-card:hover img,
+    .work-card:focus-visible img {
+      transform: scale(1.04);
+      filter: saturate(1.04) contrast(1.03);
+    }
+
+    .work-card:hover::after,
+    .work-card:focus-visible::after {
+      opacity: 1;
+    }
+
+    .gallery-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 48px;
+      background: rgba(0,0,0,.96);
+    }
+
+    .gallery-lightbox.is-open {
+      display: flex;
+    }
+
+    .gallery-lightbox img {
+      display: block;
+      max-width: min(75vw, 980px);
+      max-height: 82vh;
+      object-fit: contain;
+      box-shadow: 0 30px 90px rgba(0,0,0,.55);
+    }
+
+    .gallery-lightbox-close,
+    .gallery-lightbox-prev,
+    .gallery-lightbox-next {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+      color: #fff;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .gallery-lightbox-close { top: 24px; right: 24px; }
+    .gallery-lightbox-prev { left: 24px; top: 50%; transform: translateY(-50%); }
+    .gallery-lightbox-next { right: 24px; top: 50%; transform: translateY(-50%); }
+
+    .gallery-lightbox-close:hover,
+    .gallery-lightbox-prev:hover,
+    .gallery-lightbox-next:hover,
+    .gallery-lightbox-close:focus-visible,
+    .gallery-lightbox-prev:focus-visible,
+    .gallery-lightbox-next:focus-visible {
+      background: rgba(255,255,255,.18);
+      outline: none;
+    }
+
     .skills-subsection { display: grid; gap: 14px; }
     .skills-subsection h3 { color: var(--blue); font-size: .9rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
     .skills-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
@@ -70,6 +174,7 @@
     @media (max-width: 900px) {
       .intro { grid-template-columns: 1fr; padding: 48px 0 40px; }
       .profile-frame { justify-self: start; width: min(320px,100%); }
+      .work-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 320px; width: 100%; margin-left: 0; margin-right: 0; transform: none; }
       .skills-grid { grid-template-columns: repeat(2,1fr); }
       .experience-item { grid-template-columns: 1fr; }
     }
@@ -78,6 +183,7 @@
       .header-inner { align-items: flex-start; flex-direction: column; }
       nav { width: 100%; overflow-x: auto; padding-bottom: 4px; }
       .section-title, footer { flex-direction: column; align-items: flex-start; }
+      .work-gallery { grid-template-columns: 1fr; grid-auto-rows: 420px; width: 100%; margin-left: 0; margin-right: 0; transform: none; }
       .skills-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -90,6 +196,7 @@
         <nav aria-label="Main navigation">
           <a href="#intro">Intro</a>
           <a href="#about">About Me</a>
+          <a href="#work">My Work</a>
           <a href="#skills">Skills</a>
           <a href="#experience">Experience</a>
         </nav>
@@ -113,6 +220,20 @@
         <div class="panel"><p>Highly accomplished Senior Graphic Designer and Brand Guardian with over 20 years of experience delivering high-quality, audience-led creative across multi-channel campaigns including brand, web, digital, and print. Proven leader in developing visual identity, driving brand governance, managing multiple complex design projects, and mentoring junior designers. Expert in Adobe Creative Suite, workflow-building, and ensuring all design meets accessibility standards.</p></div>
       </section>
 
+      <section id="work" class="wrap" aria-labelledby="work-title">
+        <div class="section-title"><h2 id="work-title">My Work</h2><p>A simple full-width project gallery.</p></div>
+        <div class="work-gallery" aria-label="Selected portfolio work">
+          <figure class="work-card" tabindex="0"><img src="./assets/work-01.png" alt="Portfolio project 01"></figure>
+          <figure class="work-card" tabindex="0"><img src="./assets/work-02.png" alt="Portfolio project 02"></figure>
+          <figure class="work-card" tabindex="0"><img src="./assets/work-03.png" alt="Portfolio project 03"></figure>
+          <figure class="work-card" tabindex="0"><img src="./assets/work-04.png" alt="Portfolio project 04"></figure>
+          <figure class="work-card" tabindex="0"><img src="./assets/work-05.png" alt="Portfolio project 05"></figure>
+          <figure class="work-card" tabindex="0"><img src="./assets/work-06.png" alt="Portfolio project 06"></figure>
+          <figure class="work-card" tabindex="0"><img src="./assets/work-07.png" alt="Portfolio project 07"></figure>
+          <figure class="work-card" tabindex="0"><img src="./assets/work-08.png" alt="Portfolio project 08"></figure>
+        </div>
+      </section>
+
       <section id="skills" class="wrap" aria-labelledby="skills-title">
         <div class="section-title"><h2 id="skills-title">Skills</h2><p></p></div>
         <div class="skills-subsection"><h3>Core Skills</h3><div class="skills-grid" aria-label="Core skills list">
@@ -134,11 +255,73 @@
     </main>
 
     <footer>
-      <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;"><span>© 2026 Collin Amner. All rights reserved.</span><span>Intro · About Me · Skills · Experience</span></div>
+      <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;"><span>© 2026 Collin Amner. All rights reserved.</span><span>Intro · About Me · My Work · Skills · Experience</span></div>
     </footer>
   </div>
 
+  <div class="gallery-lightbox" id="galleryLightbox" aria-hidden="true" role="dialog" aria-label="Portfolio image viewer">
+    <button class="gallery-lightbox-close" type="button" id="galleryClose" aria-label="Close image viewer">×</button>
+    <button class="gallery-lightbox-prev" type="button" id="galleryPrev" aria-label="Previous image">‹</button>
+    <img id="galleryLightboxImage" src="" alt="">
+    <button class="gallery-lightbox-next" type="button" id="galleryNext" aria-label="Next image">›</button>
+  </div>
+
   <script>
+    const galleryCards = Array.from(document.querySelectorAll('.work-card'));
+    const galleryLightbox = document.getElementById('galleryLightbox');
+    const galleryLightboxImage = document.getElementById('galleryLightboxImage');
+    const galleryClose = document.getElementById('galleryClose');
+    const galleryPrev = document.getElementById('galleryPrev');
+    const galleryNext = document.getElementById('galleryNext');
+    let activeGalleryIndex = 0;
+
+    function showGalleryImage(index) {
+      activeGalleryIndex = (index + galleryCards.length) % galleryCards.length;
+      const image = galleryCards[activeGalleryIndex].querySelector('img');
+      galleryLightboxImage.src = image.currentSrc || image.src;
+      galleryLightboxImage.alt = image.alt;
+    }
+
+    function openGallery(index) {
+      showGalleryImage(index);
+      galleryLightbox.classList.add('is-open');
+      galleryLightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      galleryClose.focus();
+    }
+
+    function closeGallery() {
+      galleryLightbox.classList.remove('is-open');
+      galleryLightbox.setAttribute('aria-hidden', 'true');
+      galleryLightboxImage.removeAttribute('src');
+      document.body.style.overflow = '';
+      galleryCards[activeGalleryIndex].focus();
+    }
+
+    galleryCards.forEach((card, index) => {
+      card.addEventListener('click', () => openGallery(index));
+      card.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openGallery(index);
+        }
+      });
+    });
+
+    galleryClose.addEventListener('click', closeGallery);
+    galleryPrev.addEventListener('click', () => showGalleryImage(activeGalleryIndex - 1));
+    galleryNext.addEventListener('click', () => showGalleryImage(activeGalleryIndex + 1));
+    galleryLightbox.addEventListener('click', event => {
+      if (event.target === galleryLightbox) closeGallery();
+    });
+
+    document.addEventListener('keydown', event => {
+      if (!galleryLightbox.classList.contains('is-open')) return;
+      if (event.key === 'Escape') closeGallery();
+      if (event.key === 'ArrowLeft') showGalleryImage(activeGalleryIndex - 1);
+      if (event.key === 'ArrowRight') showGalleryImage(activeGalleryIndex + 1);
+    });
+
     const navLinks = Array.from(document.querySelectorAll('nav a'));
     const pageSections = Array.from(document.querySelectorAll('main section[id]'));
     const activeSectionObserver = new IntersectionObserver(entries => {
