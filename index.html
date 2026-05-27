@@ -15,8 +15,6 @@
       --accent: #dfe8f4;
       --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
       --blue: #1479ff;
-      --green: #10b981;
-      --red: #ef4444;
     }
 
     * {
@@ -202,6 +200,13 @@
       max-width: 900px;
     }
 
+    .intro p {
+      margin-top: 26px;
+      max-width: 640px;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.8vw, 1.22rem);
+    }
+
     .actions {
       display: flex;
       flex-wrap: wrap;
@@ -227,19 +232,18 @@
       outline: none;
     }
 
-    .btn.download {
-      min-height: 54px;
-      padding: 0 24px;
-      color: #ffffff;
-      background: linear-gradient(135deg, #1479ff, #005bd6);
-      border-color: rgba(255, 255, 255, 0.18);
-      box-shadow: 0 14px 34px rgba(20, 121, 255, 0.28);
+    .btn.primary {
+      color: #080a0f;
+      background: linear-gradient(135deg, #ffffff, #aeb8c3);
+      border-color: rgba(255,255,255,0.65);
     }
 
-    .btn.download:hover,
-    .btn.download:focus-visible {
-      background: linear-gradient(135deg, #2f8cff, #0066ee);
+    .btn.secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(14px);
     }
+
 
     .section-title {
       display: flex;
@@ -277,6 +281,52 @@
 
     .panel p {
       color: var(--muted);
+    }
+
+    .quick-facts {
+      display: grid;
+      gap: 14px;
+    }
+
+    .quick-facts div {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .quick-facts div:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .quick-facts span {
+      color: var(--muted);
+    }
+
+
+    .btn.download {
+      min-height: 54px;
+      padding: 0 24px;
+      color: #ffffff;
+      background: linear-gradient(135deg, #1479ff, #005bd6);
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 14px 34px rgba(20, 121, 255, 0.28);
+    }
+
+    .btn.download:hover,
+    .btn.download:focus-visible {
+      background: linear-gradient(135deg, #2f8cff, #0066ee);
+    }
+
+    .work-kicker {
+      margin-bottom: 22px;
+      color: var(--blue);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .work-filters {
@@ -349,21 +399,92 @@
       transition: transform 260ms ease, opacity 260ms ease;
     }
 
-    .work-item:hover img {
-      transform: scale(1.04);
-      opacity: 0.92;
+    .work-item:hover img,
+    .work-item:focus-visible img {
+      transform: scale(1.05);
+      opacity: 0.84;
     }
 
-    .work-image-error {
+    .work-open {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
+      background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.55));
+      color: var(--text);
+      opacity: 0;
+      transition: opacity 180ms ease;
+    }
+
+    .work-item:hover .work-open,
+    .work-open:focus-visible {
+      opacity: 1;
+      outline: none;
+    }
+
+    .work-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 55;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(12px);
+    }
+
+    .work-lightbox.is-open {
+      display: flex;
+    }
+
+    .work-lightbox-panel {
+      width: min(1100px, 100%);
       display: grid;
-      place-items: center;
-      padding: 16px;
+      gap: 14px;
+    }
+
+    .work-lightbox-image-wrap {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #07090d;
+      box-shadow: var(--shadow);
+    }
+
+    .work-lightbox img {
+      display: block;
+      width: 100%;
+      max-height: calc(100vh - 170px);
+      object-fit: contain;
+    }
+
+    .work-lightbox-caption {
       color: var(--muted);
       text-align: center;
-      font-size: 0.85rem;
-      background: rgba(255,255,255,0.045);
+    }
+
+    .work-lightbox-controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .work-lightbox-button {
+      min-height: 42px;
+      padding: 0 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .work-lightbox-button:hover,
+    .work-lightbox-button:focus-visible {
+      background: rgba(255,255,255,0.14);
+      outline: none;
     }
 
     .skills-subsection {
@@ -466,36 +587,6 @@
       color: var(--muted);
     }
 
-    footer {
-      width: min(1120px, calc(100% - 40px));
-      margin: 0 auto;
-      padding: 34px 0;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      font-size: 0.9rem;
-      align-items: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.07);
-    }
-
-    .admin-button {
-      min-height: 40px;
-      padding: 0 16px;
-      border-radius: 12px;
-      border: 1px solid var(--blue);
-      background: rgba(20, 121, 255, 0.1);
-      color: var(--blue);
-      font-weight: 700;
-      font-size: 0.85rem;
-      transition: all 180ms ease;
-    }
-
-    .admin-button:hover {
-      background: rgba(20, 121, 255, 0.2);
-      transform: translateY(-2px);
-    }
-
     .pdf-lightbox {
       position: fixed;
       inset: 0;
@@ -534,6 +625,10 @@
       background: rgba(255,255,255,0.055);
     }
 
+    .pdf-toolbar strong {
+      letter-spacing: -0.03em;
+    }
+
     .pdf-actions {
       display: flex;
       gap: 10px;
@@ -570,258 +665,24 @@
       background: #ffffff;
     }
 
-    .admin-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: rgba(0, 0, 0, 0.92);
-      backdrop-filter: blur(12px);
-    }
-
-    .admin-modal.is-open {
-      display: flex;
-    }
-
-    .admin-panel {
-      width: min(1200px, 100%);
-      max-height: 90vh;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      overflow: hidden;
-      background: rgba(7, 9, 13, 0.95);
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.65);
-    }
-
-    .admin-header {
+    footer {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 0 0 34px;
+      color: var(--muted);
       display: flex;
       justify-content: space-between;
-      align-items: center;
       gap: 16px;
-      padding: 24px;
-      border-bottom: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.04);
-    }
-
-    .admin-header h2 {
-      font-size: 1.5rem;
-      letter-spacing: -0.03em;
-    }
-
-    .admin-close {
-      min-height: 40px;
-      padding: 0 14px;
-      border-radius: 10px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.08);
-      color: var(--text);
-      font-weight: 700;
-    }
-
-    .admin-close:hover {
-      background: rgba(255,255,255,0.14);
-    }
-
-    .admin-content {
-      display: grid;
-      grid-template-columns: 1fr 350px;
-      gap: 24px;
-      padding: 24px;
-      overflow-y: auto;
-    }
-
-    .admin-work-list {
-      display: grid;
-      gap: 16px;
-    }
-
-    .admin-work-item {
-      display: grid;
-      grid-template-columns: 80px 1fr auto auto auto;
-      gap: 12px;
-      align-items: center;
-      padding: 16px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
-    }
-
-    .admin-work-thumbnail {
-      width: 80px;
-      height: 60px;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.08);
-    }
-
-    .admin-work-thumbnail img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .admin-work-details h3 {
-      font-size: 0.95rem;
-      margin-bottom: 4px;
-    }
-
-    .admin-work-details p {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .admin-btn-small {
-      min-height: 36px;
-      padding: 0 10px;
-      border-radius: 8px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.08);
-      color: var(--text);
-      font-size: 0.8rem;
-      font-weight: 700;
-      transition: all 180ms ease;
-    }
-
-    .admin-btn-small:hover {
-      background: rgba(255,255,255,0.14);
-    }
-
-    .admin-sidebar {
-      display: grid;
-      gap: 16px;
-      grid-template-rows: auto auto 1fr;
-    }
-
-    .admin-form-group {
-      display: grid;
-      gap: 6px;
-      margin-bottom: 14px;
-    }
-
-    .admin-form-group label {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .admin-form-group input,
-    .admin-form-group select {
-      padding: 8px 12px;
-      border-radius: 8px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.06);
-      color: var(--text);
-      font-family: inherit;
       font-size: 0.9rem;
-    }
-
-    .admin-form-group input:focus,
-    .admin-form-group select:focus {
-      outline: none;
-      border-color: var(--blue);
-      background: rgba(255,255,255,0.08);
-    }
-
-    .admin-footer {
-      display: flex;
-      gap: 12px;
-      padding: 20px 24px;
-      border-top: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
-      justify-content: flex-end;
-    }
-
-    .admin-btn {
-      min-height: 42px;
-      padding: 0 20px;
-      border-radius: 10px;
-      border: 1px solid var(--line);
-      color: var(--text);
-      font-weight: 700;
-      transition: all 180ms ease;
-    }
-
-    .admin-btn.save {
-      background: linear-gradient(135deg, var(--green), #059669);
-      border-color: rgba(16, 185, 129, 0.3);
-      color: white;
-    }
-
-    .admin-btn.save:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 24px rgba(16, 185, 129, 0.2);
-    }
-
-    .admin-btn.cancel {
-      background: rgba(255,255,255,0.08);
-    }
-
-    .admin-btn.cancel:hover {
-      background: rgba(255,255,255,0.14);
-    }
-
-    .admin-login {
-      display: grid;
-      gap: 20px;
-      padding: 40px;
-    }
-
-    .admin-login h2 {
-      font-size: 1.5rem;
-      letter-spacing: -0.03em;
-    }
-
-    .admin-login-form {
-      display: grid;
-      gap: 12px;
-    }
-
-    .admin-login-form input {
-      padding: 12px 16px;
-      border-radius: 10px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.06);
-      color: var(--text);
-      font-family: inherit;
-      font-size: 1rem;
-    }
-
-    .admin-login-btn {
-      min-height: 44px;
-      border-radius: 10px;
-      border: 1px solid var(--blue);
-      background: linear-gradient(135deg, var(--blue), #005bd6);
-      color: white;
-      font-weight: 700;
-      font-size: 1rem;
-    }
-
-    .admin-error {
-      padding: 12px 16px;
-      border-radius: 8px;
-      background: rgba(239, 68, 68, 0.1);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      color: #fca5a5;
-      font-size: 0.9rem;
-      font-weight: 600;
     }
 
     @media (max-width: 900px) {
-      .intro,
-      .about-grid,
-      .admin-content {
+      .about-grid {
         grid-template-columns: 1fr;
       }
 
       .intro {
+        grid-template-columns: 1fr;
         min-height: auto;
         padding: 48px 0 40px;
       }
@@ -831,22 +692,17 @@
         width: min(320px, 100%);
       }
 
-      .work-grid,
+
+      .work-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .skills-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
       .experience-item {
         grid-template-columns: 1fr;
-      }
-
-      .admin-work-item {
-        grid-template-columns: 60px 1fr auto;
-      }
-
-      .admin-work-thumbnail {
-        width: 60px;
-        height: 45px;
       }
     }
 
@@ -862,6 +718,7 @@
         padding-bottom: 4px;
       }
 
+
       .section-title,
       footer {
         flex-direction: column;
@@ -872,30 +729,12 @@
       .skills-grid {
         grid-template-columns: 1fr;
       }
-
-      .admin-panel {
-        width: 100%;
-        max-height: 100vh;
-      }
-
-      .admin-content {
-        gap: 12px;
-        padding: 16px;
-      }
-
-      .admin-work-item {
-        grid-template-columns: 50px 1fr auto;
-      }
-
-      .admin-work-thumbnail {
-        width: 50px;
-        height: 38px;
-      }
     }
   </style>
 </head>
 <body>
   <div class="page">
+
     <header>
       <div class="header-inner">
         <a href="#intro" class="logo" aria-label="Portfolio home">
@@ -947,7 +786,7 @@
           <p>Selected examples across packaging, print, digital and branding.</p>
         </div>
 
-        <div class="work-filters" id="workFiltersContainer" aria-label="Work filters">
+        <div class="work-filters" aria-label="Work filters">
           <button class="work-filter is-active" type="button" data-filter="all">All</button>
           <button class="work-filter" type="button" data-filter="packaging">Packaging</button>
           <button class="work-filter" type="button" data-filter="print">Print</button>
@@ -955,59 +794,105 @@
           <button class="work-filter" type="button" data-filter="branding">Branding</button>
         </div>
 
-        <div class="work-grid" id="workGrid" aria-label="Selected work gallery">
-          <article class="work-item" data-id="1" data-title="Project 01" data-category="packaging,branding">
-            <img src="./assets/work-01.png" alt="Project 01" loading="lazy" />
+        <div class="work-grid" aria-label="Selected work gallery">
+          <article class="work-item" data-category="packaging, branding">
+            <img src="./assets/work-01.png" alt="Packaging project 01" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open packaging project 01"></button>
           </article>
-          <article class="work-item" data-id="2" data-title="Project 02" data-category="packaging">
-            <img src="./assets/work-02.png" alt="Project 02" loading="lazy" />
+
+          <article class="work-item" data-category="packaging">
+            <img src="./assets/work-02.png" alt="Packaging project 02" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open packaging project 02"></button>
           </article>
-          <article class="work-item" data-id="3" data-title="Project 03" data-category="packaging">
-            <img src="./assets/work-03.png" alt="Project 03" loading="lazy" />
+
+          <article class="work-item" data-category="packaging">
+            <img src="./assets/work-03.png" alt="Packaging project 03" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open packaging project 03"></button>
           </article>
-          <article class="work-item" data-id="4" data-title="Project 04" data-category="print,digital">
-            <img src="./assets/work-04.png" alt="Project 04" loading="lazy" />
+
+          <article class="work-item" data-category="print, digital">
+            <img src="./assets/work-04.png" alt="Print project 01" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open print project 01"></button>
           </article>
-          <article class="work-item" data-id="5" data-title="Project 05" data-category="digital">
-            <img src="./assets/work-05.png" alt="Project 05" loading="lazy" />
+
+          <article class="work-item" data-category="digital">
+            <img src="./assets/work-05.png" alt="Digital project 01" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open digital project 01"></button>
           </article>
-          <article class="work-item" data-id="6" data-title="Project 06" data-category="branding">
-            <img src="./assets/work-06.png" alt="Project 06" loading="lazy" />
+
+          <article class="work-item" data-category="branding">
+            <img src="./assets/work-06.png" alt="Branding project 01" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open branding project 01"></button>
           </article>
-          <article class="work-item" data-id="7" data-title="Project 07" data-category="packaging">
-            <img src="./assets/work-07.png" alt="Project 07" loading="lazy" />
+
+          <article class="work-item" data-category="packaging">
+            <img src="./assets/work-07.png" alt="Packaging project 04" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open packaging project 04"></button>
           </article>
-          <article class="work-item" data-id="8" data-title="Project 08" data-category="print">
-            <img src="./assets/work-08.png" alt="Project 08" loading="lazy" />
+
+          <article class="work-item" data-category="print">
+            <img src="./assets/work-08.png" alt="Print project 02" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open print project 02"></button>
           </article>
-          <article class="work-item" data-id="9" data-title="Project 09" data-category="digital">
-            <img src="./assets/work-09.png" alt="Project 09" loading="lazy" />
+
+          <article class="work-item" data-category="digital">
+            <img src="./assets/work-09.png" alt="Digital project 02" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open digital project 02"></button>
           </article>
-          <article class="work-item" data-id="10" data-title="Project 10" data-category="branding">
-            <img src="./assets/work-10.png" alt="Project 10" loading="lazy" />
+
+          <article class="work-item" data-category="branding">
+            <img src="./assets/work-10.png" alt="Branding project 02" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open branding project 02"></button>
           </article>
-          <article class="work-item" data-id="11" data-title="Project 11" data-category="packaging">
-            <img src="./assets/work-11.png" alt="Project 11" loading="lazy" />
+
+          <article class="work-item" data-category="packaging">
+            <img src="./assets/work-11.png" alt="Packaging project 05" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open packaging project 05"></button>
           </article>
-          <article class="work-item" data-id="12" data-title="Project 12" data-category="print">
-            <img src="./assets/work-12.png" alt="Project 12" loading="lazy" />
+
+          <article class="work-item" data-category="print">
+            <img src="./assets/work-12.png" alt="Print project 03" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open print project 03"></button>
           </article>
-          <article class="work-item" data-id="13" data-title="Project 13" data-category="packaging">
-            <img src="./assets/work-13.png" alt="Project 13" loading="lazy" />
+
+          <article class="work-item" data-category="packaging">
+            <img src="./assets/work-13.png" alt="Packaging project 06" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open packaging project 06"></button>
           </article>
-          <article class="work-item" data-id="14" data-title="Project 14" data-category="print">
-            <img src="./assets/work-14.png" alt="Project 14" loading="lazy" />
+
+          <article class="work-item" data-category="print">
+            <img src="./assets/work-14.png" alt="Print project 04" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open print project 04"></button>
           </article>
-          <article class="work-item" data-id="15" data-title="Project 15" data-category="digital">
-            <img src="./assets/work-15.png" alt="Project 15" loading="lazy" />
+
+          <article class="work-item" data-category="digital">
+            <img src="./assets/work-15.png" alt="Digital project 03" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open digital project 03"></button>
           </article>
-          <article class="work-item" data-id="16" data-title="Project 16" data-category="branding">
-            <img src="./assets/work-16.png" alt="Project 16" loading="lazy" />
+
+          <article class="work-item" data-category="branding">
+            <img src="./assets/work-16.png" alt="Branding project 03" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open branding project 03"></button>
           </article>
-          <article class="work-item" data-id="17" data-title="Project 17" data-category="packaging">
-            <img src="./assets/work-17.png" alt="Project 17" loading="lazy" />
+
+          <article class="work-item" data-category="packaging">
+            <img src="./assets/work-17.png" alt="Packaging project 07" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open packaging project 07"></button>
           </article>
-          <article class="work-item" data-id="18" data-title="Project 18" data-cate class="wrap" aria-labelledby="skills-title">
+
+          <article class="work-item" data-category="print">
+            <img src="./assets/work-18.png" alt="Print project 05" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open print project 05"></button>
+          </article>
+
+          <article class="work-item" data-category="branding">
+            <img src="./assets/work-20.png" alt="Branding project 04" loading="lazy" />
+            <button class="work-open" type="button" aria-label="Open branding project 04"></button>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" class="wrap" aria-labelledby="skills-title">
         <div class="section-title">
           <h2 id="skills-title">Skills</h2>
           <p></p>
@@ -1044,10 +929,10 @@
               <p class="experience-company">Branded Agency (Writtle Group), Berkhamsted</p>
             </div>
             <ul class="experience-tags">
-              <li>Packaging</li>
-              <li>Pre-Press</li>
-              <li>Automation</li>
-            </ul>
+                <li>Packaging</li>
+                <li>Pre-Press</li>
+                <li>Automation</li>
+              </ul>
           </article>
 
           <article class="experience-item">
@@ -1057,10 +942,10 @@
               <p class="experience-company">KJC Creative Limited, Aylesbury</p>
             </div>
             <ul class="experience-tags">
-              <li>Coordination</li>
-              <li>Print</li>
-              <li>Digital</li>
-            </ul>
+                <li>Coordination</li>
+                <li>Print</li>
+                <li>Digital</li>
+              </ul>
           </article>
 
           <article class="experience-item">
@@ -1070,10 +955,10 @@
               <p class="experience-company">Adlens Limited, Oxford</p>
             </div>
             <ul class="experience-tags">
-              <li>Branding</li>
-              <li>Packaging</li>
-              <li>Mentoring</li>
-            </ul>
+                <li>Branding</li>
+                <li>Packaging</li>
+                <li>Mentoring</li>
+              </ul>
           </article>
 
           <article class="experience-item">
@@ -1083,10 +968,10 @@
               <p class="experience-company">Amner Creative Design, Thame</p>
             </div>
             <ul class="experience-tags">
-              <li>Brand Projects</li>
-              <li>Licensed Products</li>
-              <li>Major Clients</li>
-            </ul>
+                <li>Brand Projects</li>
+                <li>Licensed Products</li>
+                <li>Major Clients</li>
+              </ul>
           </article>
 
           <article class="experience-item">
@@ -1096,10 +981,10 @@
               <p class="experience-company">Path Group PLC, Thame</p>
             </div>
             <ul class="experience-tags">
-              <li>Product Design</li>
-              <li>Artwork</li>
-              <li>Launches</li>
-            </ul>
+                <li>Product Design</li>
+                <li>Artwork</li>
+                <li>Launches</li>
+              </ul>
           </article>
 
           <article class="experience-item">
@@ -1109,22 +994,32 @@
               <p class="experience-company">Philex Electronic Limited, Bedford</p>
             </div>
             <ul class="experience-tags">
-              <li>Packaging</li>
-              <li>Retail Displays</li>
-              <li>Marketing</li>
-            </ul>
+                <li>Packaging</li>
+                <li>Retail Displays</li>
+                <li>Marketing</li>
+              </ul>
           </article>
         </div>
       </section>
     </main>
 
     <footer>
-      <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
-        <span>© 2026 Collin Amner. All rights reserved.</span>
-        <span>Intro · About Me · My Work · Skills · Experience</span>
-      </div>
-      <button class="admin-button" id="adminButton" title="Admin Panel">⚙️ Admin</button>
+      <span>© 2026 Collin Amner. All rights reserved.</span>
+      <span>Intro · About Me · My Work · Skills · Experience</span>
     </footer>
+  </div>
+  <div class="work-lightbox" id="workLightbox" role="dialog" aria-modal="true" aria-label="Work image viewer" aria-hidden="true">
+    <div class="work-lightbox-panel">
+      <div class="work-lightbox-image-wrap">
+        <img id="workLightboxImage" src="" alt="" />
+      </div>
+      <p class="work-lightbox-caption" id="workLightboxCaption">Selected work image</p>
+      <div class="work-lightbox-controls" aria-label="Work image viewer controls">
+        <button class="work-lightbox-button" type="button" id="previousWorkImage">Previous</button>
+        <button class="work-lightbox-button" type="button" id="closeWorkLightbox">Close</button>
+        <button class="work-lightbox-button" type="button" id="nextWorkImage">Next</button>
+      </div>
+    </div>
   </div>
 
   <div class="pdf-lightbox" id="pdfLightbox" role="dialog" aria-modal="true" aria-label="Portfolio PDF viewer" aria-hidden="true">
@@ -1140,160 +1035,7 @@
     </div>
   </div>
 
-  <div class="admin-modal" id="adminModal">
-    <div class="admin-panel">
-      <div class="admin-header">
-        <h2>Portfolio Admin</h2>
-        <button class="admin-close" id="adminModalClose">Close</button>
-      </div>
-      <div id="adminContent" class="admin-content"></div>
-      <div class="admin-footer" id="adminFooter" style="display: none;">
-        <button class="admin-btn cancel" id="adminCancel">Cancel</button>
-        <button class="admin-btn save" id="adminSave">Save Changes</button>
-      </div>
-    </div>
-  </div>
-
   <script>
-    // ============================================
-    // DATA MANAGEMENT
-    // ============================================
-    const STORAGE_KEY = 'portfolio_work_data';
-    const STORAGE_VERSION_KEY = 'portfolio_work_data_version';
-    const DATA_VERSION = 'work-assets-local-v3';
-    const AUTH_KEY = 'portfolio_admin_auth';
-    const PASSWORD = 'admin2026';
-
-    const DEFAULT_WORK_DATA = [
-      { id: 1, title: 'Project 01', image: './assets/work-01.png', categories: ['packaging', 'branding'], position: 0 },
-      { id: 2, title: 'Project 02', image: './assets/work-02.png', categories: ['packaging'], position: 1 },
-      { id: 3, title: 'Project 03', image: './assets/work-03.png', categories: ['packaging'], position: 2 },
-      { id: 4, title: 'Project 04', image: './assets/work-04.png', categories: ['print', 'digital'], position: 3 },
-      { id: 5, title: 'Project 05', image: './assets/work-05.png', categories: ['digital'], position: 4 },
-      { id: 6, title: 'Project 06', image: './assets/work-06.png', categories: ['branding'], position: 5 },
-      { id: 7, title: 'Project 07', image: './assets/work-07.png', categories: ['packaging'], position: 6 },
-      { id: 8, title: 'Project 08', image: './assets/work-08.png', categories: ['print'], position: 7 },
-      { id: 9, title: 'Project 09', image: './assets/work-09.png', categories: ['digital'], position: 8 },
-      { id: 10, title: 'Project 10', image: './assets/work-10.png', categories: ['branding'], position: 9 },
-      { id: 11, title: 'Project 11', image: './assets/work-11.png', categories: ['packaging'], position: 10 },
-      { id: 12, title: 'Project 12', image: './assets/work-12.png', categories: ['print'], position: 11 },
-      { id: 13, title: 'Project 13', image: './assets/work-13.png', categories: ['packaging'], position: 12 },
-      { id: 14, title: 'Project 14', image: './assets/work-14.png', categories: ['print'], position: 13 },
-      { id: 15, title: 'Project 15', image: './assets/work-15.png', categories: ['digital'], position: 14 },
-      { id: 16, title: 'Project 16', image: './assets/work-16.png', categories: ['branding'], position: 15 },
-      { id: 17, title: 'Project 17', image: './assets/work-17.png', categories: ['packaging'], position: 16 },
-      { id: 18, title: 'Project 18', image: './assets/work-18.png', categories: ['print'], position: 17 },
-      { id: 19, title: 'Project 20', image: './assets/work-20.png', categories: ['branding'], position: 18 }
-    ];
-
-    if (localStorage.getItem(STORAGE_VERSION_KEY) !== DATA_VERSION) {
-      localStorage.removeItem(STORAGE_KEY);
-      localStorage.setItem(STORAGE_VERSION_KEY, DATA_VERSION);
-    }
-
-    let workData = loadWorkData();
-    let isAuthenticated = checkAuth();
-    let currentFilter = 'all';
-    let editingData = null;
-
-    function loadWorkData() {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      return stored ? JSON.parse(stored) : DEFAULT_WORK_DATA;
-    }
-
-    function saveWorkData(data) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-      workData = data;
-      renderWorkGrid();
-      renderFilters();
-    }
-
-    function checkAuth() {
-      return localStorage.getItem(AUTH_KEY) === 'true';
-    }
-
-    function authenticate(password) {
-      if (password === PASSWORD) {
-        localStorage.setItem(AUTH_KEY, 'true');
-        isAuthenticated = true;
-        return true;
-      }
-      return false;
-    }
-
-    function logout() {
-      localStorage.removeItem(AUTH_KEY);
-      isAuthenticated = false;
-    }
-
-    // ============================================
-    // WORK SECTION RENDERING — NO LIGHTBOX
-    // ============================================
-    function renderFilters() {
-      const container = document.getElementById('workFiltersContainer');
-      const categories = new Set(['all']);
-
-      workData.forEach((item) => {
-        item.categories.forEach((category) => categories.add(category));
-      });
-
-      const filters = Array.from(categories).sort((a, b) => {
-        if (a === 'all') return -1;
-        if (b === 'all') return 1;
-        return a.localeCompare(b);
-      });
-
-      container.innerHTML = filters.map((filter) => `
-        <button class="work-filter ${filter === currentFilter ? 'is-active' : ''}" type="button" data-filter="${filter}">
-          ${filter.charAt(0).toUpperCase() + filter.slice(1)}
-        </button>
-      `).join('');
-
-      document.querySelectorAll('.work-filter').forEach((button) => {
-        button.addEventListener('click', () => filterWork(button.dataset.filter));
-      });
-    }
-
-    function renderWorkGrid() {
-      const grid = document.getElementById('workGrid');
-      const sorted = [...workData].sort((a, b) => a.position - b.position);
-
-      grid.innerHTML = sorted.map((item) => `
-        <article class="work-item ${matchesFilter(item) ? '' : 'is-hidden'}" data-id="${item.id}">
-          <img src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.replaceWith(createImageError('${item.image}'))" />
-        </article>
-      `).join('');
-    }
-
-    function createImageError(path) {
-      const error = document.createElement('div');
-      error.className = 'work-image-error';
-      error.textContent = `Image not found: ${path}`;
-      return error;
-    }
-
-    function matchesFilter(item) {
-      if (currentFilter === 'all') return true;
-      return item.categories.includes(currentFilter);
-    }
-
-    function filterWork(filter) {
-      currentFilter = filter;
-
-      document.querySelectorAll('.work-filter').forEach((button) => {
-        button.classList.toggle('is-active', button.dataset.filter === filter);
-      });
-
-      document.querySelectorAll('.work-item').forEach((item) => {
-        const id = Number(item.dataset.id);
-        const data = workData.find((entry) => entry.id === id);
-        item.classList.toggle('is-hidden', !matchesFilter(data));
-      });
-    }
-
-    // ============================================
-    // PORTFOLIO PDF VIEWER
-    // ============================================
     const openPortfolioPdf = document.getElementById('openPortfolioPdf');
     const closePortfolioPdf = document.getElementById('closePortfolioPdf');
     const pdfLightbox = document.getElementById('pdfLightbox');
@@ -1319,60 +1061,111 @@
     closePortfolioPdf.addEventListener('click', closePdfViewer);
 
     pdfLightbox.addEventListener('click', (event) => {
-      if (event.target === pdfLightbox) closePdfViewer();
+      if (event.target === pdfLightbox) {
+        closePdfViewer();
+      }
     });
 
-    // ============================================
-    // ADMIN PANEL
-    // ============================================
-    const adminModal = document.getElementById('adminModal');
-    const adminContent = document.getElementById('adminContent');
-    const adminButton = document.getElementById('adminButton');
-    const adminModalClose = document.getElementById('adminModalClose');
-    const adminFooter = document.getElementById('adminFooter');
+    const navLinks = Array.from(document.querySelectorAll('nav a'));
+    const pageSections = Array.from(document.querySelectorAll('main section[id]'));
 
-    adminButton.addEventListener('click', openAdminModal);
-    adminModalClose.addEventListener('click', closeAdminModal);
-
-    function openAdminModal() {
-      adminModal.classList.add('is-open');
-      document.body.classList.add('no-scroll');
-      if (isAuthenticated) renderAdminPanel();
-      else renderLoginForm();
-    }
-
-    function closeAdminModal() {
-      adminModal.classList.remove('is-open');
-      document.body.classList.remove('no-scroll');
-      editingData = null;
-    }
-
-    function renderLoginForm() {
-      adminFooter.style.display = 'none';
-      adminContent.innerHTML = `
-        <div class="admin-login" style="grid-column: 1 / -1;">
-          <h2>Admin Access</h2>
-          <p style="color: var(--muted); margin-bottom: 20px;">Enter your password to edit the portfolio.</p>
-          <div class="admin-login-form">
-            <input type="password" id="adminPassword" placeholder="Password" />
-            <button class="admin-login-btn" type="button" id="adminLoginBtn">Login</button>
-            <div id="adminLoginError" class="admin-error" style="display: none;"></div>
-          </div>
-        </div>
-      `;
-
-      document.getElementById('adminLoginBtn').addEventListener('click', () => {
-        const password = document.getElementById('adminPassword').value;
-        const errorEl = document.getElementById('adminLoginError');
-
-        if (authenticate(password)) {
-          renderAdminPanel();
-        } else {
-          errorEl.textContent = 'Incorrect password';
-          errorEl.style.display = 'block';
-        }
+    const activeSectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((link) => {
+          link.classList.toggle('is-active', link.getAttribute('href') === `#${entry.target.id}`);
+        });
       });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
 
-      document.getElementById('adminPassword').addEventListener('keypress', (event) => {
-        if (event.key === 'Enter') document.getElementById('adminLoginBtn').click();
-   
+    pageSections.forEach((section) => activeSectionObserver.observe(section));
+
+    const workFilters = Array.from(document.querySelectorAll('.work-filter'));
+    const workItems = Array.from(document.querySelectorAll('.work-item'));
+    const workButtons = Array.from(document.querySelectorAll('.work-open'));
+    const workLightbox = document.getElementById('workLightbox');
+    const workLightboxImage = document.getElementById('workLightboxImage');
+    const workLightboxCaption = document.getElementById('workLightboxCaption');
+    const closeWorkLightbox = document.getElementById('closeWorkLightbox');
+    const previousWorkImage = document.getElementById('previousWorkImage');
+    const nextWorkImage = document.getElementById('nextWorkImage');
+    let currentWorkImageIndex = 0;
+    let visibleWorkItems = workItems;
+
+    function updateVisibleWorkItems() {
+      visibleWorkItems = workItems.filter((item) => !item.classList.contains('is-hidden'));
+    }
+
+    workFilters.forEach((filterButton) => {
+      filterButton.addEventListener('click', () => {
+        const filter = filterButton.dataset.filter;
+        workFilters.forEach((button) => button.classList.toggle('is-active', button === filterButton));
+        workItems.forEach((item) => {
+          const categories = item.dataset.category.split(',').map((category) => category.trim());
+          item.classList.toggle('is-hidden', filter !== 'all' && !categories.includes(filter));
+        });
+        updateVisibleWorkItems();
+      });
+    });
+
+    function showWorkImage(index) {
+      updateVisibleWorkItems();
+      currentWorkImageIndex = (index + visibleWorkItems.length) % visibleWorkItems.length;
+      const selectedImage = visibleWorkItems[currentWorkImageIndex].querySelector('img');
+      workLightboxImage.src = selectedImage.src;
+      workLightboxImage.alt = selectedImage.alt;
+      workLightboxCaption.textContent = selectedImage.alt;
+    }
+
+    function openWorkLightbox(item) {
+      updateVisibleWorkItems();
+      showWorkImage(visibleWorkItems.indexOf(item));
+      workLightbox.classList.add('is-open');
+      workLightbox.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('no-scroll');
+      closeWorkLightbox.focus();
+    }
+
+    function closeWorkViewer() {
+      workLightbox.classList.remove('is-open');
+      workLightbox.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('no-scroll');
+      workLightboxImage.removeAttribute('src');
+    }
+
+    workButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        openWorkLightbox(button.closest('.work-item'));
+      });
+    });
+
+    previousWorkImage.addEventListener('click', () => showWorkImage(currentWorkImageIndex - 1));
+    nextWorkImage.addEventListener('click', () => showWorkImage(currentWorkImageIndex + 1));
+    closeWorkLightbox.addEventListener('click', closeWorkViewer);
+
+    workLightbox.addEventListener('click', (event) => {
+      if (event.target === workLightbox) {
+        closeWorkViewer();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && pdfLightbox.classList.contains('is-open')) {
+        closePdfViewer();
+      }
+
+      if (event.key === 'Escape' && workLightbox.classList.contains('is-open')) {
+        closeWorkViewer();
+      }
+
+      if (event.key === 'ArrowLeft' && workLightbox.classList.contains('is-open')) {
+        showWorkImage(currentWorkImageIndex - 1);
+      }
+
+      if (event.key === 'ArrowRight' && workLightbox.classList.contains('is-open')) {
+        showWorkImage(currentWorkImageIndex + 1);
+      }
+    });
+  </script>
+</body>
+</html>
