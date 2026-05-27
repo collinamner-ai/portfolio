@@ -57,102 +57,20 @@
       transform: translateX(-50%);
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      grid-auto-rows: 254px;
       gap: 10px;
     }
 
-    .work-card {
-      position: relative;
-      display: block;
-      min-width: 0;
-      overflow: hidden;
-      background: var(--panel);
-      cursor: zoom-in;
-    }
-
-    .work-card img {
+    .work-image {
       display: block;
       width: 100%;
-      height: 100%;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
       object-position: center;
-      transition: transform .35s ease, filter .35s ease;
+      background: rgba(255,255,255,.06);
     }
 
-    .work-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,.2);
-      opacity: 0;
-      transition: opacity .25s ease;
-      pointer-events: none;
-    }
-
-    .work-card:hover img,
-    .work-card:focus-visible img {
-      transform: scale(1.04);
-      filter: saturate(1.04) contrast(1.03);
-    }
-
-    .work-card:hover::after,
-    .work-card:focus-visible::after {
-      opacity: 1;
-    }
-
-    .gallery-lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 48px;
-      background: rgba(0,0,0,.96);
-    }
-
-    .gallery-lightbox.is-open {
-      display: flex;
-    }
-
-    .gallery-lightbox img {
-      display: block;
-      max-width: min(75vw, 980px);
-      max-height: 82vh;
-      object-fit: contain;
-      box-shadow: 0 30px 90px rgba(0,0,0,.55);
-    }
-
-    .gallery-lightbox-close,
-    .gallery-lightbox-prev,
-    .gallery-lightbox-next {
-      position: absolute;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.08);
-      color: #fff;
-      font-size: 24px;
-      line-height: 1;
-      cursor: pointer;
-    }
-
-    .gallery-lightbox-close { top: 24px; right: 24px; }
-    .gallery-lightbox-prev { left: 24px; top: 50%; transform: translateY(-50%); }
-    .gallery-lightbox-next { right: 24px; top: 50%; transform: translateY(-50%); }
-
-    .gallery-lightbox-close:hover,
-    .gallery-lightbox-prev:hover,
-    .gallery-lightbox-next:hover,
-    .gallery-lightbox-close:focus-visible,
-    .gallery-lightbox-prev:focus-visible,
-    .gallery-lightbox-next:focus-visible {
-      background: rgba(255,255,255,.18);
-      outline: none;
+    .work-image:hover {
+      filter: brightness(.82);
     }
 
     .skills-subsection { display: grid; gap: 14px; }
@@ -221,28 +139,20 @@
       </section>
 
       <section id="work" class="wrap" aria-labelledby="work-title">
-        <div class="section-title"><h2 id="work-title">My Work</h2><p>A selection of projects</p></div>
+        <div class="section-title"><h2 id="work-title">My Work</h2><p>Selected portfolio projects.</p></div>
         <div class="work-gallery" aria-label="Selected portfolio work">
-          <figure class="work-card" tabindex="0"><img src="images/portfolio/work-01.png" alt="Portfolio project 01"></figure>
-          <figure class="work-card" tabindex="0"><img src="images/portfolio/work-02.png" alt="Portfolio project 02"></figure>
-          <figure class="work-card" tabindex="0"><img src="images/portfolio/work-03.png" alt="Portfolio project 03"></figure>
-          <figure class="work-card" tabindex="0"><img src="images/portfolio/work-04.png" alt="Portfolio project 04"></figure>
-          <figure class="work-card" tabindex="0"><img src="images/portfolio/work-05.png" alt="Portfolio project 05"></figure>
-          <figure class="work-card" tabindex="0"><img src="images/portfolio/work-06.png" alt="Portfolio project 06"></figure>
-          <figure class="work-card" tabindex="0"><img src="images/portfolio/work-07.png" alt="Portfolio project 07"></figure>
-          <figure class="work-card" tabindex="0"><img src="images/portfolio/work-08.png" alt="Portfolio project 08"></figure>
-          <figure class="work-card" tabindex="0"><img src="images/portfolio/work-09.png" alt="Portfolio project 09"></figure>
-                  <figure class="work-card" tabindex="0"><img src="images/portfolio/work-10.png" alt="Portfolio project 10"></figure>
-                  <figure class="work-card" tabindex="0"><img src="images/portfolio/work-11.png" alt="Portfolio project 11"></figure>
-                  <figure class="work-card" tabindex="0"><img src="images/portfolio/work-12.png" alt="Portfolio project 12"></figure>
-                  <figure class="work-card" tabindex="0"><img src="images/portfolio/work-13.png" alt="Portfolio project 13"></figure>
-                  <figure class="work-card" tabindex="0"><img src="images/portfolio/work-14.png" alt="Portfolio project 14"></figure>
-                  <figure class="work-card" tabindex="0"><img src="images/portfolio/work-15.png" alt="Portfolio project 15"></figure>
-                  <figure class="work-card" tabindex="0"><img src="images/portfolio/work-16.png" alt="Portfolio project 16"></figure>
-                  <figure class="work-card" tabindex="0"><img src="images/portfolio/work-17.png" alt="Portfolio project 17"></figure>
-                  <figure class="work-card" tabindex="0"><img src="images/portfolio/work-18.png" alt="Portfolio project 18"></figure>
-                  <figure class="work-card" tabindex="0"><img src="images/portfolio/work-19.png" alt="Portfolio project 19"></figure>
-                  <figure class="work-card" tabindex="0"><img src="images/portfolio/work-20.png" alt="Portfolio project 20"></figure>
+          <img class="work-image" src="assets/work-01.png" alt="Portfolio project 01">
+          <img class="work-image" src="assets/work-02.png" alt="Portfolio project 02">
+          <img class="work-image" src="assets/work-03.png" alt="Portfolio project 03">
+          <img class="work-image" src="assets/work-04.png" alt="Portfolio project 04">
+          <img class="work-image" src="assets/work-05.png" alt="Portfolio project 05">
+          <img class="work-image" src="assets/work-06.png" alt="Portfolio project 06">
+          <img class="work-image" src="assets/work-07.png" alt="Portfolio project 07">
+          <img class="work-image" src="assets/work-08.png" alt="Portfolio project 08">
+          <img class="work-image" src="assets/work-09.png" alt="Portfolio project 09">
+          <img class="work-image" src="assets/work-10.png" alt="Portfolio project 10">
+          <img class="work-image" src="assets/work-11.png" alt="Portfolio project 11">
+          <img class="work-image" src="assets/work-12.png" alt="Portfolio project 12">
         </div>
       </section>
 
@@ -271,69 +181,7 @@
     </footer>
   </div>
 
-  <div class="gallery-lightbox" id="galleryLightbox" aria-hidden="true" role="dialog" aria-label="Portfolio image viewer">
-    <button class="gallery-lightbox-close" type="button" id="galleryClose" aria-label="Close image viewer">×</button>
-    <button class="gallery-lightbox-prev" type="button" id="galleryPrev" aria-label="Previous image">‹</button>
-    <img id="galleryLightboxImage" src="" alt="">
-    <button class="gallery-lightbox-next" type="button" id="galleryNext" aria-label="Next image">›</button>
-  </div>
-
   <script>
-    const galleryCards = Array.from(document.querySelectorAll('.work-card'));
-    const galleryLightbox = document.getElementById('galleryLightbox');
-    const galleryLightboxImage = document.getElementById('galleryLightboxImage');
-    const galleryClose = document.getElementById('galleryClose');
-    const galleryPrev = document.getElementById('galleryPrev');
-    const galleryNext = document.getElementById('galleryNext');
-    let activeGalleryIndex = 0;
-
-    function showGalleryImage(index) {
-      activeGalleryIndex = (index + galleryCards.length) % galleryCards.length;
-      const image = galleryCards[activeGalleryIndex].querySelector('img');
-      galleryLightboxImage.src = image.currentSrc || image.src;
-      galleryLightboxImage.alt = image.alt;
-    }
-
-    function openGallery(index) {
-      showGalleryImage(index);
-      galleryLightbox.classList.add('is-open');
-      galleryLightbox.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      galleryClose.focus();
-    }
-
-    function closeGallery() {
-      galleryLightbox.classList.remove('is-open');
-      galleryLightbox.setAttribute('aria-hidden', 'true');
-      galleryLightboxImage.removeAttribute('src');
-      document.body.style.overflow = '';
-      galleryCards[activeGalleryIndex].focus();
-    }
-
-    galleryCards.forEach((card, index) => {
-      card.addEventListener('click', () => openGallery(index));
-      card.addEventListener('keydown', event => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          openGallery(index);
-        }
-      });
-    });
-
-    galleryClose.addEventListener('click', closeGallery);
-    galleryPrev.addEventListener('click', () => showGalleryImage(activeGalleryIndex - 1));
-    galleryNext.addEventListener('click', () => showGalleryImage(activeGalleryIndex + 1));
-    galleryLightbox.addEventListener('click', event => {
-      if (event.target === galleryLightbox) closeGallery();
-    });
-
-    document.addEventListener('keydown', event => {
-      if (!galleryLightbox.classList.contains('is-open')) return;
-      if (event.key === 'Escape') closeGallery();
-      if (event.key === 'ArrowLeft') showGalleryImage(activeGalleryIndex - 1);
-      if (event.key === 'ArrowRight') showGalleryImage(activeGalleryIndex + 1);
-    });
-
     const navLinks = Array.from(document.querySelectorAll('nav a'));
     const pageSections = Array.from(document.querySelectorAll('main section[id]'));
     const activeSectionObserver = new IntersectionObserver(entries => {
