@@ -1,1 +1,1481 @@
-html <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>Portfolio | Collin Amner</title> <style> :root { --bg: #07090d; --text: #f4f7fb; --muted: #a6afbd; --line: rgba(255, 255, 255, 0.12); --panel: rgba(255, 255, 255, 0.055); --panel-light: rgba(255, 255, 255, 0.06); --accent: #dfe8f4; --blue: #1479ff; --green: #10b981; --red: #ef4444; --shadow: 0 24px 80px rgba(0, 0, 0, 0.45); } * { box-sizing: border-box; margin: 0; padding: 0; } html { scroll-behavior: smooth; } body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; overflow-x: hidden; } body.no-scroll { overflow: hidden; } a { color: inherit; text-decoration: none; } button, input { font: inherit; } button { cursor: pointer; border: 0; } .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; } header { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid rgba(255, 255, 255, 0.07); background: rgba(7, 9, 13, 0.72); backdrop-filter: blur(18px); } .header-inner { width: min(1120px, calc(100% - 40px)); margin: 0 auto; padding: 22px 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; } .logo { font-weight: 800; letter-spacing: -0.04em; } nav { display: flex; gap: 20px; color: var(--muted); font-size: 0.94rem; } nav a { position: relative; padding: 8px 0 10px; transition: color 180ms ease; } nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 999px; background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform 180ms ease; } nav a:hover, nav a:focus-visible, nav a.is-active { color: var(--text); outline: none; } nav a.is-active::after { transform: scaleX(1); } section { scroll-margin-top: 96px; padding: 48px 0; } main section:not(:first-child) { border-top: 1px solid rgba(220, 226, 235, 0.16); } .intro { padding: 70px 0 50px; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr); gap: 44px; align-items: center; } .intro-content { max-width: 920px; } .profile-frame { justify-self: end; width: min(420px, 100%); aspect-ratio: 1 / 1; overflow: hidden; } .profile-frame img { display: block; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 16%, black 84%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 16%, black 84%, transparent 100%); } .eyebrow { display: inline-flex; align-items: center; gap: 10px; padding: 8px 13px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.04); border-radius: 999px; color: var(--muted); font-size: 0.84rem; margin-bottom: 24px; } .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #e8eef6; box-shadow: 0 0 18px rgba(232, 238, 246, 0.8); } h1 { font-size: clamp(3.2rem, 8vw, 6.6rem); line-height: 0.92; letter-spacing: -0.08em; max-width: 900px; } .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; } .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border-radius: 14px; border: 1px solid var(--line); font-weight: 700; transition: transform 180ms ease, background 180ms ease; } .btn:hover, .btn:focus-visible { transform: translateY(-2px); outline: none; } .btn.download { min-height: 54px; padding: 0 24px; color: #ffffff; background: linear-gradient(135deg, #1479ff, #005bd6); border-color: rgba(255, 255, 255, 0.18); box-shadow: 0 14px 34px rgba(20, 121, 255, 0.28); } .section-title { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 30px; } .section-title h2 { font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1; letter-spacing: -0.06em; } .section-title p { color: var(--muted); max-width: 470px; } .panel { padding: 30px; border-radius: 30px; border: 1px solid var(--line); background: var(--panel); backdrop-filter: blur(18px); box-shadow: 0 18px 55px rgba(0, 0, 0, 0.23); } .panel p { color: var(--muted); } .work-filters { display: flex; flex-wrap: wrap; gap: 26px; margin-bottom: 28px; } .work-filter { position: relative; padding: 0 0 9px; color: var(--muted); background: transparent; font-weight: 700; } .work-filter::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px; border-radius: 999px; background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform 180ms ease; } .work-filter:hover, .work-filter:focus-visible, .work-filter.is-active { color: var(--text); outline: none; } .work-filter.is-active::after { transform: scaleX(1); } .work-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; } .work-item { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.16); background: rgba(255, 255, 255, 0.04); box-shadow: 0 16px 44px rgba(0, 0, 0, 0.28); } .work-item.is-hidden { display: none; } .work-item img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 260ms ease, opacity 260ms ease; } .work-item:hover img { transform: scale(1.04); opacity: 0.92; } .work-image-error { width: 100%; height: 100%; display: grid; place-items: center; padding: 16px; color: var(--muted); text-align: center; font-size: 0.85rem; background: rgba(255, 255, 255, 0.045); } .skills-subsection { display: grid; gap: 14px; } .skills-subsection h3 { color: var(--blue); font-size: 0.9rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; } .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; } .skill-tag { padding: 15px 16px; border-radius: 16px; background: var(--panel-light); color: var(--accent); border: 1px solid var(--line); font-weight: 650; font-size: 0.95rem; } .experience-list { display: grid; gap: 16px; } .experience-item { display: grid; grid-template-columns: 180px minmax(0, 1fr) minmax(150px, 220px); gap: 24px; align-items: start; padding: 26px; border-radius: 26px; border: 1px solid var(--line); background: var(--panel); backdrop-filter: blur(18px); } .experience-item time { color: var(--blue); font-weight: 700; } .experience-item h3 { font-size: 1.25rem; letter-spacing: -0.03em; margin-bottom: 7px; } .experience-company { color: var(--accent); font-weight: 700; margin-bottom: 12px; } .experience-tags { display: grid; gap: 8px; margin: 2px 0 0; list-style: none; justify-self: start; } .experience-tags li { position: relative; padding-left: 14px; color: var(--muted); font-size: 0.92rem; font-weight: 650; } .experience-tags li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 5px; height: 5px; border-radius: 50%; background: var(--blue); transform: translateY(-50%); } footer { width: min(1120px, calc(100% - 40px)); margin: 0 auto; padding: 34px 0; color: var(--muted); display: flex; justify-content: space-between; gap: 16px; font-size: 0.9rem; align-items: center; border-top: 1px solid rgba(255, 255, 255, 0.07); } .admin-button { min-height: 40px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--blue); background: rgba(20, 121, 255, 0.1); color: var(--blue); font-weight: 700; font-size: 0.85rem; } .admin-button:hover { background: rgba(20, 121, 255, 0.2); transform: translateY(-2px); } .modal { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; padding: 24px; background: rgba(0, 0, 0, 0.92); backdrop-filter: blur(12px); } .modal.is-open { display: flex; } .pdf-panel { width: min(1100px, 100%); height: min(860px, calc(100vh - 48px)); display: grid; grid-template-rows: auto 1fr; border: 1px solid var(--line); border-radius: 24px; overflow: hidden; background: #0b0d11; box-shadow: var(--shadow); } .pdf-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 14px 16px; border-bottom: 1px solid var(--line); background: rgba(255, 255, 255, 0.055); } .pdf-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; } .pdf-link, .pdf-close { min-height: 40px; padding: 0 14px; display: inline-flex; align-items: center; justify-content: center; border-radius: 12px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.08); color: var(--text); font-weight: 700; } .pdf-link:hover, .pdf-link:focus-visible, .pdf-close:hover, .pdf-close:focus-visible { background: rgba(255, 255, 255, 0.14); outline: none; } .pdf-frame-wrap { display: flex; align-items: center; justify-content: center; background: #11151c; overflow: hidden; } .pdf-frame-wrap iframe { width: 100%; height: 100%; border: 0; background: #ffffff; } .admin-panel { width: min(1200px, 100%); max-height: 90vh; display: grid; grid-template-rows: auto 1fr auto; border: 1px solid var(--line); border-radius: 24px; overflow: hidden; background: rgba(7, 9, 13, 0.95); box-shadow: var(--shadow); } .admin-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 24px; border-bottom: 1px solid var(--line); background: rgba(255, 255, 255, 0.04); } .admin-header h2 { font-size: 1.5rem; letter-spacing: -0.03em; } .admin-close { min-height: 40px; padding: 0 14px; border-radius: 10px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.08); color: var(--text); font-weight: 700; } .admin-content { display: grid; grid-template-columns: 1fr 350px; gap: 24px; padding: 24px; overflow-y: auto; } .admin-work-list { display: grid; gap: 16px; } .admin-work-item { display: grid; grid-template-columns: 80px 1fr auto auto auto; gap: 12px; align-items: center; padding: 16px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.04); } .admin-work-thumbnail { width: 80px; height: 60px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.08); } .admin-work-thumbnail img { width: 100%; height: 100%; object-fit: cover; } .admin-work-details h3 { font-size: 0.95rem; margin-bottom: 4px; } .admin-work-details p { font-size: 0.8rem; color: var(--muted); } .admin-btn-small { min-height: 36px; padding: 0 10px; border-radius: 8px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.08); color: var(--text); font-size: 0.8rem; font-weight: 700; } .admin-sidebar { display: grid; gap: 16px; grid-template-rows: auto auto 1fr; } .admin-form-group { display: grid; gap: 6px; margin-bottom: 14px; } .admin-form-group label { font-size: 0.85rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; } .admin-form-group input { padding: 8px 12px; border-radius: 8px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.06); color: var(--text); } .admin-footer { display: flex; gap: 12px; padding: 20px 24px; border-top: 1px solid var(--line); background: rgba(255, 255, 255, 0.04); justify-content: flex-end; } .admin-btn { min-height: 42px; padding: 0 20px; border-radius: 10px; border: 1px solid var(--line); color: var(--text); font-weight: 700; } .admin-btn.save { background: linear-gradient(135deg, var(--green), #059669); color: #ffffff; } .admin-btn.cancel { background: rgba(255, 255, 255, 0.08); } .admin-login { display: grid; gap: 20px; padding: 40px; } .admin-login-form { display: grid; gap: 12px; } .admin-login-form input { padding: 12px 16px; border-radius: 10px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.06); color: var(--text); } .admin-login-btn { min-height: 44px; border-radius: 10px; border: 1px solid var(--blue); background: linear-gradient(135deg, var(--blue), #005bd6); color: #ffffff; font-weight: 700; } .admin-error { padding: 12px 16px; border-radius: 8px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #fca5a5; font-size: 0.9rem; font-weight: 600; } @media (max-width: 900px) { .intro, .admin-content { grid-template-columns: 1fr; } .intro { padding: 48px 0 40px; } .profile-frame { justify-self: start; width: min(320px, 100%); } .work-grid, .skills-grid { grid-template-columns: repeat(2, 1fr); } .experience-item { grid-template-columns: 1fr; } .admin-work-item { grid-template-columns: 60px 1fr auto; } .admin-work-thumbnail { width: 60px; height: 45px; } } @media (max-width: 680px) { .header-inner { align-items: flex-start; flex-direction: column; } nav { width: 100%; overflow-x: auto; padding-bottom: 4px; } .section-title, footer { flex-direction: column; align-items: flex-start; } .work-grid, .skills-grid { grid-template-columns: 1fr; } .admin-panel { width: 100%; max-height: 100vh; } .admin-content { gap: 12px; padding: 16px; } .admin-work-item { grid-template-columns: 50px 1fr auto; } .admin-work-thumbnail { width: 50px; height: 38px; } } </style> </head> <body> <div class="page"> <header> <div class="header-inner"> <a href="#intro" class="logo" aria-label="Portfolio home"> <span>Collin Amner</span> </a> <nav aria-label="Main navigation"> <a href="#intro">Intro</a> <a href="#about">About Me</a> <a href="#work">My Work</a> <a href="#skills">Skills</a> <a href="#experience">Experience</a> </nav> </div> </header> <main> <section id="intro" class="intro wrap" aria-labelledby="intro-title"> <div class="intro-content"> <span class="eyebrow">Artwork / Marketing / Digital / Branding</span> <h1 id="intro-title">Senior Graphic Designer <br />&amp; Brand Lead</h1> <div class="actions"> <button class="btn download" type="button" id="openPortfolioPdf">View portfolio</button> </div> </div> <div class="profile-frame"> <img src="./assets/profile.png" alt="Black and white portrait of Collin Amner" /> </div> </section> <section id="about" class="wrap" aria-labelledby="about-title"> <div class="section-title"> <h2 id="about-title">About Me</h2> <p></p> </div> <div class="panel"> <p>Highly accomplished Senior Graphic Designer and Brand Guardian with over 20 years of experience delivering high-quality, audience-led creative across multi-channel campaigns including brand, web, digital, and print. Proven leader in developing visual identity, driving brand governance, managing multiple complex design projects, and mentoring junior designers. Expert in Adobe Creative Suite, workflow-building, and ensuring all design meets accessibility standards.</p> </div> </section> <section id="work" class="wrap" aria-labelledby="work-title"> <div class="section-title"> <h2 id="work-title">My Work</h2> <p>Selected examples across packaging, print, digital and branding.</p> </div> <div class="work-filters" id="workFiltersContainer" aria-label="Work filters"> <button class="work-filter is-active" type="button" data-filter="all">All</button> <button class="work-filter" type="button" data-filter="packaging">Packaging</button> <button class="work-filter" type="button" data-filter="print">Print</button> <button class="work-filter" type="button" data-filter="digital">Digital</button> <button class="work-filter" type="button" data-filter="branding">Branding</button> </div> <div class="work-grid" id="workGrid" aria-label="Selected work gallery"> <article class="work-item" data-id="1" data-title="Project 01" data-category="packaging,branding"> <img src="assets/work-01.png" alt="Project 01" /> </article> <article class="work-item" data-id="2" data-title="Project 02" data-category="packaging"> <img src="assets/work-02.png" alt="Project 02" /> </article> <article class="work-item" data-id="3" data-title="Project 03" data-category="packaging"> <img src="assets/work-03.png" alt="Project 03" /> </article> <article class="work-item" data-id="4" data-title="Project 04" data-category="print,digital"> <img src="assets/work-04.png" alt="Project 04" /> </article> <article class="work-item" data-id="5" data-title="Project 05" data-category="digital"> <img src="assets/work-05.png" alt="Project 05" /> </article> <article class="work-item" data-id="6" data-title="Project 06" data-category="branding"> <img src="assets/work-06.png" alt="Project 06" /> </article> <article class="work-item" data-id="7" data-title="Project 07" data-category="packaging"> <img src="assets/work-07.png" alt="Project 07" /> </article> <article class="work-item" data-id="8" data-title="Project 08" data-category="print"> <img src="assets/work-08.png" alt="Project 08" /> </article> <article class="work-item" data-id="9" data-title="Project 09" data-category="digital"> <img src="assets/work-09.png" alt="Project 09" /> </article> <article class="work-item" data-id="10" data-title="Project 10" data-category="branding"> <img src="assets/work-10.png" alt="Project 10" /> </article> <article class="work-item" data-id="11" data-title="Project 11" data-category="packaging"> <img src="assets/work-11.png" alt="Project 11" /> </article> <article class="work-item" data-id="12" data-title="Project 12" data-category="print"> <img src="assets/work-12.png" alt="Project 12" /> </article> <article class="work-item" data-id="13" data-title="Project 13" data-category="packaging"> <img src="assets/work-13.png" alt="Project 13" /> </article> <article class="work-item" data-id="14" data-title="Project 14" data-category="print"> <img src="assets/work-14.png" alt="Project 14" /> </article> <article class="work-item" data-id="15" data-title="Project 15" data-category="digital"> <img src="assets/work-15.png" alt="Project 15" /> </article> <article class="work-item" data-id="16" data-title="Project 16" data-category="branding"> <img src="assets/work-16.png" alt="Project 16" /> </article> <article class="work-item" data-id="17" data-title="Project 17" data-category="packaging"> <img src="assets/work-17.png" alt="Project 17" /> </article> <article class="work-item" data-id="18" data-title="Project 18" data-category="print"> <img src="assets/work-18.png" alt="Project 18" /> </article> <article class="work-item" data-id="19" data-title="Project 20" data-category="branding"> <img src="assets/work-20.png" alt="Project 20" /> </article> </div> </section> <section id="skills" class="wrap" aria-labelledby="skills-title"> <div class="section-title"> <h2 id="skills-title">Skills</h2> <p></p> </div> <div class="skills-subsection"> <h3>Core Skills</h3> <div class="skills-grid" aria-label="Core skills list"> <span class="skill-tag">Branding &amp; Visual Identity</span> <span class="skill-tag">Packaging Design</span> <span class="skill-tag">Print-Ready Artwork</span> <span class="skill-tag">POS &amp; Retail Display</span> <span class="skill-tag">Artwork Automation</span> <span class="skill-tag">Pre-Press &amp; Production</span> <span class="skill-tag">UI/Web Design</span> <span class="skill-tag">Presentation Design</span> <span class="skill-tag">Product Development</span> <span class="skill-tag">Creative Project Management</span> </div> </div> </section> <section id="experience" class="wrap" aria-labelledby="experience-title"> <div class="section-title"> <h2 id="experience-title">Experience</h2> <p>A career history covering packaging, brand, automation, product design, artwork, and creative leadership.</p> </div> <div class="experience-list"> <article class="experience-item"> <time>2023 — Present</time> <div> <h3>Packaging &amp; Automation Design Lead</h3> <p class="experience-company">Branded Agency (Writtle Group), Berkhamsted</p> </div> <ul class="experience-tags"> <li>Packaging</li> <li>Pre-Press</li> <li>Automation</li> </ul> </article> <article class="experience-item"> <time>2022 — 2023</time> <div> <h3>Creative Coordinator &amp; Designer</h3> <p class="experience-company">KJC Creative Limited, Aylesbury</p> </div> <ul class="experience-tags"> <li>Coordination</li> <li>Print</li> <li>Digital</li> </ul> </article> <article class="experience-item"> <time>2013 — 2022</time> <div> <h3>Branding &amp; Packaging Design Lead</h3> <p class="experience-company">Adlens Limited, Oxford</p> </div> <ul class="experience-tags"> <li>Branding</li> <li>Packaging</li> <li>Mentoring</li> </ul> </article> <article class="experience-item"> <time>2010 — 2013</time> <div> <h3>Creative Lead / Founder</h3> <p class="experience-company">Amner Creative Design, Thame</p> </div> <ul class="experience-tags"> <li>Brand Projects</li> <li>Licensed Products</li> <li>Major Clients</li> </ul> </article> <article class="experience-item"> <time>2006 — 2010</time> <div> <h3>Product &amp; Accessories Designer</h3> <p class="experience-company">Path Group PLC, Thame</p> </div> <ul class="experience-tags"> <li>Product Design</li> <li>Artwork</li> <li>Launches</li> </ul> </article> <article class="experience-item"> <time>2003 — 2006</time> <div> <h3>Product &amp; Graphic Designer</h3> <p class="experience-company">Philex Electronic Limited, Bedford</p> </div> <ul class="experience-tags"> <li>Packaging</li> <li>Retail Displays</li> <li>Marketing</li> </ul> </article> </div> </section> </main> <footer> <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;"> <span>© 2026 Collin Amner. All rights reserved.</span> <span>Intro · About Me · My Work · Skills · Experience</span> </div> <button class="admin-button" id="adminButton" title="Admin Panel">⚙️ Admin</button> </footer> </div> <div class="modal" id="pdfModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Portfolio PDF viewer"> <div class="pdf-panel"> <div class="pdf-toolbar"> <strong>Collin Amner Portfolio</strong> <div class="pdf-actions"> <a class="pdf-link" href="assets/collinamner_portfolio.pdf#page=1&zoom=75" target="_blank" rel="noopener">Open in new tab</a> <button class="pdf-close" type="button" id="closePortfolioPdf">Close</button> </div> </div> <div class="pdf-frame-wrap"> <iframe id="portfolioPdfFrame" title="Collin Amner portfolio PDF" data-src="assets/collinamner_portfolio.pdf#page=1&zoom=75"></iframe> </div> </div> </div> <div class="modal" id="adminModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Portfolio admin panel"> <div class="admin-panel"> <div class="admin-header"> <h2>Portfolio Admin</h2> <button class="admin-close" id="adminModalClose">Close</button> </div> <div id="adminContent" class="admin-content"></div> <div class="admin-footer" id="adminFooter" style="display: none;"> <button class="admin-btn cancel" id="adminCancel">Cancel</button> <button class="admin-btn save" id="adminSave">Save Changes</button> </div> </div> </div> <script> const STORAGE_KEY = "portfolio_work_data"; const STORAGE_VERSION_KEY = "portfolio_work_data_version"; const DATA_VERSION = "static-dom-gallery-v4"; const AUTH_KEY = "portfolio_admin_auth"; const PASSWORD = "admin2026"; if (localStorage.getItem(STORAGE_VERSION_KEY) !== DATA_VERSION) { localStorage.removeItem(STORAGE_KEY); localStorage.setItem(STORAGE_VERSION_KEY, DATA_VERSION); } let currentFilter = "all"; let isAuthenticated = localStorage.getItem(AUTH_KEY) === "true"; let editingData = null; function escapeHtml(value) { return String(value) .replace(/&/g, "&amp;") .replace(/</g, "&lt;") .replace(/>/g, "&gt;") .replace(/"/g, "&quot;") .replace(/'/g, "&#039;"); } function readWorkDataFromDom() { return Array.from(document.querySelectorAll(".work-item")).map((item, index) => { const image = item.querySelector("img"); return { id: Number(item.dataset.id), title: item.dataset.title || image.alt || `Project ${String(index + 1).padStart(2, "0")}`, image: image.getAttribute("src"), categories: item.dataset.category.split(",").map(category => category.trim()).filter(Boolean), position: index }; }); } function createWorkItem(item) { const article = document.createElement("article"); article.className = "work-item"; article.dataset.id = item.id; article.dataset.title = item.title; article.dataset.category = item.categories.join(","); const image = document.createElement("img"); image.src = item.image; image.alt = item.title; image.addEventListener("error", () => { article.innerHTML = `<div class="work-image-error">Image not found:<br>${escapeHtml(item.image)}</div>`; }); article.appendChild(image); return article; } function applyWorkDataToDom(data) { const grid = document.getElementById("workGrid"); grid.innerHTML = ""; [...data].sort((a, b) => a.position - b.position).forEach(item => { grid.appendChild(createWorkItem(item)); }); filterWork(currentFilter); } function getWorkData() { const saved = localStorage.getItem(STORAGE_KEY); if (!saved) { return readWorkDataFromDom(); } try { const parsed = JSON.parse(saved); if (!Array.isArray(parsed) || parsed.length === 0) { return readWorkDataFromDom(); } return parsed; } catch (error) { localStorage.removeItem(STORAGE_KEY); return readWorkDataFromDom(); } } function saveWorkData(data) { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); applyWorkDataToDom(data); } function buildFiltersFromData(data) { const filtersContainer = document.getElementById("workFiltersContainer"); const categories = new Set(["all"]); data.forEach(item => { item.categories.forEach(category => categories.add(category)); }); const filters = Array.from(categories).sort((a, b) => { if (a === "all") return -1; if (b === "all") return 1; return a.localeCompare(b); }); filtersContainer.innerHTML = ""; filters.forEach(filter => { const button = document.createElement("button"); button.className = `work-filter ${filter === currentFilter ? "is-active" : ""}`; button.type = "button"; button.dataset.filter = filter; button.textContent = filter.charAt(0).toUpperCase() + filter.slice(1); button.addEventListener("click", () => filterWork(filter)); filtersContainer.appendChild(button); }); } function filterWork(filter) { currentFilter = filter; document.querySelectorAll(".work-filter").forEach(button => { button.classList.toggle("is-active", button.dataset.filter === filter); }); document.querySelectorAll(".work-item").forEach(item => { const categories = item.dataset.category.split(",").map(category => category.trim()); item.classList.toggle("is-hidden", filter !== "all" && !categories.includes(filter)); }); } function refreshWorkSection() { const data = getWorkData(); applyWorkDataToDom(data); buildFiltersFromData(data); filterWork(currentFilter); } const openPortfolioPdf = document.getElementById("openPortfolioPdf"); const closePortfolioPdf = document.getElementById("closePortfolioPdf"); const pdfModal = document.getElementById("pdfModal"); const portfolioPdfFrame = document.getElementById("portfolioPdfFrame"); function openPdfViewer() { portfolioPdfFrame.src = portfolioPdfFrame.dataset.src; pdfModal.classList.add("is-open"); pdfModal.setAttribute("aria-hidden", "false"); document.body.classList.add("no-scroll"); closePortfolioPdf.focus(); } function closePdfViewer() { pdfModal.classList.remove("is-open"); pdfModal.setAttribute("aria-hidden", "true"); portfolioPdfFrame.removeAttribute("src"); document.body.classList.remove("no-scroll"); openPortfolioPdf.focus(); } openPortfolioPdf.addEventListener("click", openPdfViewer); closePortfolioPdf.addEventListener("click", closePdfViewer); pdfModal.addEventListener("click", event => { if (event.target === pdfModal) { closePdfViewer(); } }); const adminModal = document.getElementById("adminModal"); const adminContent = document.getElementById("adminContent"); const adminButton = document.getElementById("adminButton"); const adminModalClose = document.getElementById("adminModalClose"); const adminFooter = document.getElementById("adminFooter"); function authenticate(password) { if (password === PASSWORD) { localStorage.setItem(AUTH_KEY, "true"); isAuthenticated = true; return true; } return false; } function logout() { localStorage.removeItem(AUTH_KEY); isAuthenticated = false; } function openAdminModal() { adminModal.classList.add("is-open"); adminModal.setAttribute("aria-hidden", "false"); document.body.classList.add("no-scroll"); if (isAuthenticated) { editingData = getWorkData(); renderAdminPanel(); } else { renderLoginForm(); } } function closeAdminModal() { adminModal.classList.remove("is-open"); adminModal.setAttribute("aria-hidden", "true"); document.body.classList.remove("no-scroll"); editingData = null; } adminButton.addEventListener("click", openAdminModal); adminModalClose.addEventListener("click", closeAdminModal); adminModal.addEventListener("click", event => { if (event.target === adminModal) { closeAdminModal(); } }); function renderLoginForm() { adminFooter.style.display = "none"; adminContent.innerHTML = ` <div class="admin-login" style="grid-column: 1 / -1;"> <h2>Admin Access</h2> <p style="color: var(--muted); margin-bottom: 20px;">Enter your password to edit the portfolio.</p> <div class="admin-login-form"> <input type="password" id="adminPassword" placeholder="Password" /> <button class="admin-login-btn" type="button" id="adminLoginBtn">Login</button> <div id="adminLoginError" class="admin-error" style="display: none;"></div> </div> </div> `; document.getElementById("adminLoginBtn").addEventListener("click", () => { const error = document.getElementById("adminLoginError"); const password = document.getElementById("adminPassword").value; if (authenticate(password)) { editingData = getWorkData(); renderAdminPanel(); } else { error.textContent = "Incorrect password"; error.style.display = "block"; } }); document.getElementById("adminPassword").addEventListener("keypress", event => { if (event.key === "Enter") { document.getElementById("adminLoginBtn").click(); } }); } function renderAdminPanel() { adminFooter.style.display = "flex"; const sorted = [...editingData].sort((a, b) => a.position - b.position); adminContent.innerHTML = ` <div class="admin-work-list"> <h3 style="margin-bottom: 12px; color: var(--muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;">Work Items (${editingData.length})</h3> ${sorted.map(item => ` <div class="admin-work-item"> <div class="admin-work-thumbnail"> <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}" /> </div> <div class="admin-work-details"> <h3>${escapeHtml(item.title)}</h3> <p>${escapeHtml(item.categories.join(", "))}</p> </div> <button class="admin-btn-small" type="button" onclick="moveUp(${item.id})">↑</button> <button class="admin-btn-small" type="button" onclick="moveDown(${item.id})">↓</button> <button class="admin-btn-small" type="button" onclick="editWork(${item.id})">Edit</button> </div> `).join("")} </div> <div class="admin-sidebar"> <div style="color: var(--muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700;">Edit Work Item</div> <div id="adminEditPanel"> <div style="padding: 20px; text-align: center; color: var(--muted);">Select a work item to edit</div> </div> <div style="margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line);"> <button class="admin-btn-small" style="width: 100%; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.3); color: #fca5a5;" id="adminLogout">Logout</button> </div> </div> `; document.getElementById("adminLogout").addEventListener("click", () => { logout(); renderLoginForm(); }); } window.moveUp = function(id) { const sorted = [...editingData].sort((a, b) => a.position - b.position); const index = sorted.findIndex(item => item.id === id); if (index > 0) { const currentPosition = sorted[index].position; sorted[index].position = sorted[index - 1].position; sorted[index - 1].position = currentPosition; renderAdminPanel(); } }; window.moveDown = function(id) { const sorted = [...editingData].sort((a, b) => a.position - b.position); const index = sorted.findIndex(item => item.id === id); if (index < sorted.length - 1) { const currentPosition = sorted[index].position; sorted[index].position = sorted[index + 1].position; sorted[index + 1].position = currentPosition; renderAdminPanel(); } }; window.editWork = function(id) { const item = editingData.find(entry => entry.id === id); const panel = document.getElementById("adminEditPanel"); const options = ["packaging", "print", "digital", "branding"]; panel.innerHTML = ` <div class="admin-form-group"> <label>Title</label> <input type="text" id="editTitle" value="${escapeHtml(item.title)}" /> </div> <div class="admin-form-group"> <label>Image Path</label> <input type="text" id="editImage" value="${escapeHtml(item.image)}" /> </div> <div class="admin-form-group"> <label>Categories</label> <div style="display: grid; gap: 6px;"> ${options.map(category => ` <label style="display: flex; align-items: center; gap: 8px; font-weight: 400; cursor: pointer;"> <input type="checkbox" ${item.categories.includes(category) ? "checked" : ""} value="${category}" class="admin-cat-check" /> ${category.charAt(0).toUpperCase() + category.slice(1)} </label> `).join("")} </div> </div> <div style="display: flex; gap: 8px; margin-top: 16px;"> <button class="admin-btn-small" style="flex: 1; background: rgba(20, 121, 255, 0.1); border-color: var(--blue); color: var(--blue);" id="saveEdit">Save</button> <button class="admin-btn-small" style="flex: 1;" id="cancelEdit">Cancel</button> </div> `; document.getElementById("saveEdit").addEventListener("click", () => { item.title = document.getElementById("editTitle").value.trim() || item.title; item.image = document.getElementById("editImage").value.trim() || item.image; item.categories = Array.from(document.querySelectorAll(".admin-cat-check:checked")).map(input => input.value); if (item.categories.length === 0) { item.categories = ["branding"]; } renderAdminPanel(); }); document.getElementById("cancelEdit").addEventListener("click", () => { panel.innerHTML = '<div style="padding: 20px; text-align: center; color: var(--muted);">Select a work item to edit</div>'; }); }; document.getElementById("adminSave").addEventListener("click", () => { if (editingData) { saveWorkData(editingData); buildFiltersFromData(editingData); filterWork(currentFilter); closeAdminModal(); } }); document.getElementById("adminCancel").addEventListener("click", closeAdminModal); const navLinks = Array.from(document.querySelectorAll("nav a")); const pageSections = Array.from(document.querySelectorAll("main section[id]")); const activeSectionObserver = new IntersectionObserver(entries => { entries.forEach(entry => { if (!entry.isIntersecting) { return; } navLinks.forEach(link => { link.classList.toggle("is-active", link.getAttribute("href") === `#${entry.target.id}`); }); }); }, { rootMargin: "-40% 0px -50% 0px", threshold: 0 }); pageSections.forEach(section => activeSectionObserver.observe(section)); document.addEventListener("keydown", event => { if (event.key === "Escape" && pdfModal.classList.contains("is-open")) { closePdfViewer(); } if (event.key === "Escape" && adminModal.classList.contains("is-open")) { closeAdminModal(); } }); refreshWorkSection(); </script> </body> </html> `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Collin Amner</title>
+  <style>
+    :root {
+      --bg: #07090d;
+      --text: #f4f7fb;
+      --muted: #a6afbd;
+      --line: rgba(255, 255, 255, 0.12);
+      --panel: rgba(255, 255, 255, 0.055);
+      --panel-light: rgba(255, 255, 255, 0.06);
+      --accent: #dfe8f4;
+      --blue: #1479ff;
+      --green: #10b981;
+      --red: #ef4444;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body.no-scroll {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: 0;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      background: rgba(7, 9, 13, 0.72);
+      backdrop-filter: blur(18px);
+    }
+
+    .header-inner {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 22px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    nav a {
+      position: relative;
+      padding: 8px 0 10px;
+      transition: color 180ms ease;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+
+    nav a:hover,
+    nav a:focus-visible,
+    nav a.is-active {
+      color: var(--text);
+      outline: none;
+    }
+
+    nav a.is-active::after {
+      transform: scaleX(1);
+    }
+
+    section {
+      scroll-margin-top: 96px;
+      padding: 48px 0;
+    }
+
+    main section:not(:first-child) {
+      border-top: 1px solid rgba(220, 226, 235, 0.16);
+    }
+
+    .intro {
+      padding: 70px 0 50px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+      gap: 44px;
+      align-items: center;
+    }
+
+    .intro-content {
+      max-width: 920px;
+    }
+
+    .profile-frame {
+      justify-self: end;
+      width: min(420px, 100%);
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+    }
+
+    .profile-frame img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 16%, black 84%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 16%, black 84%, transparent 100%);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.84rem;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #e8eef6;
+      box-shadow: 0 0 18px rgba(232, 238, 246, 0.8);
+    }
+
+    h1 {
+      font-size: clamp(3.2rem, 8vw, 6.6rem);
+      line-height: 0.92;
+      letter-spacing: -0.08em;
+      max-width: 900px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 36px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      font-weight: 700;
+      transition: transform 180ms ease, background 180ms ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .btn.download {
+      min-height: 54px;
+      padding: 0 24px;
+      color: #ffffff;
+      background: linear-gradient(135deg, #1479ff, #005bd6);
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 14px 34px rgba(20, 121, 255, 0.28);
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 30px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1;
+      letter-spacing: -0.06em;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 470px;
+    }
+
+    .panel {
+      padding: 30px;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.23);
+    }
+
+    .panel p {
+      color: var(--muted);
+    }
+
+    .work-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 26px;
+      margin-bottom: 28px;
+    }
+
+    .work-filter {
+      position: relative;
+      padding: 0 0 9px;
+      color: var(--muted);
+      background: transparent;
+      font-weight: 700;
+    }
+
+    .work-filter::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+
+    .work-filter:hover,
+    .work-filter:focus-visible,
+    .work-filter.is-active {
+      color: var(--text);
+      outline: none;
+    }
+
+    .work-filter.is-active::after {
+      transform: scaleX(1);
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .work-item {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow: 0 16px 44px rgba(0, 0, 0, 0.28);
+    }
+
+    .work-item.is-hidden {
+      display: none;
+    }
+
+    .work-item img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 260ms ease, opacity 260ms ease;
+    }
+
+    .work-item:hover img {
+      transform: scale(1.04);
+      opacity: 0.92;
+    }
+
+    .work-image-error {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.85rem;
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .skills-subsection {
+      display: grid;
+      gap: 14px;
+    }
+
+    .skills-subsection h3 {
+      color: var(--blue);
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .skill-tag {
+      padding: 15px 16px;
+      border-radius: 16px;
+      background: var(--panel-light);
+      color: var(--accent);
+      border: 1px solid var(--line);
+      font-weight: 650;
+      font-size: 0.95rem;
+    }
+
+    .experience-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .experience-item {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr) minmax(150px, 220px);
+      gap: 24px;
+      align-items: start;
+      padding: 26px;
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      backdrop-filter: blur(18px);
+    }
+
+    .experience-item time {
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    .experience-item h3 {
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 7px;
+    }
+
+    .experience-company {
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .experience-tags {
+      display: grid;
+      gap: 8px;
+      margin: 2px 0 0;
+      list-style: none;
+      justify-self: start;
+    }
+
+    .experience-tags li {
+      position: relative;
+      padding-left: 14px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 650;
+    }
+
+    .experience-tags li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--blue);
+      transform: translateY(-50%);
+    }
+
+    footer {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 34px 0;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 0.9rem;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .admin-button {
+      min-height: 40px;
+      padding: 0 16px;
+      border-radius: 12px;
+      border: 1px solid var(--blue);
+      background: rgba(20, 121, 255, 0.1);
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .admin-button:hover {
+      background: rgba(20, 121, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(12px);
+    }
+
+    .modal.is-open {
+      display: flex;
+    }
+
+    .pdf-panel {
+      width: min(1100px, 100%);
+      height: min(860px, calc(100vh - 48px));
+      display: grid;
+      grid-template-rows: auto 1fr;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      background: #0b0d11;
+      box-shadow: var(--shadow);
+    }
+
+    .pdf-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.055);
+    }
+
+    .pdf-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .pdf-link,
+    .pdf-close {
+      min-height: 40px;
+      padding: 0 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .pdf-link:hover,
+    .pdf-link:focus-visible,
+    .pdf-close:hover,
+    .pdf-close:focus-visible {
+      background: rgba(255, 255, 255, 0.14);
+      outline: none;
+    }
+
+    .pdf-frame-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #11151c;
+      overflow: hidden;
+    }
+
+    .pdf-frame-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #ffffff;
+    }
+
+    .admin-panel {
+      width: min(1200px, 100%);
+      max-height: 90vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      background: rgba(7, 9, 13, 0.95);
+      box-shadow: var(--shadow);
+    }
+
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 24px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .admin-header h2 {
+      font-size: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    .admin-close {
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .admin-content {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 24px;
+      padding: 24px;
+      overflow-y: auto;
+    }
+
+    .admin-work-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .admin-work-item {
+      display: grid;
+      grid-template-columns: 80px 1fr auto auto auto;
+      gap: 12px;
+      align-items: center;
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .admin-work-thumbnail {
+      width: 80px;
+      height: 60px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .admin-work-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .admin-work-details h3 {
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .admin-work-details p {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .admin-btn-small {
+      min-height: 36px;
+      padding: 0 10px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .admin-sidebar {
+      display: grid;
+      gap: 16px;
+      grid-template-rows: auto auto 1fr;
+    }
+
+    .admin-form-group {
+      display: grid;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .admin-form-group label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .admin-form-group input {
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+    }
+
+    .admin-footer {
+      display: flex;
+      gap: 12px;
+      padding: 20px 24px;
+      border-top: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      justify-content: flex-end;
+    }
+
+    .admin-btn {
+      min-height: 42px;
+      padding: 0 20px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .admin-btn.save {
+      background: linear-gradient(135deg, var(--green), #059669);
+      color: #ffffff;
+    }
+
+    .admin-btn.cancel {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .admin-login {
+      display: grid;
+      gap: 20px;
+      padding: 40px;
+    }
+
+    .admin-login-form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .admin-login-form input {
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+    }
+
+    .admin-login-btn {
+      min-height: 44px;
+      border-radius: 10px;
+      border: 1px solid var(--blue);
+      background: linear-gradient(135deg, var(--blue), #005bd6);
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .admin-error {
+      padding: 12px 16px;
+      border-radius: 8px;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #fca5a5;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    @media (max-width: 900px) {
+      .intro,
+      .admin-content {
+        grid-template-columns: 1fr;
+      }
+
+      .intro {
+        padding: 48px 0 40px;
+      }
+
+      .profile-frame {
+        justify-self: start;
+        width: min(320px, 100%);
+      }
+
+      .work-grid,
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .experience-item {
+        grid-template-columns: 1fr;
+      }
+
+      .admin-work-item {
+        grid-template-columns: 60px 1fr auto;
+      }
+
+      .admin-work-thumbnail {
+        width: 60px;
+        height: 45px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      nav {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 4px;
+      }
+
+      .section-title,
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .work-grid,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .admin-panel {
+        width: 100%;
+        max-height: 100vh;
+      }
+
+      .admin-content {
+        gap: 12px;
+        padding: 16px;
+      }
+
+      .admin-work-item {
+        grid-template-columns: 50px 1fr auto;
+      }
+
+      .admin-work-thumbnail {
+        width: 50px;
+        height: 38px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="header-inner">
+        <a href="#intro" class="logo" aria-label="Portfolio home">
+          <span>Collin Amner</span>
+        </a>
+        <nav aria-label="Main navigation">
+          <a href="#intro">Intro</a>
+          <a href="#about">About Me</a>
+          <a href="#work">My Work</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="intro" class="intro wrap" aria-labelledby="intro-title">
+        <div class="intro-content">
+          <span class="eyebrow">Artwork / Marketing / Digital / Branding</span>
+          <h1 id="intro-title">Senior Graphic Designer <br />&amp; Brand Lead</h1>
+          <div class="actions">
+            <button class="btn download" type="button" id="openPortfolioPdf">View portfolio</button>
+          </div>
+        </div>
+        <div class="profile-frame">
+          <img src="assets/profile.png" alt="Black and white portrait of Collin Amner" />
+        </div>
+      </section>
+
+      <section id="about" class="wrap" aria-labelledby="about-title">
+        <div class="section-title">
+          <h2 id="about-title">About Me</h2>
+          <p></p>
+        </div>
+        <div class="panel">
+          <p>Highly accomplished Senior Graphic Designer and Brand Guardian with over 20 years of experience delivering high-quality, audience-led creative across multi-channel campaigns including brand, web, digital, and print. Proven leader in developing visual identity, driving brand governance, managing multiple complex design projects, and mentoring junior designers. Expert in Adobe Creative Suite, workflow-building, and ensuring all design meets accessibility standards.</p>
+        </div>
+      </section>
+
+      <section id="work" class="wrap" aria-labelledby="work-title">
+        <div class="section-title">
+          <h2 id="work-title">My Work</h2>
+          <p>Selected examples across packaging, print, digital and branding.</p>
+        </div>
+
+        <div class="work-filters" id="workFiltersContainer" aria-label="Work filters">
+          <button class="work-filter is-active" type="button" data-filter="all">All</button>
+          <button class="work-filter" type="button" data-filter="packaging">Packaging</button>
+          <button class="work-filter" type="button" data-filter="print">Print</button>
+          <button class="work-filter" type="button" data-filter="digital">Digital</button>
+          <button class="work-filter" type="button" data-filter="branding">Branding</button>
+        </div>
+
+        <div class="work-grid" id="workGrid" aria-label="Selected work gallery">
+          <article class="work-item" data-id="1" data-title="Project 01" data-category="packaging,branding">
+            <img src="assets/work-01.png" alt="Project 01" />
+          </article>
+          <article class="work-item" data-id="2" data-title="Project 02" data-category="packaging">
+            <img src="assets/work-02.png" alt="Project 02" />
+          </article>
+          <article class="work-item" data-id="3" data-title="Project 03" data-category="packaging">
+            <img src="assets/work-03.png" alt="Project 03" />
+          </article>
+          <article class="work-item" data-id="4" data-title="Project 04" data-category="print,digital">
+            <img src="assets/work-04.png" alt="Project 04" />
+          </article>
+          <article class="work-item" data-id="5" data-title="Project 05" data-category="digital">
+            <img src="assets/work-05.png" alt="Project 05" />
+          </article>
+          <article class="work-item" data-id="6" data-title="Project 06" data-category="branding">
+            <img src="assets/work-06.png" alt="Project 06" />
+          </article>
+          <article class="work-item" data-id="7" data-title="Project 07" data-category="packaging">
+            <img src="assets/work-07.png" alt="Project 07" />
+          </article>
+          <article class="work-item" data-id="8" data-title="Project 08" data-category="print">
+            <img src="assets/work-08.png" alt="Project 08" />
+          </article>
+          <article class="work-item" data-id="9" data-title="Project 09" data-category="digital">
+            <img src="assets/work-09.png" alt="Project 09" />
+          </article>
+          <article class="work-item" data-id="10" data-title="Project 10" data-category="branding">
+            <img src="assets/work-10.png" alt="Project 10" />
+          </article>
+          <article class="work-item" data-id="11" data-title="Project 11" data-category="packaging">
+            <img src="assets/work-11.png" alt="Project 11" />
+          </article>
+          <article class="work-item" data-id="12" data-title="Project 12" data-category="print">
+            <img src="assets/work-12.png" alt="Project 12" />
+          </article>
+          <article class="work-item" data-id="13" data-title="Project 13" data-category="packaging">
+            <img src="assets/work-13.png" alt="Project 13" />
+          </article>
+          <article class="work-item" data-id="14" data-title="Project 14" data-category="print">
+            <img src="assets/work-14.png" alt="Project 14" />
+          </article>
+          <article class="work-item" data-id="15" data-title="Project 15" data-category="digital">
+            <img src="assets/work-15.png" alt="Project 15" />
+          </article>
+          <article class="work-item" data-id="16" data-title="Project 16" data-category="branding">
+            <img src="assets/work-16.png" alt="Project 16" />
+          </article>
+          <article class="work-item" data-id="17" data-title="Project 17" data-category="packaging">
+            <img src="assets/work-17.png" alt="Project 17" />
+          </article>
+          <article class="work-item" data-id="18" data-title="Project 18" data-category="print">
+            <img src="assets/work-18.png" alt="Project 18" />
+          </article>
+          <article class="work-item" data-id="19" data-title="Project 20" data-category="branding">
+            <img src="assets/work-20.png" alt="Project 20" />
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" class="wrap" aria-labelledby="skills-title">
+        <div class="section-title">
+          <h2 id="skills-title">Skills</h2>
+          <p></p>
+        </div>
+        <div class="skills-subsection">
+          <h3>Core Skills</h3>
+          <div class="skills-grid" aria-label="Core skills list">
+            <span class="skill-tag">Branding &amp; Visual Identity</span>
+            <span class="skill-tag">Packaging Design</span>
+            <span class="skill-tag">Print-Ready Artwork</span>
+            <span class="skill-tag">POS &amp; Retail Display</span>
+            <span class="skill-tag">Artwork Automation</span>
+            <span class="skill-tag">Pre-Press &amp; Production</span>
+            <span class="skill-tag">UI/Web Design</span>
+            <span class="skill-tag">Presentation Design</span>
+            <span class="skill-tag">Product Development</span>
+            <span class="skill-tag">Creative Project Management</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="wrap" aria-labelledby="experience-title">
+        <div class="section-title">
+          <h2 id="experience-title">Experience</h2>
+          <p>A career history covering packaging, brand, automation, product design, artwork, and creative leadership.</p>
+        </div>
+        <div class="experience-list">
+          <article class="experience-item">
+            <time>2023 — Present</time>
+            <div>
+              <h3>Packaging &amp; Automation Design Lead</h3>
+              <p class="experience-company">Branded Agency (Writtle Group), Berkhamsted</p>
+            </div>
+            <ul class="experience-tags">
+              <li>Packaging</li>
+              <li>Pre-Press</li>
+              <li>Automation</li>
+            </ul>
+          </article>
+
+          <article class="experience-item">
+            <time>2022 — 2023</time>
+            <div>
+              <h3>Creative Coordinator &amp; Designer</h3>
+              <p class="experience-company">KJC Creative Limited, Aylesbury</p>
+            </div>
+            <ul class="experience-tags">
+              <li>Coordination</li>
+              <li>Print</li>
+              <li>Digital</li>
+            </ul>
+          </article>
+
+          <article class="experience-item">
+            <time>2013 — 2022</time>
+            <div>
+              <h3>Branding &amp; Packaging Design Lead</h3>
+              <p class="experience-company">Adlens Limited, Oxford</p>
+            </div>
+            <ul class="experience-tags">
+              <li>Branding</li>
+              <li>Packaging</li>
+              <li>Mentoring</li>
+            </ul>
+          </article>
+
+          <article class="experience-item">
+            <time>2010 — 2013</time>
+            <div>
+              <h3>Creative Lead / Founder</h3>
+              <p class="experience-company">Amner Creative Design, Thame</p>
+            </div>
+            <ul class="experience-tags">
+              <li>Brand Projects</li>
+              <li>Licensed Products</li>
+              <li>Major Clients</li>
+            </ul>
+          </article>
+
+          <article class="experience-item">
+            <time>2006 — 2010</time>
+            <div>
+              <h3>Product &amp; Accessories Designer</h3>
+              <p class="experience-company">Path Group PLC, Thame</p>
+            </div>
+            <ul class="experience-tags">
+              <li>Product Design</li>
+              <li>Artwork</li>
+              <li>Launches</li>
+            </ul>
+          </article>
+
+          <article class="experience-item">
+            <time>2003 — 2006</time>
+            <div>
+              <h3>Product &amp; Graphic Designer</h3>
+              <p class="experience-company">Philex Electronic Limited, Bedford</p>
+            </div>
+            <ul class="experience-tags">
+              <li>Packaging</li>
+              <li>Retail Displays</li>
+              <li>Marketing</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+        <span>© 2026 Collin Amner. All rights reserved.</span>
+        <span>Intro · About Me · My Work · Skills · Experience</span>
+      </div>
+      <button class="admin-button" id="adminButton" title="Admin Panel">⚙️ Admin</button>
+    </footer>
+  </div>
+
+  <div class="modal" id="pdfModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Portfolio PDF viewer">
+    <div class="pdf-panel">
+      <div class="pdf-toolbar">
+        <strong>Collin Amner Portfolio</strong>
+        <div class="pdf-actions">
+          <a class="pdf-link" href="assets/collinamner_portfolio.pdf#page=1&zoom=75" target="_blank" rel="noopener">Open in new tab</a>
+          <button class="pdf-close" type="button" id="closePortfolioPdf">Close</button>
+        </div>
+      </div>
+      <div class="pdf-frame-wrap">
+        <iframe id="portfolioPdfFrame" title="Collin Amner portfolio PDF" data-src="assets/collinamner_portfolio.pdf#page=1&zoom=75"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="adminModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Portfolio admin panel">
+    <div class="admin-panel">
+      <div class="admin-header">
+        <h2>Portfolio Admin</h2>
+        <button class="admin-close" id="adminModalClose">Close</button>
+      </div>
+      <div id="adminContent" class="admin-content"></div>
+      <div class="admin-footer" id="adminFooter" style="display: none;">
+        <button class="admin-btn cancel" id="adminCancel">Cancel</button>
+        <button class="admin-btn save" id="adminSave">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "portfolio_work_data";
+    const STORAGE_VERSION_KEY = "portfolio_work_data_version";
+    const DATA_VERSION = "static-dom-gallery-v6";
+    const AUTH_KEY = "portfolio_admin_auth";
+    const PASSWORD = "admin2026";
+
+    if (localStorage.getItem(STORAGE_VERSION_KEY) !== DATA_VERSION) {
+      localStorage.removeItem(STORAGE_KEY);
+      localStorage.setItem(STORAGE_VERSION_KEY, DATA_VERSION);
+    }
+
+    let currentFilter = "all";
+    let isAuthenticated = localStorage.getItem(AUTH_KEY) === "true";
+    let editingData = null;
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function readWorkDataFromDom() {
+      return Array.from(document.querySelectorAll(".work-item")).map((item, index) => {
+        const image = item.querySelector("img");
+        return {
+          id: Number(item.dataset.id),
+          title: item.dataset.title || image.alt || `Project ${String(index + 1).padStart(2, "0")}`,
+          image: image.getAttribute("src"),
+          categories: item.dataset.category.split(",").map(category => category.trim()).filter(Boolean),
+          position: index
+        };
+      });
+    }
+
+    function createWorkItem(item) {
+      const article = document.createElement("article");
+      article.className = "work-item";
+      article.dataset.id = item.id;
+      article.dataset.title = item.title;
+      article.dataset.category = item.categories.join(",");
+
+      const image = document.createElement("img");
+      image.src = item.image;
+      image.alt = item.title;
+      image.addEventListener("error", () => {
+        article.innerHTML = `<div class="work-image-error">Image not found:<br>${escapeHtml(item.image)}</div>`;
+      });
+
+      article.appendChild(image);
+      return article;
+    }
+
+    function applyWorkDataToDom(data) {
+      const grid = document.getElementById("workGrid");
+      grid.innerHTML = "";
+      [...data].sort((a, b) => a.position - b.position).forEach(item => {
+        grid.appendChild(createWorkItem(item));
+      });
+      filterWork(currentFilter);
+    }
+
+    function getWorkData() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+
+      if (!saved) {
+        return readWorkDataFromDom();
+      }
+
+      try {
+        const parsed = JSON.parse(saved);
+        if (!Array.isArray(parsed) || parsed.length === 0) {
+          return readWorkDataFromDom();
+        }
+        return parsed;
+      } catch (error) {
+        localStorage.removeItem(STORAGE_KEY);
+        return readWorkDataFromDom();
+      }
+    }
+
+    function saveWorkData(data) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      applyWorkDataToDom(data);
+    }
+
+    function buildFiltersFromData(data) {
+      const filtersContainer = document.getElementById("workFiltersContainer");
+      const categories = new Set(["all"]);
+
+      data.forEach(item => {
+        item.categories.forEach(category => categories.add(category));
+      });
+
+      const filters = Array.from(categories).sort((a, b) => {
+        if (a === "all") return -1;
+        if (b === "all") return 1;
+        return a.localeCompare(b);
+      });
+
+      filtersContainer.innerHTML = "";
+
+      filters.forEach(filter => {
+        const button = document.createElement("button");
+        button.className = `work-filter ${filter === currentFilter ? "is-active" : ""}`;
+        button.type = "button";
+        button.dataset.filter = filter;
+        button.textContent = filter.charAt(0).toUpperCase() + filter.slice(1);
+        button.addEventListener("click", () => filterWork(filter));
+        filtersContainer.appendChild(button);
+      });
+    }
+
+    function filterWork(filter) {
+      currentFilter = filter;
+
+      document.querySelectorAll(".work-filter").forEach(button => {
+        button.classList.toggle("is-active", button.dataset.filter === filter);
+      });
+
+      document.querySelectorAll(".work-item").forEach(item => {
+        const categories = item.dataset.category.split(",").map(category => category.trim());
+        item.classList.toggle("is-hidden", filter !== "all" && !categories.includes(filter));
+      });
+    }
+
+    function refreshWorkSection() {
+      const data = getWorkData();
+      applyWorkDataToDom(data);
+      buildFiltersFromData(data);
+      filterWork(currentFilter);
+    }
+
+    const openPortfolioPdf = document.getElementById("openPortfolioPdf");
+    const closePortfolioPdf = document.getElementById("closePortfolioPdf");
+    const pdfModal = document.getElementById("pdfModal");
+    const portfolioPdfFrame = document.getElementById("portfolioPdfFrame");
+
+    function openPdfViewer() {
+      portfolioPdfFrame.src = portfolioPdfFrame.dataset.src;
+      pdfModal.classList.add("is-open");
+      pdfModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("no-scroll");
+      closePortfolioPdf.focus();
+    }
+
+    function closePdfViewer() {
+      pdfModal.classList.remove("is-open");
+      pdfModal.setAttribute("aria-hidden", "true");
+      portfolioPdfFrame.removeAttribute("src");
+      document.body.classList.remove("no-scroll");
+      openPortfolioPdf.focus();
+    }
+
+    openPortfolioPdf.addEventListener("click", openPdfViewer);
+    closePortfolioPdf.addEventListener("click", closePdfViewer);
+    pdfModal.addEventListener("click", event => {
+      if (event.target === pdfModal) {
+        closePdfViewer();
+      }
+    });
+
+    const adminModal = document.getElementById("adminModal");
+    const adminContent = document.getElementById("adminContent");
+    const adminButton = document.getElementById("adminButton");
+    const adminModalClose = document.getElementById("adminModalClose");
+    const adminFooter = document.getElementById("adminFooter");
+
+    function authenticate(password) {
+      if (password === PASSWORD) {
+        localStorage.setItem(AUTH_KEY, "true");
+        isAuthenticated = true;
+        return true;
+      }
+      return false;
+    }
+
+    function logout() {
+      localStorage.removeItem(AUTH_KEY);
+      isAuthenticated = false;
+    }
+
+    function openAdminModal() {
+      adminModal.classList.add("is-open");
+      adminModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("no-scroll");
+
+      if (isAuthenticated) {
+        editingData = getWorkData();
+        renderAdminPanel();
+      } else {
+        renderLoginForm();
+      }
+    }
+
+    function closeAdminModal() {
+      adminModal.classList.remove("is-open");
+      adminModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("no-scroll");
+      editingData = null;
+    }
+
+    adminButton.addEventListener("click", openAdminModal);
+    adminModalClose.addEventListener("click", closeAdminModal);
+    adminModal.addEventListener("click", event => {
+      if (event.target === adminModal) {
+        closeAdminModal();
+      }
+    });
+
+    function renderLoginForm() {
+      adminFooter.style.display = "none";
+      adminContent.innerHTML = `
+        <div class="admin-login" style="grid-column: 1 / -1;">
+          <h2>Admin Access</h2>
+          <p style="color: var(--muted); margin-bottom: 20px;">Enter your password to edit the portfolio.</p>
+          <div class="admin-login-form">
+            <input type="password" id="adminPassword" placeholder="Password" />
+            <button class="admin-login-btn" type="button" id="adminLoginBtn">Login</button>
+            <div id="adminLoginError" class="admin-error" style="display: none;"></div>
+          </div>
+        </div>
+      `;
+
+      document.getElementById("adminLoginBtn").addEventListener("click", () => {
+        const error = document.getElementById("adminLoginError");
+        const password = document.getElementById("adminPassword").value;
+
+        if (authenticate(password)) {
+          editingData = getWorkData();
+          renderAdminPanel();
+        } else {
+          error.textContent = "Incorrect password";
+          error.style.display = "block";
+        }
+      });
+
+      document.getElementById("adminPassword").addEventListener("keypress", event => {
+        if (event.key === "Enter") {
+          document.getElementById("adminLoginBtn").click();
+        }
+      });
+    }
+
+    function renderAdminPanel() {
+      adminFooter.style.display = "flex";
+
+      const sorted = [...editingData].sort((a, b) => a.position - b.position);
+
+      adminContent.innerHTML = `
+        <div class="admin-work-list">
+          <h3 style="margin-bottom: 12px; color: var(--muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;">Work Items (${editingData.length})</h3>
+          ${sorted.map(item => `
+            <div class="admin-work-item">
+              <div class="admin-work-thumbnail">
+                <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}" />
+              </div>
+              <div class="admin-work-details">
+                <h3>${escapeHtml(item.title)}</h3>
+                <p>${escapeHtml(item.categories.join(", "))}</p>
+              </div>
+              <button class="admin-btn-small" type="button" onclick="moveUp(${item.id})">↑</button>
+              <button class="admin-btn-small" type="button" onclick="moveDown(${item.id})">↓</button>
+              <button class="admin-btn-small" type="button" onclick="editWork(${item.id})">Edit</button>
+            </div>
+          `).join("")}
+        </div>
+        <div class="admin-sidebar">
+          <div style="color: var(--muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700;">Edit Work Item</div>
+          <div id="adminEditPanel">
+            <div style="padding: 20px; text-align: center; color: var(--muted);">Select a work item to edit</div>
+          </div>
+          <div style="margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line);">
+            <button class="admin-btn-small" style="width: 100%; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.3); color: #fca5a5;" id="adminLogout">Logout</button>
+          </div>
+        </div>
+      `;
+
+      document.getElementById("adminLogout").addEventListener("click", () => {
+        logout();
+        renderLoginForm();
+      });
+    }
+
+    window.moveUp = function(id) {
+      const sorted = [...editingData].sort((a, b) => a.position - b.position);
+      const index = sorted.findIndex(item => item.id === id);
+
+      if (index > 0) {
+        const currentPosition = sorted[index].position;
+        sorted[index].position = sorted[index - 1].position;
+        sorted[index - 1].position = currentPosition;
+        renderAdminPanel();
+      }
+    };
+
+    window.moveDown = function(id) {
+      const sorted = [...editingData].sort((a, b) => a.position - b.position);
+      const index = sorted.findIndex(item => item.id === id);
+
+      if (index < sorted.length - 1) {
+        const currentPosition = sorted[index].position;
+        sorted[index].position = sorted[index + 1].position;
+        sorted[index + 1].position = currentPosition;
+        renderAdminPanel();
+      }
+    };
+
+    window.editWork = function(id) {
+      const item = editingData.find(entry => entry.id === id);
+      const panel = document.getElementById("adminEditPanel");
+      const options = ["packaging", "print", "digital", "branding"];
+
+      panel.innerHTML = `
+        <div class="admin-form-group">
+          <label>Title</label>
+          <input type="text" id="editTitle" value="${escapeHtml(item.title)}" />
+        </div>
+        <div class="admin-form-group">
+          <label>Image Path</label>
+          <input type="text" id="editImage" value="${escapeHtml(item.image)}" />
+        </div>
+        <div class="admin-form-group">
+          <label>Categories</label>
+          <div style="display: grid; gap: 6px;">
+            ${options.map(category => `
+              <label style="display: flex; align-items: center; gap: 8px; font-weight: 400; cursor: pointer;">
+                <input type="checkbox" ${item.categories.includes(category) ? "checked" : ""} value="${category}" class="admin-cat-check" />
+                ${category.charAt(0).toUpperCase() + category.slice(1)}
+              </label>
+            `).join("")}
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px; margin-top: 16px;">
+          <button class="admin-btn-small" style="flex: 1; background: rgba(20, 121, 255, 0.1); border-color: var(--blue); color: var(--blue);" id="saveEdit">Save</button>
+          <button class="admin-btn-small" style="flex: 1;" id="cancelEdit">Cancel</button>
+        </div>
+      `;
+
+      document.getElementById("saveEdit").addEventListener("click", () => {
+        item.title = document.getElementById("editTitle").value.trim() || item.title;
+        item.image = document.getElementById("editImage").value.trim() || item.image;
+        item.categories = Array.from(document.querySelectorAll(".admin-cat-check:checked")).map(input => input.value);
+
+        if (item.categories.length === 0) {
+          item.categories = ["branding"];
+        }
+
+        renderAdminPanel();
+      });
+
+      document.getElementById("cancelEdit").addEventListener("click", () => {
+        panel.innerHTML = '<div style="padding: 20px; text-align: center; color: var(--muted);">Select a work item to edit</div>';
+      });
+    };
+
+    document.getElementById("adminSave").addEventListener("click", () => {
+      if (editingData) {
+        saveWorkData(editingData);
+        buildFiltersFromData(editingData);
+        filterWork(currentFilter);
+        closeAdminModal();
+      }
+    });
+
+    document.getElementById("adminCancel").addEventListener("click", closeAdminModal);
+
+    const navLinks = Array.from(document.querySelectorAll("nav a"));
+    const pageSections = Array.from(document.querySelectorAll("main section[id]"));
+
+    const activeSectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        navLinks.forEach(link => {
+          link.classList.toggle("is-active", link.getAttribute("href") === `#${entry.target.id}`);
+        });
+      });
+    }, {
+      rootMargin: "-40% 0px -50% 0px",
+      threshold: 0
+    });
+
+    pageSections.forEach(section => activeSectionObserver.observe(section));
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && pdfModal.classList.contains("is-open")) {
+        closePdfViewer();
+      }
+
+      if (event.key === "Escape" && adminModal.classList.contains("is-open")) {
+        closeAdminModal();
+      }
+    });
+
+    refreshWorkSection();
+  </script>
+</body>
+</html>
