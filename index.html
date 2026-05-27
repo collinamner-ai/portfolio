@@ -153,7 +153,27 @@
       <section id="work" class="wrap" aria-labelledby="work-title">
         <div class="section-title"><h2 id="work-title">My Work</h2><p>Selected examples across packaging, print, digital and branding.</p></div>
         <div class="work-filters" id="workFiltersContainer" aria-label="Work filters"></div>
-        <div class="work-grid" id="workGrid" aria-label="Selected work gallery"></div>
+        <div class="work-grid" id="workGrid" aria-label="Selected work gallery">
+          <article class="work-item" data-id="1" data-category="packaging,branding"><img src="./assets/work-01.png" alt="Project 01" loading="lazy"></article>
+          <article class="work-item" data-id="2" data-category="packaging"><img src="./assets/work-02.png" alt="Project 02" loading="lazy"></article>
+          <article class="work-item" data-id="3" data-category="packaging"><img src="./assets/work-03.png" alt="Project 03" loading="lazy"></article>
+          <article class="work-item" data-id="4" data-category="print,digital"><img src="./assets/work-04.png" alt="Project 04" loading="lazy"></article>
+          <article class="work-item" data-id="5" data-category="digital"><img src="./assets/work-05.png" alt="Project 05" loading="lazy"></article>
+          <article class="work-item" data-id="6" data-category="branding"><img src="./assets/work-06.png" alt="Project 06" loading="lazy"></article>
+          <article class="work-item" data-id="7" data-category="packaging"><img src="./assets/work-07.png" alt="Project 07" loading="lazy"></article>
+          <article class="work-item" data-id="8" data-category="print"><img src="./assets/work-08.png" alt="Project 08" loading="lazy"></article>
+          <article class="work-item" data-id="9" data-category="digital"><img src="./assets/work-09.png" alt="Project 09" loading="lazy"></article>
+          <article class="work-item" data-id="10" data-category="branding"><img src="./assets/work-10.png" alt="Project 10" loading="lazy"></article>
+          <article class="work-item" data-id="11" data-category="packaging"><img src="./assets/work-11.png" alt="Project 11" loading="lazy"></article>
+          <article class="work-item" data-id="12" data-category="print"><img src="./assets/work-12.png" alt="Project 12" loading="lazy"></article>
+          <article class="work-item" data-id="13" data-category="packaging"><img src="./assets/work-13.png" alt="Project 13" loading="lazy"></article>
+          <article class="work-item" data-id="14" data-category="print"><img src="./assets/work-14.png" alt="Project 14" loading="lazy"></article>
+          <article class="work-item" data-id="15" data-category="digital"><img src="./assets/work-15.png" alt="Project 15" loading="lazy"></article>
+          <article class="work-item" data-id="16" data-category="branding"><img src="./assets/work-16.png" alt="Project 16" loading="lazy"></article>
+          <article class="work-item" data-id="17" data-category="packaging"><img src="./assets/work-17.png" alt="Project 17" loading="lazy"></article>
+          <article class="work-item" data-id="18" data-category="print"><img src="./assets/work-18.png" alt="Project 18" loading="lazy"></article>
+          <article class="work-item" data-id="19" data-category="branding"><img src="./assets/work-20.png" alt="Project 20" loading="lazy"></article>
+        </div>
       </section>
 
       <section id="skills" class="wrap" aria-labelledby="skills-title">
@@ -242,7 +262,12 @@
     }
 
     function escapeHtml(value) {
-      return String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
+      return String(value)
+        .replace(/&/g,'&amp;')
+        .replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;')
+        .replace(/"/g,'&quot;')
+        .replace(/'/g,'&#039;');
     }
 
     function matchesFilter(item) {
