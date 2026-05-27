@@ -1043,7 +1043,7 @@
         </div>
 
         <div class="profile-frame">
-          <img src="./assets/profile.png" alt="Black and white portrait of Collin Amner" />
+          <img src="./assets/profile.png" alt="Black and white portrait of Collin Amner" data-github-url="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/assets/profile.png" />
         </div>
       </section>
 
@@ -1237,26 +1237,31 @@
     const AUTH_KEY = 'portfolio_admin_auth';
     const PASSWORD = 'admin2026';
 
+    // ⚠️ IMPORTANT: Update these URLs with your GitHub repo details
+    // Replace YOUR_USERNAME and YOUR_REPO with your actual GitHub info
+    const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/collinamner-ai/portfolio/main/assets';
+    const USE_GITHUB_URLS = true; // ✅ Set to true when deploying to GitHub Pages
+
     const DEFAULT_WORK_DATA = [
-      { id: 1, title: 'Project 01', image: './assets/work-01.png', categories: ['packaging', 'branding'], position: 0 },
-      { id: 2, title: 'Project 02', image: './assets/work-02.png', categories: ['packaging'], position: 1 },
-      { id: 3, title: 'Project 03', image: './assets/work-03.png', categories: ['packaging'], position: 2 },
-      { id: 4, title: 'Project 04', image: './assets/work-04.png', categories: ['print', 'digital'], position: 3 },
-      { id: 5, title: 'Project 05', image: './assets/work-05.png', categories: ['digital'], position: 4 },
-      { id: 6, title: 'Project 06', image: './assets/work-06.png', categories: ['branding'], position: 5 },
-      { id: 7, title: 'Project 07', image: './assets/work-07.png', categories: ['packaging'], position: 6 },
-      { id: 8, title: 'Project 08', image: './assets/work-08.png', categories: ['print'], position: 7 },
-      { id: 9, title: 'Project 09', image: './assets/work-09.png', categories: ['digital'], position: 8 },
-      { id: 10, title: 'Project 10', image: './assets/work-10.png', categories: ['branding'], position: 9 },
-      { id: 11, title: 'Project 11', image: './assets/work-11.png', categories: ['packaging'], position: 10 },
-      { id: 12, title: 'Project 12', image: './assets/work-12.png', categories: ['print'], position: 11 },
-      { id: 13, title: 'Project 13', image: './assets/work-13.png', categories: ['packaging'], position: 12 },
-      { id: 14, title: 'Project 14', image: './assets/work-14.png', categories: ['print'], position: 13 },
-      { id: 15, title: 'Project 15', image: './assets/work-15.png', categories: ['digital'], position: 14 },
-      { id: 16, title: 'Project 16', image: './assets/work-16.png', categories: ['branding'], position: 15 },
-      { id: 17, title: 'Project 17', image: './assets/work-17.png', categories: ['packaging'], position: 16 },
-      { id: 18, title: 'Project 18', image: './assets/work-18.png', categories: ['print'], position: 17 },
-      { id: 19, title: 'Project 20', image: './assets/work-20.png', categories: ['branding'], position: 18 },
+      { id: 1, title: 'Project 01', image: USE_GITHUB_URLS ? `${GITHUB_RAW_URL}/work-01.png` : './assets/work-01.png', categories: ['packaging', 'branding'], position: 0 },
+      { id: 2, title: 'Project 02', image: USE_GITHUB_URLS ? `${GITHUB_RAW_URL}/work-02.png` : './assets/work-02.png', categories: ['packaging'], position: 1 },
+      { id: 3, title: 'Project 03', image: USE_GITHUB_URLS ? `${GITHUB_RAW_URL}/work-03.png` : './assets/work-03.png', categories: ['packaging'], position: 2 },
+      { id: 4, title: 'Project 04', image: USE_GITHUB_URLS ? `${GITHUB_RAW_URL}/work-04.png` : './assets/work-04.png', categories: ['print', 'digital'], position: 3 },
+      { id: 5, title: 'Project 05', image: USE_GITHUB_URLS ? `${GITHUB_RAW_URL}/work-05.png` : './assets/work-05.png', categories: ['digital'], position: 4 },
+      { id: 6, title: 'Project 06', image: USE_GITHUB_URLS ? `${GITHUB_RAW_URL}/work-06.png` : './assets/work-06.png', categories: ['branding'], position: 5 },
+      { id: 7, title: 'Project 07', image: USE_GITHUB_URLS ? `${GITHUB_RAW_URL}/work-07.png` : './assets/work-07.png', categories: ['packaging'], position: 6 },
+      { id: 8, title: 'Project 08', image: USE_GITHUB_URLS ? `${GITHUB_RAW_URL}/work-08.png` : './assets/work-08.png', categories: ['print'], position: 7 },
+      { id: 9, title: 'Project 09', image: USE_GITHUB_URLS ? `${GITHUB_RAW_URL}/work-09.png` : './assets/work-09.png', categories: ['digital'], position: 8 },
+      { id: 10, title: 'Project 10', image: USE_GITHUB_URLS ? `${GITHUB_RAW_URL}/work-10.png` : './assets/work-10.png', categories: ['branding'], position: 9 },
+      { id: 11, title: 'Project 11', image: USE_GITHUB_URLS ? `${GITHUB_RAW_URL}/work-11.png` : './assets/work-11.png', categories: ['packaging'], position: 10 },
+      { id: 12, title: 'Project 12', image: USE_GITHUB_URLS ? `${GITHUB_RAW_URL}/work-12.png` : './assets/work-12.png', categories: ['print'], position: 11 },
+      { id: 13, title: 'Project 13', image: USE_GITHUB_URLS ? `${GITHUB_RAW_URL}/work-13.png` : './assets/work-13.png', categories: ['packaging'], position: 12 },
+      { id: 14, title: 'Project 14', image: USE_GITHUB_URLS ? `${GITHUB_RAW_URL}/work-14.png` : './assets/work-14.png', categories: ['print'], position: 13 },
+      { id: 15, title: 'Project 15', image: USE_GITHUB_URLS ? `${GITHUB_RAW_URL}/work-15.png` : './assets/work-15.png', categories: ['digital'], position: 14 },
+      { id: 16, title: 'Project 16', image: USE_GITHUB_URLS ? `${GITHUB_RAW_URL}/work-16.png` : './assets/work-16.png', categories: ['branding'], position: 15 },
+      { id: 17, title: 'Project 17', image: USE_GITHUB_URLS ? `${GITHUB_RAW_URL}/work-17.png` : './assets/work-17.png', categories: ['packaging'], position: 16 },
+      { id: 18, title: 'Project 18', image: USE_GITHUB_URLS ? `${GITHUB_RAW_URL}/work-18.png` : './assets/work-18.png', categories: ['print'], position: 17 },
+      { id: 19, title: 'Project 20', image: USE_GITHUB_URLS ? `${GITHUB_RAW_URL}/work-20.png` : './assets/work-20.png', categories: ['branding'], position: 18 },
     ];
 
     let workData = loadWorkData();
