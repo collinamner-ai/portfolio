@@ -57,10 +57,13 @@
     .skill-tag { padding: 15px 16px; border-radius: 16px; background: var(--panel-light); color: var(--accent); border: 1px solid var(--line); font-weight: 650; font-size: .95rem; }
 
     .experience-list { display: grid; gap: 16px; }
-    .experience-item { display: grid; grid-template-columns: 180px minmax(0,1fr); gap: 24px; align-items: start; padding: 26px; border-radius: 26px; border: 1px solid var(--line); background: var(--panel); backdrop-filter: blur(18px); }
+    .experience-item { display: grid; grid-template-columns: 180px minmax(0,1fr) minmax(150px,220px); gap: 24px; align-items: start; padding: 26px; border-radius: 26px; border: 1px solid var(--line); background: var(--panel); backdrop-filter: blur(18px); }
     .experience-item time { color: var(--blue); font-weight: 700; }
     .experience-item h3 { font-size: 1.25rem; letter-spacing: -.03em; margin-bottom: 7px; }
-    .experience-company { color: var(--accent); font-weight: 700; margin-bottom: 0; }
+    .experience-company { color: var(--accent); font-weight: 700; margin-bottom: 12px; }
+    .experience-tags { display: grid; gap: 8px; margin: 2px 0 0; list-style: none; justify-self: start; }
+    .experience-tags li { position: relative; padding-left: 14px; color: var(--muted); font-size: .92rem; font-weight: 650; }
+    .experience-tags li::before { content: ""; position: absolute; left: 0; top: .72em; width: 5px; height: 5px; border-radius: 50%; background: var(--blue); transform: translateY(-50%); }
 
     footer { width: min(1120px, calc(100% - 40px)); margin: 0 auto; padding: 34px 0; color: var(--muted); display: flex; justify-content: space-between; gap: 16px; font-size: .9rem; align-items: center; border-top: 1px solid rgba(255,255,255,.07); }
 
@@ -120,11 +123,11 @@
       <section id="experience" class="wrap" aria-labelledby="experience-title">
         <div class="section-title"><h2 id="experience-title">Experience</h2><p>A career history covering packaging, brand, automation, product design, artwork, and creative leadership.</p></div>
         <div class="experience-list">
-          <article class="experience-item"><time>2023 — Present</time><div><h3>Packaging &amp; Automation Design Lead</h3><p class="experience-company">Branded Agency (Writtle Group), Berkhamsted</p></div></article>
-          <article class="experience-item"><time>2022 — 2023</time><div><h3>Creative Coordinator &amp; Designer</h3><p class="experience-company">KJC Creative Limited, Aylesbury</p></div></article>
-          <article class="experience-item"><time>2013 — 2022</time><div><h3>Branding &amp; Packaging Design Lead</h3><p class="experience-company">Adlens Limited, Oxford</p></div></article>
-          <article class="experience-item"><time>2010 — 2013</time><div><h3>Creative Lead / Founder</h3><p class="experience-company">Amner Creative Design, Thame</p></div></article>
-          <article class="experience-item"><time>2006 — 2010</time><div><h3>Product &amp; Accessories Designer</h3><p class="experience-company">Path Group PLC, Thame</p></div></article>
+          <article class="experience-item"><time>2023 — Present</time><div><h3>Packaging &amp; Automation Design Lead</h3><p class="experience-company">Branded Agency (Writtle Group), Berkhamsted</p></div><ul class="experience-tags"><li>Packaging</li><li>Pre-Press</li><li>Automation</li></ul></article>
+          <article class="experience-item"><time>2022 — 2023</time><div><h3>Creative Coordinator &amp; Designer</h3><p class="experience-company">KJC Creative Limited, Aylesbury</p></div><ul class="experience-tags"><li>Coordination</li><li>Print</li><li>Digital</li></ul></article>
+          <article class="experience-item"><time>2013 — 2022</time><div><h3>Branding &amp; Packaging Design Lead</h3><p class="experience-company">Adlens Limited, Oxford</p></div><ul class="experience-tags"><li>Branding</li><li>Packaging</li><li>Mentoring</li></ul></article>
+          <article class="experience-item"><time>2010 — 2013</time><div><h3>Creative Lead / Founder</h3><p class="experience-company">Amner Creative Design, Thame</p></div><ul class="experience-tags"><li>Brand Projects</li><li>Licensed Products</li><li>Major Clients</li></ul></article>
+          <article class="experience-item"><time>2006 — 2010</time><div><h3>Product &amp; Accessories Designer</h3><p class="experience-company">Path Group PLC, Thame</p></div><ul class="experience-tags"><li>Product Design</li><li>Artwork</li><li>Launches</li></ul></article>
           <article class="experience-item"><time>2003 — 2006</time><div><h3>Product &amp; Graphic Designer</h3><p class="experience-company">Philex Electronic Limited, Bedford</p></div><ul class="experience-tags"><li>Packaging</li><li>Retail Displays</li><li>Marketing</li></ul></article>
         </div>
       </section>
