@@ -67,10 +67,70 @@
       object-fit: cover;
       object-position: center;
       background: rgba(255,255,255,.06);
+      cursor: zoom-in;
     }
 
-    .work-image:hover {
+    .work-image:hover,
+    .work-image:focus-visible {
       filter: brightness(.82);
+      outline: none;
+    }
+
+    .gallery-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 48px;
+      background: rgba(0,0,0,.96);
+    }
+
+    .gallery-lightbox.is-open {
+      display: flex;
+    }
+
+    #galleryLightboxImage {
+      display: block;
+      max-width: min(75vw, 1100px);
+      max-height: 82vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      box-shadow: 0 30px 90px rgba(0,0,0,.55);
+    }
+
+    .gallery-lightbox-close,
+    .gallery-lightbox-prev,
+    .gallery-lightbox-next {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+      color: #fff;
+      font-size: 26px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .gallery-lightbox-close { top: 24px; right: 24px; }
+    .gallery-lightbox-prev { left: 24px; top: 50%; transform: translateY(-50%); }
+    .gallery-lightbox-next { right: 24px; top: 50%; transform: translateY(-50%); }
+
+    .gallery-lightbox-close:hover,
+    .gallery-lightbox-prev:hover,
+    .gallery-lightbox-next:hover,
+    .gallery-lightbox-close:focus-visible,
+    .gallery-lightbox-prev:focus-visible,
+    .gallery-lightbox-next:focus-visible {
+      background: rgba(255,255,255,.18);
+      outline: none;
     }
 
     .skills-subsection { display: grid; gap: 14px; }
@@ -181,7 +241,74 @@
     </footer>
   </div>
 
+  <div class="gallery-lightbox" id="galleryLightbox" aria-hidden="true" role="dialog" aria-label="Portfolio image viewer">
+    <button class="gallery-lightbox-close" type="button" id="galleryClose" aria-label="Close image viewer">×</button>
+    <button class="gallery-lightbox-prev" type="button" id="galleryPrev" aria-label="Previous image">‹</button>
+    <img id="galleryLightboxImage" src="" alt="">
+    <button class="gallery-lightbox-next" type="button" id="galleryNext" aria-label="Next image">›</button>
+  </div>
+
   <script>
+    const galleryImages = Array.from(document.querySelectorAll('.work-image'));
+    const galleryLightbox = document.getElementById('galleryLightbox');
+    const galleryLightboxImage = document.getElementById('galleryLightboxImage');
+    const galleryClose = document.getElementById('galleryClose');
+    const galleryPrev = document.getElementById('galleryPrev');
+    const galleryNext = document.getElementById('galleryNext');
+    let activeGalleryIndex = 0;
+
+    galleryImages.forEach((image) => {
+      image.setAttribute('tabindex', '0');
+    });
+
+    function showGalleryImage(index) {
+      activeGalleryIndex = (index + galleryImages.length) % galleryImages.length;
+      const image = galleryImages[activeGalleryIndex];
+      galleryLightboxImage.src = image.currentSrc || image.src;
+      galleryLightboxImage.alt = image.alt;
+    }
+
+    function openGallery(index) {
+      showGalleryImage(index);
+      galleryLightbox.classList.add('is-open');
+      galleryLightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      galleryClose.focus();
+    }
+
+    function closeGallery() {
+      galleryLightbox.classList.remove('is-open');
+      galleryLightbox.setAttribute('aria-hidden', 'true');
+      galleryLightboxImage.removeAttribute('src');
+      document.body.style.overflow = '';
+      galleryImages[activeGalleryIndex].focus();
+    }
+
+    galleryImages.forEach((image, index) => {
+      image.addEventListener('click', () => openGallery(index));
+      image.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openGallery(index);
+        }
+      });
+    });
+
+    galleryClose.addEventListener('click', closeGallery);
+    galleryPrev.addEventListener('click', () => showGalleryImage(activeGalleryIndex - 1));
+    galleryNext.addEventListener('click', () => showGalleryImage(activeGalleryIndex + 1));
+
+    galleryLightbox.addEventListener('click', event => {
+      if (event.target === galleryLightbox) closeGallery();
+    });
+
+    document.addEventListener('keydown', event => {
+      if (!galleryLightbox.classList.contains('is-open')) return;
+      if (event.key === 'Escape') closeGallery();
+      if (event.key === 'ArrowLeft') showGalleryImage(activeGalleryIndex - 1);
+      if (event.key === 'ArrowRight') showGalleryImage(activeGalleryIndex + 1);
+    });
+
     const navLinks = Array.from(document.querySelectorAll('nav a'));
     const pageSections = Array.from(document.querySelectorAll('main section[id]'));
     const activeSectionObserver = new IntersectionObserver(entries => {
